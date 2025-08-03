@@ -1,8 +1,9 @@
-﻿using Academia.Models;
+﻿using Academia.Data.Interfaces;
+using Academia.Models;
 
 namespace Academia.Data;
 
-public class PlanData
+public class PlanData : ICrud<Plan>
 {
 	public static readonly List<Plan> planes = [];
 
@@ -25,4 +26,33 @@ public class PlanData
 
 	}
 
+	public Plan? Get(int id)
+	{
+		Plan? plan =
+			planes.Find(x => x.Id == id);
+
+		if (plan != null)
+			return new Plan(plan);
+		else
+			return null;
+	}
+
+	public IEnumerable<Plan> GetAll()
+	{
+		return planes.Select(e => new Plan(e)).ToList();
+	}
+
+	public bool Update(Plan entity)
+	{
+		Plan? plan =
+			planes.Find(x => x.Id == entity.Id);
+		if (plan != null)
+		{
+			plan.Descripcion = entity.Descripcion;
+			plan.State = entity.State;
+			return true;
+		}
+		else
+			return false;
+	}
 }

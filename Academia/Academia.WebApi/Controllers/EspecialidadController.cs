@@ -41,7 +41,9 @@ namespace Academia.WebApi.Controllers
 		{
 			if (id != e.Id)
 				return BadRequest();
-			_especialidadData.Update(e);
+			bool up = _especialidadData.Update(e);
+			if (!up)
+				return NotFound();
 			return NoContent();
 
 		}

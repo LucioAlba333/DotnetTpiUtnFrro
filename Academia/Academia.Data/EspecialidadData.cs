@@ -39,14 +39,14 @@ public class EspecialidadData : ICrud<Especialidad>
 	{
 		return especialidades.Select(e => new Especialidad(e)).ToList();
 	}
-	public bool Update(Especialidad especialidad)
+	public bool Update(Especialidad entity)
 	{
 		Especialidad? e =
-			especialidades.Find(x => x.Id == especialidad.Id);
+			especialidades.Find(x => x.Id == entity.Id);
 		if (e != null)
 		{
-			e.State = especialidad.State;
-			e.Descripcion = especialidad.Descripcion;
+			e.State = entity.State;
+			e.Descripcion = entity.Descripcion;
 			return true;
 		}
 		else
