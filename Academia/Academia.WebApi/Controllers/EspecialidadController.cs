@@ -4,8 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Academia.WebApi.Controllers
 {
-	[ApiController]
 	[Route("api/[controller]")]
+	[ApiController]
 	public class EspecialidadController : ControllerBase
 	{
 		private readonly ICrud<Especialidad> _especialidadData;
@@ -25,7 +25,7 @@ namespace Academia.WebApi.Controllers
 			}
 			return Ok(e);
 		}
-		[HttpGet(Name = "GetAll")]
+		[HttpGet(Name = "GetAllEspecialidades")]
 		public ActionResult<IEnumerable<Especialidad>> GetAll()
 		{
 			return _especialidadData.GetAll().ToList();

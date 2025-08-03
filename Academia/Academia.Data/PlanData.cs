@@ -50,6 +50,8 @@ public class PlanData : ICrud<Plan>
 		{
 			plan.Descripcion = entity.Descripcion;
 			plan.State = entity.State;
+			plan.IdEspecialidad = entity.IdEspecialidad;
+			plan.Especialidad = entity.Especialidad;
 			return true;
 		}
 		else
