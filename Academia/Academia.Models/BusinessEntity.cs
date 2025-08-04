@@ -2,6 +2,7 @@
 
 public abstract class BusinessEntity
 {
+	public BusinessEntity() { }
 	public BusinessEntity(int id)
 	{
 		if (id < 0)

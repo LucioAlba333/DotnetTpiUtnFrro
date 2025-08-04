@@ -6,9 +6,11 @@ namespace Academia.Data;
 public class EspecialidadData : ICrud<Especialidad>
 {
 	public static readonly List<Especialidad> especialidades = [];
+	public static int idActual = 1;
 
 	public void New(Especialidad especialidad)
 	{
+		especialidad.Id = idActual++;
 		especialidades.Add(especialidad);
 	}
 
