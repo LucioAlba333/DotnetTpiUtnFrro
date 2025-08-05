@@ -52,6 +52,7 @@
             buttonPlan.TabIndex = 1;
             buttonPlan.Text = "Planes";
             buttonPlan.UseVisualStyleBackColor = true;
+            buttonPlan.Click += buttonPlan_Click;
             // 
             // tableLayoutPanel1
             // 
@@ -79,7 +80,6 @@
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             ClientSize = new Size(484, 461);
             Controls.Add(tableLayoutPanel1);
-            Location = new Point(0, 0);
             MaximumSize = new Size(500, 500);
             MinimumSize = new Size(500, 500);
             Name = "FormMenu";

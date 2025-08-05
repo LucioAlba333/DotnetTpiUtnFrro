@@ -18,7 +18,7 @@ public class Plan : BusinessEntity
         }
     }
     public int IdEspecialidad { get; set; }
-	public Especialidad Especialidad { get; set; }
+	public Especialidad Especialidad { get ; set; }
 	public Plan() { }
 	[JsonConstructor]
 	public Plan(int id, Especialidad especialidad, string descripcion) : base(id)
@@ -34,4 +34,8 @@ public class Plan : BusinessEntity
 		this.IdEspecialidad = plan.IdEspecialidad;
 		this.Especialidad = plan.Especialidad;
 	}
+    public string EspecialidadDescripcion
+    {
+        get { return Especialidad.Descripcion; }
+    }
 }

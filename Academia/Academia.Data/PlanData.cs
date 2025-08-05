@@ -6,9 +6,11 @@ namespace Academia.Data;
 public class PlanData : ICrud<Plan>
 {
 	public static readonly List<Plan> planes = [];
+    public static int idActual = 1;
 
-	public void New(Plan plan)
+    public void New(Plan plan)
 	{
+		plan.Id = idActual++;
 		planes.Add(plan);
 	}
 

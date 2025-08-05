@@ -12,7 +12,7 @@ using Academia.Desktop.ModalesEspecialidad;
 using Academia.Models;
 namespace Academia.Desktop
 {
-    public partial class FormEspecialidad : FormPadre
+    public partial class FormEspecialidad : Form
     {
         private FormMenu _menu;
         private readonly HttpClient _httpClient = new()
