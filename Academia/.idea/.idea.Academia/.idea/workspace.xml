@@ -12,10 +12,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="df954b14-1198-4987-8c49-897facf99dbf" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Academia/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Academia/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Academia/.idea/indexLayout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Academia/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Academia.WebApi/Academia.WebApi.csproj.user" beforeDir="false" afterPath="$PROJECT_DIR$/Academia.WebApi/Academia.WebApi.csproj.user" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Academia.WebApi/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Academia.WebApi/Properties/launchSettings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -34,18 +31,18 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "LucioAlba333"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;LucioAlba333&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/LucioAlba333/DotnetTpiUtnFrro.git",
-    "accountId": "381b9b2a-9708-4bdc-8aea-f29c1906621e"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/LucioAlba333/DotnetTpiUtnFrro.git&quot;,
+    &quot;accountId&quot;: &quot;381b9b2a-9708-4bdc-8aea-f29c1906621e&quot;
   }
-}]]></component>
+}</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Academia.Services/Class1.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -62,27 +59,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Launch Settings Profile.Academia.WebApi: http.executor": "Run",
-    ".NET Project.Academia.Desktop.executor": "Run",
-    ".NET Project.Academia.WebApi.executor": "Run",
-    "Docker.Academia.WebApi/Dockerfile.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "hotfix",
-    "ignore.virus.scanning.warn.message": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "terminal",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Launch Settings Profile.Academia.WebApi: http.executor&quot;: &quot;Run&quot;,
+    &quot;.NET Project.Academia.Desktop.executor&quot;: &quot;Run&quot;,
+    &quot;.NET Project.Academia.WebApi.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.Academia.WebApi/Dockerfile.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;hotfix&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;terminal&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
       <deployment type="dockerfile">
@@ -101,7 +98,7 @@
       <updated>1755567508120</updated>
       <workItem from="1755567509491" duration="1543000" />
       <workItem from="1755576305720" duration="177000" />
-      <workItem from="1755648065174" duration="2910000" />
+      <workItem from="1755648065174" duration="3857000" />
     </task>
     <task id="LOCAL-00001" summary="eliminado Dockerfile">
       <option name="closed" value="true" />
