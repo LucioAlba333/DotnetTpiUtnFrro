@@ -13,7 +13,18 @@
   <component name="ChangeListManager">
     <list default="true" id="df954b14-1198-4987-8c49-897facf99dbf" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Academia/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Academia/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Academia.WebApi/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Academia.WebApi/Properties/launchSettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Academia.Data/Academia.Data.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Academia.Data/Academia.Data.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Academia.Data/EspecialidadData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Academia.Data/EspecialidadData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Academia.Data/Interfaces/ICrud.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Academia.Services/Interfaces/ICrud.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Academia.Data/PlanData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Academia.Data/PlanData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Academia.Models/Plan.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Academia.Models/Plan.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Academia.Services/Academia.Services.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Academia.Services/Academia.Services.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Academia.Services/Class1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Academia.Services/EspecialidadService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Academia.WebApi/Academia.WebApi.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Academia.WebApi/Academia.WebApi.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Academia.WebApi/Controllers/EspecialidadController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Academia.WebApi/Controllers/EspecialidadController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Academia.WebApi/Controllers/PlanController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Academia.WebApi/Controllers/PlanController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Academia.WebApi/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Academia.WebApi/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Academia.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Academia.sln" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,7 +37,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/.." value="feature" />
+        <entry key="$PROJECT_DIR$/.." value="hotfix" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -44,7 +55,10 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Academia.Services/Class1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Academia.Dto/EspecialidadDto.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Academia.Dto/PlanDto.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Academia.Services/EspecialidadService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Academia.Services/PlanService.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
@@ -55,6 +69,9 @@
   &quot;associatedIndex&quot;: 8
 }</component>
   <component name="ProjectId" id="31U8tvjnzBsMqhXGeLhmkrqseEM" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -71,7 +88,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;hotfix&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;refactorBack&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -140,6 +157,9 @@
       <workItem from="1755652182604" duration="91000" />
       <workItem from="1755652298107" duration="467000" />
       <workItem from="1755654039527" duration="630000" />
+      <workItem from="1755658087527" duration="2575000" />
+      <workItem from="1755662455664" duration="2987000" />
+      <workItem from="1755668196168" duration="2873000" />
     </task>
     <task id="LOCAL-00001" summary="eliminado Dockerfile">
       <option name="closed" value="true" />
@@ -149,7 +169,15 @@
       <option name="project" value="LOCAL" />
       <updated>1755649453897</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="inicio de refactor del del backend">
+      <option name="closed" value="true" />
+      <created>1755658223092</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1755658223093</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -160,7 +188,8 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="eliminado Dockerfile" />
-    <option name="LAST_COMMIT_MESSAGE" value="eliminado Dockerfile" />
+    <MESSAGE value="inicio de refactor del del backend" />
+    <option name="LAST_COMMIT_MESSAGE" value="inicio de refactor del del backend" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

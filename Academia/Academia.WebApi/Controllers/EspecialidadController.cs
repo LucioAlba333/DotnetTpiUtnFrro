@@ -1,5 +1,5 @@
-using Academia.Data.Interfaces;
 using Academia.Models;
+using Academia.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Academia.WebApi.Controllers
@@ -8,17 +8,17 @@ namespace Academia.WebApi.Controllers
 	[ApiController]
 	public class EspecialidadController : ControllerBase
 	{
-		private readonly ICrud<Especialidad> _especialidadData;
+		private readonly ICrud<Especialidad> _especialidadService;
 
-		public EspecialidadController(ICrud<Especialidad> especialidadData)
+		public EspecialidadController(ICrud<Especialidad> especialidadService)
 		{
-			_especialidadData = especialidadData;
+			_especialidadService = especialidadService;
 		}
 
-		[HttpGet("{id}")]
+		[HttpGet("{id:int}")]
 		public ActionResult<Especialidad> Get(int id)
 		{
-			var e = _especialidadData.Get(id);
+			var e = _especialidadService.Get(id);
 			if (e == null)
 			{
 				return NotFound();
@@ -28,29 +28,29 @@ namespace Academia.WebApi.Controllers
 		[HttpGet(Name = "GetAllEspecialidades")]
 		public ActionResult<IEnumerable<Especialidad>> GetAll()
 		{
-			return _especialidadData.GetAll().ToList();
+			return _especialidadService.GetAll().ToList();
 		}
 		[HttpPost]
 		public ActionResult<Especialidad> Create(Especialidad e)
 		{
-			_especialidadData.New(e);
+			_especialidadService.New(e);
 			return CreatedAtAction(nameof(Get), new { Id = e.Id }, e);
 		}
-		[HttpPut("{id}")]
+		[HttpPut("{id:int}")]
 		public ActionResult Update(int id, [FromBody] Especialidad e)
 		{
 			if (id != e.Id)
 				return BadRequest();
-			bool up = _especialidadData.Update(e);
+			bool up = _especialidadService.Update(e);
 			if (!up)
 				return NotFound();
 			return NoContent();
 
 		}
-		[HttpDelete("{id}")]
+		[HttpDelete("{id:int}")]
 		public ActionResult Delete(int id)
 		{
-			bool del = _especialidadData.Delete(id);
+			bool del = _especialidadService.Delete(id);
 			if (!del)
 				return NotFound();
 			return NoContent();

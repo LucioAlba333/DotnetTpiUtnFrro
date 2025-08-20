@@ -1,5 +1,5 @@
-using Academia.Data.Interfaces;
 using Academia.Models;
+using Academia.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,56 +9,70 @@ namespace Academia.WebApi.Controllers
 	[ApiController]
 	public class PlanController : ControllerBase
 	{
-		private readonly ICrud<Plan> _planData;
-		private readonly ICrud<Especialidad> _especialiadData;
+		private readonly ICrud<Plan> _planService;
+		private readonly ICrud<Especialidad> _especialidadService;
 
 		public PlanController(ICrud<Plan> p, ICrud<Especialidad> e)
 		{
-			_planData = p;
-			_especialiadData = e;
+			_planService = p;
+			_especialidadService = e;
 		}
-		[HttpGet("{id}")]
+		[HttpGet("{id:int}")]
 		public ActionResult<Plan> Get(int id)
 		{
-			var p = _planData.Get(id);
+			var p = _planService.Get(id);
 			if (p == null)
 			{
 				return NotFound();
 			}
+			/* actualizo la descripcion antes de la especialidad para reflejar cambios.
+			 probablemente lo cambie al implementar el acceso a datos*/ 
+			var e = _especialidadService.Get(p.IdEspecialidad);
+			if (e != null)
+				p.EspecialidadDescripcion = e.Descripcion;
 			return Ok(p);
 
 		}
 		[HttpGet(Name = "GetAllPlanes")]
 		public ActionResult<IEnumerable<Plan>> GetAll()
 		{
-			return _planData.GetAll().ToList();
+			var planes =_planService.GetAll().ToList();
+			/*Lo mismo que el anterior comentario*/
+			foreach (var p in planes)
+			{
+				var especialidad = _especialidadService.Get(p.IdEspecialidad);
+				if (especialidad != null)
+					p.EspecialidadDescripcion = especialidad.Descripcion;
+			}
+			return Ok(planes);
+			
 		}
 		[HttpPost]
 		public ActionResult<Plan> Create(Plan plan)
 		{
-			var e = _especialiadData.Get(plan.IdEspecialidad);
+			var e = _especialidadService.Get(plan.IdEspecialidad);
 			if (e == null)
 				return NotFound();
-			_planData.New(plan);
+			_planService.New(plan);
 			return CreatedAtAction(nameof(Get), new { Id = plan.Id }, plan);
 		}
-		[HttpPut("{id}")]
+		[HttpPut("{id:int}")]
 		public ActionResult Update(int id, [FromBody] Plan plan)
 		{
 			if (id != plan.Id)
 				return BadRequest();
-			var especialidad = _especialiadData.Get(plan.IdEspecialidad);
+			var especialidad = _especialidadService.Get(plan.IdEspecialidad);
 			if (especialidad == null)
 				return NotFound();
-			bool up = _planData.Update(plan);
+			bool up = _planService.Update(plan);
 			if (!up)
 				return NotFound();
 			return NoContent();
 		}
-		[HttpDelete("{id}")]
+		[HttpDelete("{id:int}")]
 		public ActionResult Delete(int id)
 		{
-			bool del = _planData.Delete(id);
+			bool del = _planService.Delete(id);
 			if (!del)
 				return NotFound();
 			return NoContent();

@@ -1,13 +1,13 @@
-using Academia.Data;
-using Academia.Data.Interfaces;
+using Academia.Services.Interfaces;
 using Academia.Models;
+using Academia.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddSingleton<ICrud<Especialidad>, EspecialidadData>();
-builder.Services.AddSingleton<ICrud<Plan>, PlanData>();
+builder.Services.AddSingleton<ICrud<Especialidad>, EspecialidadService>();
+builder.Services.AddSingleton<ICrud<Plan>, PlanService>();
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())

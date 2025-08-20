@@ -17,6 +17,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Academia.Data\Academia.Data.csproj" />
     <ProjectReference Include="..\Academia.Models\Academia.Models.csproj" />
+    <ProjectReference Include="..\Academia.Services\Academia.Services.csproj" />
   </ItemGroup>
 
 </Project>
