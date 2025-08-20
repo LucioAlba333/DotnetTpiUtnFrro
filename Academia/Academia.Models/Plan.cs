@@ -5,10 +5,10 @@ namespace Academia.Models;
 public class Plan : BusinessEntity
 {
     private string _decripcion;
-
+    private string _especialidadDescripcion;
     public string Descripcion
     {
-        get { return _decripcion; }
+        get => _decripcion;
         set
         {
             if (string.IsNullOrWhiteSpace(value))
@@ -17,25 +17,32 @@ public class Plan : BusinessEntity
 
         }
     }
+
+    public string EspecialidadDescripcion
+    {
+	    get => _especialidadDescripcion;
+	    set
+	    {
+		    if (string.IsNullOrWhiteSpace(value))
+			    throw new ArgumentException("la descripcion no puede ser nulo o vacia", nameof(value));
+		    _especialidadDescripcion = value;
+	    }
+    }
     public int IdEspecialidad { get; set; }
-	public Especialidad Especialidad { get ; set; }
+    
 	public Plan() { }
 	[JsonConstructor]
-	public Plan(int id, Especialidad especialidad, string descripcion) : base(id)
+	public Plan(int id,int idEspcialidad ,string descripcion) : base(id)
 	{
 
 		Descripcion = descripcion;
-		Especialidad = especialidad;
-		IdEspecialidad = especialidad.Id;
+		IdEspecialidad = idEspcialidad;
 	}
 	public Plan(Plan plan) : base(plan)
 	{
 		this.Descripcion = plan.Descripcion;
 		this.IdEspecialidad = plan.IdEspecialidad;
-		this.Especialidad = plan.Especialidad;
+		this.EspecialidadDescripcion = plan.EspecialidadDescripcion;
 	}
-    public string EspecialidadDescripcion
-    {
-        get { return Especialidad.Descripcion; }
-    }
+   
 }
