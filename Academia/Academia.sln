@@ -11,6 +11,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Academia.Data", "Academia.D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Academia.Services", "Academia.Services\Academia.Services.csproj", "{E283C057-10E7-4630-A206-A0E245350410}"
 EndProject
+
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Academia.ApiClient", "Academia.ApiClient\Academia.ApiClient.csproj", "{94E54DA5-240E-4E34-8435-B43500FE0D4B}"
+
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Academia.Desktop", "Academia.Desktop\Academia.Desktop.csproj", "{EDE73A31-E5B4-4DB5-97CD-917F7D6F5D4D}"
+
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +39,14 @@ Global
 		{E283C057-10E7-4630-A206-A0E245350410}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E283C057-10E7-4630-A206-A0E245350410}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E283C057-10E7-4630-A206-A0E245350410}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94E54DA5-240E-4E34-8435-B43500FE0D4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94E54DA5-240E-4E34-8435-B43500FE0D4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94E54DA5-240E-4E34-8435-B43500FE0D4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94E54DA5-240E-4E34-8435-B43500FE0D4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDE73A31-E5B4-4DB5-97CD-917F7D6F5D4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDE73A31-E5B4-4DB5-97CD-917F7D6F5D4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDE73A31-E5B4-4DB5-97CD-917F7D6F5D4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDE73A31-E5B4-4DB5-97CD-917F7D6F5D4D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
