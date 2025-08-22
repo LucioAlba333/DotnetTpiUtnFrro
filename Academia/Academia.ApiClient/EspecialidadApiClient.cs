@@ -46,7 +46,8 @@ public class EspecialidadApiClient
 
             }
             var json = await response.Content.ReadAsStreamAsync();
-            var especialidades = JsonSerializer.Deserialize<IEnumerable<Especialidad>>(json);
+            var especialidades = JsonSerializer.Deserialize<IEnumerable<Especialidad>>(json,
+                new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
             if (especialidades == null)
             {
                 return [];
@@ -89,7 +90,7 @@ public class EspecialidadApiClient
     {
         try
         {
-            var response = await ApiClient.Client.PutAsJsonAsync("api/Especialidad", especialidad);
+            var response = await ApiClient.Client.PutAsJsonAsync("api/Especialidad/"+especialidad.Id, especialidad);
             if (!response.IsSuccessStatusCode)
             {
                 var error = await response.Content.ReadAsStringAsync();
