@@ -30,7 +30,11 @@ namespace Academia.WebApi.Controllers
 			var e = _especialidadService.Get(p.IdEspecialidad);
 			if (e != null)
 				p.EspecialidadDescripcion = e.Descripcion;
-			return Ok(p);
+            else
+            {
+                p.EspecialidadDescripcion = "Sin Especialidad";
+            }
+            return Ok(p);
 
 		}
 		[HttpGet(Name = "GetAllPlanes")]
@@ -43,6 +47,10 @@ namespace Academia.WebApi.Controllers
 				var especialidad = _especialidadService.Get(p.IdEspecialidad);
 				if (especialidad != null)
 					p.EspecialidadDescripcion = especialidad.Descripcion;
+				else
+				{
+					p.EspecialidadDescripcion = "Sin Especialidad";
+				}
 			}
 			return Ok(planes);
 			

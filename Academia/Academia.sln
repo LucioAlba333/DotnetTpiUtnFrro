@@ -11,11 +11,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Academia.Data", "Academia.D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Academia.Services", "Academia.Services\Academia.Services.csproj", "{E283C057-10E7-4630-A206-A0E245350410}"
 EndProject
-
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Academia.ApiClient", "Academia.ApiClient\Academia.ApiClient.csproj", "{94E54DA5-240E-4E34-8435-B43500FE0D4B}"
-
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Academia.Desktop", "Academia.Desktop\Academia.Desktop.csproj", "{EDE73A31-E5B4-4DB5-97CD-917F7D6F5D4D}"
-
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

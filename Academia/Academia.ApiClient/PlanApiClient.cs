@@ -18,7 +18,8 @@ public class PlanApiClient
             }
 
             var json = await response.Content.ReadAsStreamAsync();
-            var planes = JsonSerializer.Deserialize<IEnumerable<Plan>>(json);
+            var planes = JsonSerializer.Deserialize<IEnumerable<Plan>>(json, 
+                new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
             if (planes == null)
             {
                 return [];
@@ -87,7 +88,7 @@ public class PlanApiClient
     {
         try
         {
-            var response = await ApiClient.Client.PutAsJsonAsync("api/Plan", plan);
+            var response = await ApiClient.Client.PutAsJsonAsync("api/Plan/"+plan.Id, plan);
             if (!response.IsSuccessStatusCode)
             {
                 var error = await response.Content.ReadAsStringAsync();

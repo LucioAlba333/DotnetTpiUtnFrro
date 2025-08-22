@@ -31,29 +31,14 @@ partial class MainForm
     /// </summary>
     private void InitializeComponent()
     {
-        toolStripContainerMain = new ToolStripContainer();
         menuStripMain = new MenuStrip();
         inicioToolStripMenuItem = new ToolStripMenuItem();
-        organizacionAcademicaToolStripMenuItem = new ToolStripMenuItem();
-        planesToolStripMenuItem = new ToolStripMenuItem();
-        espeToolStripMenuItem = new ToolStripMenuItem();
         salirToolStripMenuItem = new ToolStripMenuItem();
-        toolStripContainerMain.SuspendLayout();
+        organizacionAcademicaToolStripMenuItem = new ToolStripMenuItem();
+        IrEspecialidades = new ToolStripMenuItem();
+        espeToolStripMenuItem = new ToolStripMenuItem();
         menuStripMain.SuspendLayout();
         SuspendLayout();
-        // 
-        // toolStripContainerMain
-        // 
-        // 
-        // toolStripContainerMain.ContentPanel
-        // 
-        toolStripContainerMain.ContentPanel.Size = new Size(800, 401);
-        toolStripContainerMain.Dock = DockStyle.Fill;
-        toolStripContainerMain.Location = new Point(0, 24);
-        toolStripContainerMain.Name = "toolStripContainerMain";
-        toolStripContainerMain.Size = new Size(800, 426);
-        toolStripContainerMain.TabIndex = 1;
-        toolStripContainerMain.Text = "toolStripContainerMain";
         // 
         // menuStripMain
         // 
@@ -61,7 +46,7 @@ partial class MainForm
         menuStripMain.Location = new Point(0, 0);
         menuStripMain.Name = "menuStripMain";
         menuStripMain.Size = new Size(800, 24);
-        menuStripMain.TabIndex = 2;
+        menuStripMain.TabIndex = 4;
         menuStripMain.Text = "menuStripMain";
         // 
         // inicioToolStripMenuItem
@@ -71,59 +56,56 @@ partial class MainForm
         inicioToolStripMenuItem.Size = new Size(60, 20);
         inicioToolStripMenuItem.Text = "Archivo";
         // 
+        // salirToolStripMenuItem
+        // 
+        salirToolStripMenuItem.Name = "salirToolStripMenuItem";
+        salirToolStripMenuItem.Size = new Size(96, 22);
+        salirToolStripMenuItem.Text = "Salir";
+        salirToolStripMenuItem.Click += salirToolStripMenuItem_Click;
+        // 
         // organizacionAcademicaToolStripMenuItem
         // 
-        organizacionAcademicaToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { planesToolStripMenuItem, espeToolStripMenuItem });
+        organizacionAcademicaToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { IrEspecialidades, espeToolStripMenuItem });
         organizacionAcademicaToolStripMenuItem.Name = "organizacionAcademicaToolStripMenuItem";
         organizacionAcademicaToolStripMenuItem.Size = new Size(151, 20);
         organizacionAcademicaToolStripMenuItem.Text = "Organizacion Academica";
         // 
-        // planesToolStripMenuItem
+        // IrEspecialidades
         // 
-        planesToolStripMenuItem.Name = "planesToolStripMenuItem";
-        planesToolStripMenuItem.Size = new Size(180, 22);
-        planesToolStripMenuItem.Text = "Especialidades";
+        IrEspecialidades.Name = "IrEspecialidades";
+        IrEspecialidades.Size = new Size(180, 22);
+        IrEspecialidades.Text = "Especialidades";
+        IrEspecialidades.Click += IrEspecialidades_Click;
         // 
         // espeToolStripMenuItem
         // 
         espeToolStripMenuItem.Name = "espeToolStripMenuItem";
         espeToolStripMenuItem.Size = new Size(180, 22);
         espeToolStripMenuItem.Text = "Planes";
-        // 
-        // salirToolStripMenuItem
-        // 
-        salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-        salirToolStripMenuItem.Size = new Size(180, 22);
-        salirToolStripMenuItem.Text = "Salir";
-        salirToolStripMenuItem.Click += salirToolStripMenuItem_Click;
+        espeToolStripMenuItem.Click += espeToolStripMenuItem_Click;
         // 
         // MainForm
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(800, 450);
-        Controls.Add(toolStripContainerMain);
         Controls.Add(menuStripMain);
         IsMdiContainer = true;
-        MainMenuStrip = menuStripMain;
         Name = "MainForm";
-        Text = "MainForm";
-        toolStripContainerMain.ResumeLayout(false);
-        toolStripContainerMain.PerformLayout();
+        Text = "Academia";
+        Load += MainForm_Load;
         menuStripMain.ResumeLayout(false);
         menuStripMain.PerformLayout();
         ResumeLayout(false);
         PerformLayout();
     }
 
-    private System.Windows.Forms.ToolStripContainer toolStripContainerMain;
-    private System.Windows.Forms.MenuStrip menuStripMain;
-
     #endregion
 
+    private MenuStrip menuStripMain;
     private ToolStripMenuItem inicioToolStripMenuItem;
-    private ToolStripMenuItem organizacionAcademicaToolStripMenuItem;
-    private ToolStripMenuItem planesToolStripMenuItem;
-    private ToolStripMenuItem espeToolStripMenuItem;
     private ToolStripMenuItem salirToolStripMenuItem;
+    private ToolStripMenuItem organizacionAcademicaToolStripMenuItem;
+    private ToolStripMenuItem IrEspecialidades;
+    private ToolStripMenuItem espeToolStripMenuItem;
 }
