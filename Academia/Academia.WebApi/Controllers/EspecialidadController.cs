@@ -1,5 +1,6 @@
 using Academia.Models;
 using Academia.Services;
+using Academia.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Academia.WebApi.Controllers
@@ -8,9 +9,9 @@ namespace Academia.WebApi.Controllers
 	[ApiController]
 	public class EspecialidadController : ControllerBase
 	{
-		private readonly EspecialidadService _especialidadService;
+		private readonly ICrud<Especialidad> _especialidadService;
 
-		public EspecialidadController(EspecialidadService especialidadService)
+		public EspecialidadController(ICrud<Especialidad> especialidadService)
 		{
 			_especialidadService = especialidadService;
 		}
