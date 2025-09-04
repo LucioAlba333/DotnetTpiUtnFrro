@@ -1,6 +1,5 @@
 using Academia.Models;
-using Academia.Services.Interfaces;
-using Microsoft.AspNetCore.Http;
+using Academia.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Academia.WebApi.Controllers
@@ -9,10 +8,10 @@ namespace Academia.WebApi.Controllers
 	[ApiController]
 	public class PlanController : ControllerBase
 	{
-		private readonly ICrud<Plan> _planService;
-		private readonly ICrud<Especialidad> _especialidadService;
+		private readonly PlanService _planService;
+		private readonly EspecialidadService _especialidadService;
 
-		public PlanController(ICrud<Plan> p, ICrud<Especialidad> e)
+		public PlanController(PlanService p, EspecialidadService e)
 		{
 			_planService = p;
 			_especialidadService = e;
