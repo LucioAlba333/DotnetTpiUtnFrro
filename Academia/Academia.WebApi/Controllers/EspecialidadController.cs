@@ -1,3 +1,4 @@
+using Academia.Dtos;
 using Academia.Models;
 using Academia.Services;
 using Academia.Services.Interfaces;
@@ -9,15 +10,15 @@ namespace Academia.WebApi.Controllers
 	[ApiController]
 	public class EspecialidadController : ControllerBase
 	{
-		private readonly ICrud<Especialidad> _especialidadService;
+		private readonly IEntityService<EspecialidadDto> _especialidadService;
 
-		public EspecialidadController(ICrud<Especialidad> especialidadService)
+		public EspecialidadController(IEntityService<EspecialidadDto> especialidadService)
 		{
 			_especialidadService = especialidadService;
 		}
 
 		[HttpGet("{id:int}")]
-		public ActionResult<Especialidad> Get(int id)
+		public ActionResult<EspecialidadDto> Get(int id)
 		{
 			var e = _especialidadService.Get(id);
 			if (e == null)
@@ -27,18 +28,18 @@ namespace Academia.WebApi.Controllers
 			return Ok(e);
 		}
 		[HttpGet(Name = "GetAllEspecialidades")]
-		public ActionResult<IEnumerable<Especialidad>> GetAll()
+		public ActionResult<IEnumerable<EspecialidadDto>> GetAll()
 		{
 			return _especialidadService.GetAll().ToList();
 		}
 		[HttpPost]
-		public ActionResult<Especialidad> Create(Especialidad e)
+		public ActionResult<EspecialidadDto> Create(EspecialidadDto e)
 		{
 			_especialidadService.New(e);
 			return CreatedAtAction(nameof(Get), new { Id = e.Id }, e);
 		}
 		[HttpPut("{id:int}")]
-		public ActionResult Update(int id, [FromBody] Especialidad e)
+		public ActionResult Update(int id, [FromBody] EspecialidadDto e)
 		{
 			if (id != e.Id)
 				return BadRequest();

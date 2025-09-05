@@ -4,10 +4,10 @@ namespace Academia.Models;
 
 public class Plan : BusinessEntity
 {
-    private string _descripcion;
+    private string? _descripcion;
     private Especialidad _especialidad;
 
-    public string Descripcion
+    public string? Descripcion
     {
 	    get => _descripcion;
 	    set => _descripcion = value ?? throw new ArgumentNullException(nameof(value));
@@ -19,7 +19,7 @@ public class Plan : BusinessEntity
 	    set => _especialidad = value ?? throw new ArgumentNullException(nameof(value));
     }
     
-    public Plan(int id, string descripcion, Especialidad especialidad) : base(id)
+    public Plan(int id, string? descripcion, Especialidad especialidad) : base(id)
     {
 	    _descripcion = descripcion;
 	    _especialidad = especialidad;

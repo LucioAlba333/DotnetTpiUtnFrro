@@ -1,14 +1,17 @@
 using Academia.Data;
+using Academia.Dtos;
 using Academia.Models;
 using Academia.Services.Interfaces;
 
 namespace Academia.Services;
 
-public class PlanService: ICrud<Plan>
+public class PlanService: IEntityService<PlanDto>
 {
-    public void New(Plan plan)
+    public void New(PlanDto dto)
     {
-        plan.Id = PlanData.GenerarId();
+        dto.Id = PlanData.GenerarId();
+        Especialidad especialidad = new Especialidad(dto.EspecialidadId,dto.DescripcionEspecialidad);
+        Plan plan = new Plan(dto.Id, dto.Descripcion, especialidad);
         PlanData.Planes.Add(plan);
     }
 
@@ -24,31 +27,43 @@ public class PlanService: ICrud<Plan>
         return false;
     }
 
-    public Plan? Get(int id)
+    public PlanDto? Get(int id)
     {
         Plan? plan =
             PlanData.Planes.Find(x => x.Id == id);
 
         if (plan != null)
-            return new Plan(plan);
+            return new PlanDto
+            {
+                Id = plan.Id, 
+                Descripcion = plan.Descripcion,
+                EspecialidadId = plan.Especialidad.Id,
+                DescripcionEspecialidad = plan.Especialidad.Descripcion,
+            };
         return null;
     }
 
-    public IEnumerable<Plan> GetAll()
+    public IEnumerable<PlanDto> GetAll()
     {
-        return PlanData.Planes.Select(p => new Plan(p)).ToList();
+        var planes= PlanData.Planes.Select(p => new Plan(p)).ToList();
+        return planes.Select(plan => new PlanDto
+        {
+            Id = plan.Id,
+            Descripcion = plan.Descripcion,
+            EspecialidadId =  plan.Especialidad.Id,
+            DescripcionEspecialidad = plan.Especialidad.Descripcion,
+        });
     }
 
-    public bool Update(Plan plan)
+    public bool Update(PlanDto dto)
     {
         Plan? p =
-            PlanData.Planes.Find(x => x.Id == plan.Id);
+            PlanData.Planes.Find(x => x.Id == dto.Id);
         if (p != null)
         {
-            p.Descripcion = plan.Descripcion;
-            p.State = plan.State;
-            p.IdEspecialidad = plan.IdEspecialidad;
-            p.EspecialidadDescripcion = plan.EspecialidadDescripcion;
+            Especialidad especialidad = new Especialidad(dto.EspecialidadId, dto.DescripcionEspecialidad);
+            p.Descripcion = dto.Descripcion;
+            p.Especialidad = especialidad;
             return true;
         }
         return false;

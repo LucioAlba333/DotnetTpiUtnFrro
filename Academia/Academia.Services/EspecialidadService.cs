@@ -1,15 +1,17 @@
 ﻿using Academia.Data;
+using Academia.Dtos;
 using Academia.Models;
 using Academia.Services.Interfaces;
 
 namespace Academia.Services;
 
-public class EspecialidadService: ICrud<Especialidad>
+public class EspecialidadService: IEntityService<EspecialidadDto>
 {
-    public void New(Especialidad plan)
+    public void New(EspecialidadDto dto)
     {
-        plan.Id = EspecialidadData.GenerarId();
-        EspecialidadData.Especialidades.Add(plan);
+        dto.Id = EspecialidadData.GenerarId();
+        Especialidad especialidad = new Especialidad(dto.Id, dto.Descripcion);
+        EspecialidadData.Especialidades.Add(especialidad);
     }
 
     public bool Delete(int id)
@@ -21,35 +23,38 @@ public class EspecialidadService: ICrud<Especialidad>
             EspecialidadData.Especialidades.Remove(especialidad);
             return true;
         }
-        else
-            return false;
+        return false;
     }
 
-    public Especialidad? Get(int id)
+    public EspecialidadDto? Get(int id)
     {
         Especialidad? e = EspecialidadData.Especialidades.Find(x => x.Id == id);
 
         if (e != null)
         {
-            return new Especialidad(e);
+            return new EspecialidadDto { Id = e.Id, Descripcion = e.Descripcion };
         }
 
         return null;
     }
 
-    public IEnumerable<Especialidad> GetAll()
+    public IEnumerable<EspecialidadDto> GetAll()
     {
-       return EspecialidadData.Especialidades.Select(e => new Especialidad(e)).ToList();
+     var especialidades = EspecialidadData.Especialidades.Select(e => new Especialidad(e)).ToList();
+     return especialidades.Select(especialidad => new EspecialidadDto
+     {
+         Id = especialidad.Id, 
+         Descripcion = especialidad.Descripcion
+     });
     }
 
-    public bool Update(Especialidad plan)
+    public bool Update(EspecialidadDto dto)
     {
         Especialidad? e =
-            EspecialidadData.Especialidades.Find(x => x.Id == plan.Id);
+            EspecialidadData.Especialidades.Find(x => x.Id == dto.Id);
         if (e != null)
         {
-            e.State = plan.State;
-            e.Descripcion = plan.Descripcion;
+            e.Descripcion = dto.Descripcion;
             return true;
         }
         return false;
