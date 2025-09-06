@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Academia.Dtos;
 
 namespace Academia.Desktop.Views.Especialidades.Modals
 {
@@ -22,7 +23,7 @@ namespace Academia.Desktop.Views.Especialidades.Modals
         {
             try
             {
-                Especialidad especialidad = new Especialidad
+                EspecialidadDto especialidad = new EspecialidadDto
                 {
                     Descripcion = textBox1.Text
                 };

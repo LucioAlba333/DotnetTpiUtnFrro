@@ -1,33 +1,29 @@
-﻿using System.Text.Json.Serialization;
-
-namespace Academia.Models;
+﻿namespace Academia.Models;
 
 public class Especialidad : BusinessEntity
 {
-	private string? _descripcion;
-	private ICollection<Plan> _planes;
-
-	public string? Descripcion
-	{
-		get => _descripcion;
-		set => _descripcion = value ?? throw new ArgumentNullException(nameof(value));
-	}
-
-	public ICollection<Plan> Planes
-	{
-		get => _planes;
-		set => _planes = value ?? throw new ArgumentNullException(nameof(value));
-	}
+	private string _descripcion;
+	
+	public string Descripcion => _descripcion;
+	//public ICollection<Plan> Planes{get;}
+	
 
 	public Especialidad(int id, string? descripcion) : base(id)
 	{
-		_descripcion = descripcion;
+		_descripcion = descripcion ?? throw new ArgumentNullException(nameof(descripcion));
 	}
 
 	public Especialidad(Especialidad especialidad) : base(especialidad)
 	{
-		Descripcion = especialidad.Descripcion;
+		_descripcion = especialidad.Descripcion;
 		//Planes = especialidad.Planes;
+	}
+
+	public void CambiarDescripcion(string descripcion)
+	{
+		if (string.IsNullOrWhiteSpace(descripcion))
+			throw new ArgumentNullException(nameof(descripcion));
+		_descripcion = descripcion;
 	}
 }
 

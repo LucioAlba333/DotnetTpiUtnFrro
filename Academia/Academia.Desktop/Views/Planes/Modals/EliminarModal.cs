@@ -1,5 +1,4 @@
 ﻿using Academia.ApiClient;
-using Academia.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Academia.Dtos;
 
 namespace Academia.Desktop.Views.Planes.Modals
 {
@@ -22,7 +22,7 @@ namespace Academia.Desktop.Views.Planes.Modals
         {
             try
             {
-                List<Plan> planes = (List<Plan>)await PlanApiClient.GetAllAsync();
+                List<PlanDto> planes = (List<PlanDto>)await PlanApiClient.GetAllAsync();
                 this.comboBox1.DataSource = planes;
                 this.comboBox1.DisplayMember = "Descripcion";
                 this.comboBox1.SelectedIndex = -1;
@@ -38,9 +38,9 @@ namespace Academia.Desktop.Views.Planes.Modals
         {
             try
             {
-                if (this.comboBox1.SelectedItem is Plan)
+                if (this.comboBox1.SelectedItem is PlanDto)
                 {
-                    Plan plan = (Plan)this.comboBox1.SelectedItem;
+                    PlanDto plan = (PlanDto)this.comboBox1.SelectedItem;
                     await PlanApiClient.DeleteAsync(plan.Id);
                     this.DialogResult = DialogResult.OK;
                     this.Close();

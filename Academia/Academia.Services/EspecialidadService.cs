@@ -54,7 +54,7 @@ public class EspecialidadService: IEntityService<EspecialidadDto>
             EspecialidadData.Especialidades.Find(x => x.Id == dto.Id);
         if (e != null)
         {
-            e.Descripcion = dto.Descripcion;
+            e.CambiarDescripcion(dto.Descripcion);
             return true;
         }
         return false;

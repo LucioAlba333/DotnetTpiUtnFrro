@@ -1,7 +1,12 @@
-﻿namespace Academia.Dtos;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Academia.Dtos;
 
 public class EspecialidadDto
 {
     public int Id { get; set; }
-    public string? Descripcion { get; set; }
+    
+    [Required]
+    [StringLength(50)]
+    public string Descripcion { get; set; } = string.Empty;
 }

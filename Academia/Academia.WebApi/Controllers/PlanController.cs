@@ -59,6 +59,8 @@ namespace Academia.WebApi.Controllers
 		[HttpPost]
 		public ActionResult<PlanDto> Create(PlanDto plan)
 		{
+			if (ModelState.IsValid == false)
+				return BadRequest(ModelState);
 			var e = _especialidadService.Get(plan.EspecialidadId);
 			if (e == null)
 				return NotFound();
@@ -71,6 +73,8 @@ namespace Academia.WebApi.Controllers
 		{
 			if (id != plan.Id)
 				return BadRequest();
+			if (ModelState.IsValid == false)
+				return BadRequest(ModelState);
 			var especialidad = _especialidadService.Get(plan.EspecialidadId);
 			if (especialidad == null)
 				return NotFound();

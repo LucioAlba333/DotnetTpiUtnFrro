@@ -1,5 +1,4 @@
 ﻿using Academia.ApiClient;
-using Academia.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Academia.Dtos;
 
 namespace Academia.Desktop.Views.Especialidades.Modals
 {
@@ -26,7 +26,7 @@ namespace Academia.Desktop.Views.Especialidades.Modals
         {
             try
             {
-                List<Especialidad> especialidades = (List<Especialidad>)await EspecialidadApiClient.GetAllAsync();
+                List<EspecialidadDto> especialidades = (List<EspecialidadDto>)await EspecialidadApiClient.GetAllAsync();
                 this.comboBox1.DataSource = especialidades;
                 this.comboBox1.DisplayMember = "Descripcion";
                 this.comboBox1.SelectedIndex = -1;
@@ -42,9 +42,9 @@ namespace Academia.Desktop.Views.Especialidades.Modals
         {
             try
             {
-                if (this.comboBox1.SelectedItem is Especialidad)
+                if (this.comboBox1.SelectedItem is EspecialidadDto)
                 {
-                    Especialidad esp = (Especialidad)this.comboBox1.SelectedItem;
+                    EspecialidadDto esp = (EspecialidadDto)this.comboBox1.SelectedItem;
                     await EspecialidadApiClient.DeleteAsync(esp.Id);
                     this.DialogResult = DialogResult.OK;
                     this.Close();
