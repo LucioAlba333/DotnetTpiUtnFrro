@@ -1,6 +1,5 @@
 ﻿using Academia.ApiClient;
 using Academia.Desktop.Views.Especialidades.Modals;
-using Academia.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Academia.Dtos;
 
 namespace Academia.Desktop.Views.Especialidades
 {
@@ -43,7 +43,7 @@ namespace Academia.Desktop.Views.Especialidades
             try
             {
 
-                List<Especialidad> especialidades = (List<Especialidad>)await EspecialidadApiClient.GetAllAsync();
+                List<EspecialidadDto> especialidades = (List<EspecialidadDto>)await EspecialidadApiClient.GetAllAsync();
                 this.dataGridViewEspecialidades.DataSource = null;
                 this.dataGridViewEspecialidades.DataSource = especialidades;
                 EstadoBotones(especialidades);
@@ -53,7 +53,7 @@ namespace Academia.Desktop.Views.Especialidades
                 MessageBox.Show($"{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void EstadoBotones(List<Especialidad> e)
+        private void EstadoBotones(List<EspecialidadDto> e)
         {
             bool estaVacio = e.Count > 0;
             this.toolStripButtonEditar.Enabled = estaVacio;

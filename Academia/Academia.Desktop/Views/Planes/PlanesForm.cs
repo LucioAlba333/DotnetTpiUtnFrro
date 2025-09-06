@@ -1,6 +1,5 @@
 ﻿using Academia.ApiClient;
 using Academia.Desktop.Views.Planes.Modals;
-using Academia.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Academia.Dtos;
 
 namespace Academia.Desktop.Views.Planes
 {
@@ -33,7 +33,7 @@ namespace Academia.Desktop.Views.Planes
             });
             this.dataGridViewPlanes.Columns.Add(new DataGridViewTextBoxColumn
             {
-                DataPropertyName = "EspecialidadDescripcion",
+                DataPropertyName = "DescripcionEspecialidad",
                 HeaderText = "Especialidad",
                 Name = "Especialidad"
             });
@@ -46,7 +46,7 @@ namespace Academia.Desktop.Views.Planes
         {
             try
             {
-                List<Plan> planes = (List<Plan>)await PlanApiClient.GetAllAsync();
+                List<PlanDto> planes = (List<PlanDto>)await PlanApiClient.GetAllAsync();
                 this.dataGridViewPlanes.DataSource = null;
                 this.dataGridViewPlanes.DataSource = planes;
                 EstadoBotones(planes);
@@ -56,7 +56,7 @@ namespace Academia.Desktop.Views.Planes
                 MessageBox.Show($"{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void EstadoBotones(List<Plan> p)
+        private void EstadoBotones(List<PlanDto> p)
         {
             bool estaVacio = p.Count > 0;
             this.toolStripButtonEditar.Enabled = estaVacio;

@@ -1,12 +1,11 @@
 using System.Net.Http.Json;
 using System.Text.Json;
-using Academia.Models;
-
+using Academia.Dtos;
 namespace Academia.ApiClient;
 
 public class EspecialidadApiClient
 {
-    public static async Task<Especialidad?> GetAsync(int id)
+    public static async Task<EspecialidadDto?> GetAsync(int id)
     {
         try
         {
@@ -18,7 +17,7 @@ public class EspecialidadApiClient
             }
 
             var json = await response.Content.ReadAsStreamAsync();
-            var especialidad = JsonSerializer.Deserialize<Especialidad>(json);
+            var especialidad = JsonSerializer.Deserialize<EspecialidadDto>(json);
             return especialidad;
 
 
@@ -34,7 +33,7 @@ public class EspecialidadApiClient
         
     }
 
-    public static async Task<IEnumerable<Especialidad>> GetAllAsync()
+    public static async Task<IEnumerable<EspecialidadDto>> GetAllAsync()
     {
         try
         {
@@ -46,7 +45,7 @@ public class EspecialidadApiClient
 
             }
             var json = await response.Content.ReadAsStreamAsync();
-            var especialidades = JsonSerializer.Deserialize<IEnumerable<Especialidad>>(json,
+            var especialidades = JsonSerializer.Deserialize<IEnumerable<EspecialidadDto>>(json,
                 new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
             if (especialidades == null)
             {
@@ -64,7 +63,7 @@ public class EspecialidadApiClient
         }
     }
 
-    public static async Task AddAsync(Especialidad especialidad)
+    public static async Task AddAsync(EspecialidadDto especialidad)
     {
         try
         {
@@ -86,7 +85,7 @@ public class EspecialidadApiClient
         }
     }
 
-    public static async Task UpdateAsync(Especialidad especialidad)
+    public static async Task UpdateAsync(EspecialidadDto especialidad)
     {
         try
         {

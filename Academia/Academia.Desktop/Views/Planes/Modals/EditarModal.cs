@@ -1,5 +1,4 @@
 ﻿using Academia.ApiClient;
-using Academia.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Academia.Dtos;
 
 namespace Academia.Desktop.Views.Planes.Modals
 {
@@ -27,7 +27,7 @@ namespace Academia.Desktop.Views.Planes.Modals
         {
             try
             {
-                List<Especialidad> especialidades = (List<Especialidad>)await EspecialidadApiClient.GetAllAsync();
+                List<EspecialidadDto> especialidades = (List<EspecialidadDto>)await EspecialidadApiClient.GetAllAsync();
                 this.comboBox1.DataSource = especialidades;
                 this.comboBox1.DisplayMember = "Descripcion";
                 this.comboBox1.SelectedIndex = -1;
@@ -43,7 +43,7 @@ namespace Academia.Desktop.Views.Planes.Modals
         {
             try
             {
-                List<Plan> planes = (List<Plan>)await PlanApiClient.GetAllAsync();
+                List<PlanDto> planes = (List<PlanDto>)await PlanApiClient.GetAllAsync();
                 this.comboBox2.DataSource = planes;
                 this.comboBox2.DisplayMember = "Descripcion";
                 this.comboBox2.SelectedIndex = -1;
@@ -64,13 +64,13 @@ namespace Academia.Desktop.Views.Planes.Modals
         {
             try
             {
-                if (this.comboBox1.SelectedItem is Especialidad && this.comboBox2.SelectedItem is Plan)
+                if (this.comboBox1.SelectedItem is EspecialidadDto && this.comboBox2.SelectedItem is PlanDto)
                 {
-                    Especialidad esp = (Especialidad)this.comboBox1.SelectedItem;
-                    Plan plan = (Plan)this.comboBox2.SelectedItem;
+                    EspecialidadDto esp = (EspecialidadDto)this.comboBox1.SelectedItem;
+                    PlanDto plan = (PlanDto)this.comboBox2.SelectedItem;
                     plan.Descripcion = this.textBox1.Text;
-                    plan.IdEspecialidad = esp.Id;
-                    plan.EspecialidadDescripcion = esp.Descripcion;
+                    plan.EspecialidadId = esp.Id;
+                    plan.DescripcionEspecialidad = esp.Descripcion;
                     await PlanApiClient.UpdateAsync(plan);
                     this.DialogResult = DialogResult.OK;
                     this.Close();

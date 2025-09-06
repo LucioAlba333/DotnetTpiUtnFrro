@@ -1,31 +1,29 @@
-﻿using System.Text.Json.Serialization;
-
-namespace Academia.Models;
+﻿namespace Academia.Models;
 
 public class Especialidad : BusinessEntity
 {
-	private string _decripcion;
-	public Especialidad() { }
-	[JsonConstructor]
-	public Especialidad(int id, string descripcion) : base(id)
+	private string _descripcion;
+	
+	public string Descripcion => _descripcion;
+	//public ICollection<Plan> Planes{get;}
+	
+
+	public Especialidad(int id, string? descripcion) : base(id)
 	{
-		Descripcion = descripcion;
+		_descripcion = descripcion ?? throw new ArgumentNullException(nameof(descripcion));
 	}
+
 	public Especialidad(Especialidad especialidad) : base(especialidad)
 	{
-		this.Descripcion = especialidad.Descripcion;
+		_descripcion = especialidad.Descripcion;
+		//Planes = especialidad.Planes;
 	}
 
-	public string Descripcion
+	public void CambiarDescripcion(string descripcion)
 	{
-		get { return _decripcion; }
-		set
-		{
-			if (string.IsNullOrWhiteSpace(value))
-				throw new ArgumentException("la descripcion no puede ser nula o vacia", nameof(value));
-			_decripcion = value;
-
-		}
+		if (string.IsNullOrWhiteSpace(descripcion))
+			throw new ArgumentNullException(nameof(descripcion));
+		_descripcion = descripcion;
 	}
 }
 

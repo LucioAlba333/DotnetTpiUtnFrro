@@ -1,12 +1,12 @@
 using System.Net.Http.Json;
 using System.Text.Json;
-using Academia.Models;
+using Academia.Dtos;
 
 namespace Academia.ApiClient;
 
 public class PlanApiClient
 {
-    public static async Task<IEnumerable<Plan>> GetAllAsync()
+    public static async Task<IEnumerable<PlanDto>> GetAllAsync()
     {
         try
         {
@@ -18,7 +18,7 @@ public class PlanApiClient
             }
 
             var json = await response.Content.ReadAsStreamAsync();
-            var planes = JsonSerializer.Deserialize<IEnumerable<Plan>>(json, 
+            var planes = JsonSerializer.Deserialize<IEnumerable<PlanDto>>(json, 
                 new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
             if (planes == null)
             {
@@ -37,7 +37,7 @@ public class PlanApiClient
         }
     }
 
-    public static async Task<Plan?> GetAsync(int id)
+    public static async Task<PlanDto?> GetAsync(int id)
     {
         try
         {
@@ -49,7 +49,7 @@ public class PlanApiClient
             }
 
             var json = await response.Content.ReadAsStreamAsync();
-            var plan = JsonSerializer.Deserialize<Plan>(json);
+            var plan = JsonSerializer.Deserialize<PlanDto>(json);
             return plan;
 
         }
@@ -63,7 +63,7 @@ public class PlanApiClient
         }
     }
 
-    public static async Task AddAsync(Plan plan)
+    public static async Task AddAsync(PlanDto plan)
     {
         try
         {
@@ -84,7 +84,7 @@ public class PlanApiClient
         }
     }
 
-    public static async Task UpdateAsync(Plan plan)
+    public static async Task UpdateAsync(PlanDto plan)
     {
         try
         {

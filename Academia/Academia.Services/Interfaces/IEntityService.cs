@@ -1,12 +1,12 @@
 ﻿
 namespace Academia.Services.Interfaces
 {
-	public interface ICrud<T>
+	public interface IEntityService<T>
 	{
-		void New(T plan);
+		void New(T dto);
 		bool Delete(int id);
 		T? Get(int id);
 		IEnumerable<T> GetAll();
-		bool Update(T plan);
+		bool Update(T dto);
 	}
 }

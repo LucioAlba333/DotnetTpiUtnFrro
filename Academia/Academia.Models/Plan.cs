@@ -7,18 +7,9 @@ public class Plan : BusinessEntity
     private string _descripcion;
     private Especialidad _especialidad;
 
-    public string Descripcion
-    {
-	    get => _descripcion;
-	    set => _descripcion = value ?? throw new ArgumentNullException(nameof(value));
-    }
+    public string Descripcion => _descripcion;
 
-    public Especialidad Especialidad
-    {
-	    get => _especialidad;
-	    set => _especialidad = value ?? throw new ArgumentNullException(nameof(value));
-    }
-    
+    public Especialidad Especialidad => _especialidad;
     public Plan(int id, string descripcion, Especialidad especialidad) : base(id)
     {
 	    _descripcion = descripcion;
@@ -27,8 +18,19 @@ public class Plan : BusinessEntity
 
     public Plan(Plan plan) : base(plan)
 	{
-		this.Descripcion = plan.Descripcion;
-		this.Especialidad = plan.Especialidad;
+		_descripcion = plan.Descripcion;
+		_especialidad = plan.Especialidad;
+	}
+	public void CambiarDescripcion(string descripcion)
+	{
+		if (string.IsNullOrWhiteSpace(descripcion))
+			throw new ArgumentNullException(nameof(descripcion));
+		_descripcion = descripcion;
+	}
+
+	public void CambiarEspecialidad(Especialidad especialidad)
+	{
+		_especialidad = especialidad ?? throw new ArgumentNullException(nameof(especialidad));
 	}
 
    

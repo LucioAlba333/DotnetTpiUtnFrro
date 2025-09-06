@@ -1,3 +1,4 @@
+using Academia.Dtos;
 using Academia.Models;
 using Academia.Services;
 using Academia.Services.Interfaces;
@@ -9,16 +10,16 @@ namespace Academia.WebApi.Controllers
 	[ApiController]
 	public class PlanController : ControllerBase
 	{
-		private readonly ICrud<Plan> _planService;
-		private readonly ICrud<Especialidad> _especialidadService;
+		private readonly IEntityService<PlanDto> _planService;
+		private readonly IEntityService<EspecialidadDto> _especialidadService;
 
-		public PlanController(ICrud<Plan> p, ICrud<Especialidad> e)
+		public PlanController(IEntityService<PlanDto> p, IEntityService<EspecialidadDto> e)
 		{
 			_planService = p;
 			_especialidadService = e;
 		}
 		[HttpGet("{id:int}")]
-		public ActionResult<Plan> Get(int id)
+		public ActionResult<PlanDto> Get(int id)
 		{
 			var p = _planService.Get(id);
 			if (p == null)
@@ -27,49 +28,54 @@ namespace Academia.WebApi.Controllers
 			}
 			/* actualizo la descripcion antes de la especialidad para reflejar cambios.
 			 probablemente lo cambie al implementar el acceso a datos*/ 
-			var e = _especialidadService.Get(p.IdEspecialidad);
+			var e = _especialidadService.Get(p.EspecialidadId);
 			if (e != null)
-				p.EspecialidadDescripcion = e.Descripcion;
+				p.DescripcionEspecialidad = e.Descripcion;
             else
             {
-                p.EspecialidadDescripcion = "Sin Especialidad";
+                p.DescripcionEspecialidad = "Sin Especialidad";
             }
             return Ok(p);
 
 		}
 		[HttpGet(Name = "GetAllPlanes")]
-		public ActionResult<IEnumerable<Plan>> GetAll()
+		public ActionResult<IEnumerable<PlanDto>> GetAll()
 		{
 			var planes =_planService.GetAll().ToList();
 			/*Lo mismo que el anterior comentario*/
 			foreach (var p in planes)
 			{
-				var especialidad = _especialidadService.Get(p.IdEspecialidad);
+				var especialidad = _especialidadService.Get(p.EspecialidadId);
 				if (especialidad != null)
-					p.EspecialidadDescripcion = especialidad.Descripcion;
+					p.DescripcionEspecialidad = especialidad.Descripcion;
 				else
 				{
-					p.EspecialidadDescripcion = "Sin Especialidad";
+					p.DescripcionEspecialidad = "Sin Especialidad";
 				}
 			}
 			return Ok(planes);
 			
 		}
 		[HttpPost]
-		public ActionResult<Plan> Create(Plan plan)
+		public ActionResult<PlanDto> Create(PlanDto plan)
 		{
-			var e = _especialidadService.Get(plan.IdEspecialidad);
+			if (ModelState.IsValid == false)
+				return BadRequest(ModelState);
+			var e = _especialidadService.Get(plan.EspecialidadId);
 			if (e == null)
 				return NotFound();
+			plan.DescripcionEspecialidad = e.Descripcion;
 			_planService.New(plan);
 			return CreatedAtAction(nameof(Get), new { Id = plan.Id }, plan);
 		}
 		[HttpPut("{id:int}")]
-		public ActionResult Update(int id, [FromBody] Plan plan)
+		public ActionResult Update(int id, [FromBody] PlanDto plan)
 		{
 			if (id != plan.Id)
 				return BadRequest();
-			var especialidad = _especialidadService.Get(plan.IdEspecialidad);
+			if (ModelState.IsValid == false)
+				return BadRequest(ModelState);
+			var especialidad = _especialidadService.Get(plan.EspecialidadId);
 			if (especialidad == null)
 				return NotFound();
 			bool up = _planService.Update(plan);
