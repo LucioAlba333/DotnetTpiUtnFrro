@@ -1,7 +1,6 @@
 using Academia.Dtos;
-using Academia.Models;
-using Academia.Services;
 using Academia.Services.Interfaces;
+using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Academia.WebApi.Controllers
@@ -11,10 +10,14 @@ namespace Academia.WebApi.Controllers
 	public class EspecialidadController : ControllerBase
 	{
 		private readonly IEntityService<EspecialidadDto> _especialidadService;
+		private readonly IValidator<EspecialidadDto> _especialidadDtoValidator;
 
-		public EspecialidadController(IEntityService<EspecialidadDto> especialidadService)
+		public EspecialidadController(
+			IEntityService<EspecialidadDto> especialidadService, 
+			IValidator<EspecialidadDto> especialidadDtoValidator)
 		{
 			_especialidadService = especialidadService;
+			_especialidadDtoValidator = especialidadDtoValidator;
 		}
 
 		[HttpGet("{id:int}")]
@@ -33,17 +36,31 @@ namespace Academia.WebApi.Controllers
 			return _especialidadService.GetAll().ToList();
 		}
 		[HttpPost]
-		public ActionResult<EspecialidadDto> Create(EspecialidadDto e)
+		public async Task<ActionResult<EspecialidadDto>> Create(EspecialidadDto especialidad)
 		{
-			_especialidadService.New(e);
-			return CreatedAtAction(nameof(Get), new { Id = e.Id }, e);
+			var result = await _especialidadDtoValidator.ValidateAsync(especialidad);
+			if (!result.IsValid)
+			{
+				var errors = result.Errors
+					.Select(e => new {e.PropertyName, e.ErrorMessage} );
+				return BadRequest(errors);
+			}
+			_especialidadService.New(especialidad);
+			return CreatedAtAction(nameof(Get), new { especialidad.Id }, especialidad);
 		}
 		[HttpPut("{id:int}")]
-		public ActionResult Update(int id, [FromBody] EspecialidadDto e)
+		public async Task<ActionResult> Update(int id, [FromBody] EspecialidadDto especialidad)
 		{
-			if (id != e.Id)
+			var result = await _especialidadDtoValidator.ValidateAsync(especialidad);
+			if (!result.IsValid)
+			{
+				var errors = result.Errors
+					.Select(e => new {e.PropertyName, e.ErrorMessage});
+				return BadRequest(errors);
+			}
+			if (id != especialidad.Id)
 				return BadRequest();
-			bool up = _especialidadService.Update(e);
+			bool up = _especialidadService.Update(especialidad);
 			if (!up)
 				return NotFound();
 			return NoContent();

@@ -1,7 +1,6 @@
 using Academia.Dtos;
-using Academia.Models;
-using Academia.Services;
 using Academia.Services.Interfaces;
+using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Academia.WebApi.Controllers
@@ -12,11 +11,15 @@ namespace Academia.WebApi.Controllers
 	{
 		private readonly IEntityService<PlanDto> _planService;
 		private readonly IEntityService<EspecialidadDto> _especialidadService;
+		private readonly IValidator<PlanDto> _planDtoValidator;
 
-		public PlanController(IEntityService<PlanDto> p, IEntityService<EspecialidadDto> e)
+		public PlanController(IEntityService<PlanDto> p, 
+			IEntityService<EspecialidadDto> e, 
+			IValidator<PlanDto> planDtoValidator)
 		{
 			_planService = p;
 			_especialidadService = e;
+			_planDtoValidator = planDtoValidator;
 		}
 		[HttpGet("{id:int}")]
 		public ActionResult<PlanDto> Get(int id)
@@ -57,20 +60,33 @@ namespace Academia.WebApi.Controllers
 			
 		}
 		[HttpPost]
-		public ActionResult<PlanDto> Create(PlanDto plan)
+		public async Task<ActionResult<PlanDto>> Create(PlanDto plan)
 		{
-			if (ModelState.IsValid == false)
-				return BadRequest(ModelState);
+			
+			var result = await _planDtoValidator.ValidateAsync(plan);
+			if (!result.IsValid)
+			{
+				var errors = result.Errors
+					.Select(e => new {e.PropertyName, e.ErrorMessage});
+				return BadRequest(errors);
+			}
 			var e = _especialidadService.Get(plan.EspecialidadId);
 			if (e == null)
-				return NotFound();
+				return NotFound("el plan no tiene una especialidad valida");
 			plan.DescripcionEspecialidad = e.Descripcion;
 			_planService.New(plan);
-			return CreatedAtAction(nameof(Get), new { Id = plan.Id }, plan);
+			return CreatedAtAction(nameof(Get), new { plan.Id }, plan);
 		}
 		[HttpPut("{id:int}")]
-		public ActionResult Update(int id, [FromBody] PlanDto plan)
+		public async Task<ActionResult> Update(int id, [FromBody] PlanDto plan)
 		{
+			var result = await _planDtoValidator.ValidateAsync(plan);
+			if (!result.IsValid)
+			{
+				var errors = result.Errors
+					.Select(e => new {e.PropertyName, e.ErrorMessage});
+				return BadRequest(errors);
+			}
 			if (id != plan.Id)
 				return BadRequest();
 			if (ModelState.IsValid == false)

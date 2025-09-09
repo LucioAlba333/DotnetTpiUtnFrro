@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Academia.Desktop", "Academi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Academia.Dtos", "Academia.Dtos\Academia.Dtos.csproj", "{4B9AC83F-8B9C-47F2-B69F-D7B44F8C3092}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Academia.Validaciones", "Academia.Validaciones\Academia.Validaciones.csproj", "{D70E3A29-4B7A-423F-B748-E32531102D7B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{4B9AC83F-8B9C-47F2-B69F-D7B44F8C3092}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4B9AC83F-8B9C-47F2-B69F-D7B44F8C3092}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4B9AC83F-8B9C-47F2-B69F-D7B44F8C3092}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D70E3A29-4B7A-423F-B748-E32531102D7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D70E3A29-4B7A-423F-B748-E32531102D7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D70E3A29-4B7A-423F-B748-E32531102D7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D70E3A29-4B7A-423F-B748-E32531102D7B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
