@@ -62,8 +62,8 @@ public class PlanService: IEntityService<PlanDto>
         if (p != null)
         {
             Especialidad especialidad = new Especialidad(dto.EspecialidadId, dto.DescripcionEspecialidad);
-            p.CambiarDescripcion(dto.Descripcion);
-            p.CambiarEspecialidad(especialidad);
+            p.SetDescripcion(dto.Descripcion);
+            p.SetEspecialidad(especialidad);
             return true;
         }
         return false;

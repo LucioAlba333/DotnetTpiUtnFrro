@@ -21,14 +21,14 @@ public class Plan : BusinessEntity
 		_descripcion = plan.Descripcion;
 		_especialidad = plan.Especialidad;
 	}
-	public void CambiarDescripcion(string descripcion)
+	public void SetDescripcion(string descripcion)
 	{
 		if (string.IsNullOrWhiteSpace(descripcion))
 			throw new ArgumentNullException(nameof(descripcion));
 		_descripcion = descripcion;
 	}
 
-	public void CambiarEspecialidad(Especialidad especialidad)
+	public void SetEspecialidad(Especialidad especialidad)
 	{
 		_especialidad = especialidad ?? throw new ArgumentNullException(nameof(especialidad));
 	}
