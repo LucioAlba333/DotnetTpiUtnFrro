@@ -2,8 +2,6 @@ namespace Academia.Models;
 
 public class Persona : BusinessEntity
 {
-    public static DateTime FechaMinima = new DateTime(1900, 1, 1);
-    public static DateTime FechaMaxima = DateTime.Now;
     private string _nombre;
     private string _apellido;
     private string _direccion;
@@ -104,8 +102,24 @@ public class Persona : BusinessEntity
     
     public void CambiarFechaNacimiento(DateTime fechaNacimiento)
     {
-        if (DateTime.Compare(DateTime.Now, fechaNacimiento) > 0)
-            _fechaNacimiento = fechaNacimiento;
+        if (fechaNacimiento < new DateTime(1900, 01, 01) || fechaNacimiento > DateTime.Now)
+            throw new ArgumentOutOfRangeException(nameof(fechaNacimiento)); 
+        _fechaNacimiento = fechaNacimiento;
+    }
+
+    public void SetPlan(Plan plan)
+    {
+        if (plan == null)
+            throw new ArgumentNullException(nameof(plan));
+        _plan = plan;
+        _idPlan = plan.Id;
+    }
+
+    public void SetTipoPersona(TipoPersona tipoPersona)
+    {
+        if (!Enum.IsDefined(typeof(TipoPersona), tipoPersona))
+            throw new ArgumentOutOfRangeException(nameof(tipoPersona));
+        _tipoPersona = tipoPersona;
     }
     
 }

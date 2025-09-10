@@ -2,7 +2,7 @@ namespace Academia.Models;
 
 public enum TipoPersona
 {
-    Alumno = 1,
-    Profesor = 2,
-    Administrador = 3
+    Alumno = 0,
+    Profesor = 1,
+    Administrador = 2
 }
