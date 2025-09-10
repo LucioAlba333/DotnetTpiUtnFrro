@@ -57,42 +57,42 @@ public class Persona : BusinessEntity
 
     public Plan Plan => _plan;
 
-    public void CambiarNombre(string nombre)
+    public void SetNombre(string nombre)
     {
         if (string.IsNullOrWhiteSpace(nombre))
             throw new ArgumentNullException(nameof(nombre));
         _nombre = nombre;
     }
 
-    public void CambiarApellido(string apellido)
+    public void SetApellido(string apellido)
     {
         if (string.IsNullOrWhiteSpace(apellido))
             throw new ArgumentNullException(nameof(apellido));
         _apellido = apellido;
     }
 
-    public void CambiarDireccion(string direccion)
+    public void SetDireccion(string direccion)
     {
         if (string.IsNullOrWhiteSpace(direccion))
             throw new ArgumentNullException(nameof(direccion));
         _direccion = direccion;
     }
 
-    public void CambiarTelefono(string telefono)
+    public void SetTelefono(string telefono)
     {
         if (string.IsNullOrWhiteSpace(telefono))
             throw new ArgumentNullException(nameof(telefono));
         _telefono = telefono;
     }
 
-    public void CambiarEmail(string email)
+    public void SetEmail(string email)
     {
         if (string.IsNullOrWhiteSpace(email))
             throw new ArgumentNullException(nameof(email));
         _email = email;
     }
 
-    public void CambiarLegajo(int legajo)
+    public void SetLegajo(int legajo)
     {
         if (legajo <= 0)
             throw new ArgumentOutOfRangeException(nameof(legajo));
@@ -100,7 +100,7 @@ public class Persona : BusinessEntity
     }
     
     
-    public void CambiarFechaNacimiento(DateTime fechaNacimiento)
+    public void SetFechaNacimiento(DateTime fechaNacimiento)
     {
         if (fechaNacimiento < new DateTime(1900, 01, 01) || fechaNacimiento > DateTime.Now)
             throw new ArgumentOutOfRangeException(nameof(fechaNacimiento)); 

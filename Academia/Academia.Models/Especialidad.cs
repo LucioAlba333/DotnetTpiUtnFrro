@@ -19,7 +19,7 @@ public class Especialidad : BusinessEntity
 		//Planes = especialidad.Planes;
 	}
 
-	public void CambiarDescripcion(string descripcion)
+	public void SetDescripcion(string descripcion)
 	{
 		if (string.IsNullOrWhiteSpace(descripcion))
 			throw new ArgumentNullException(nameof(descripcion));
