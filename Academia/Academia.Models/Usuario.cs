@@ -17,6 +17,7 @@ public class Usuario : BusinessEntity
         SetPersona(persona);
         SetNombreUsuario(nombreUsuario);
         SetClave(clave);
+
     }
 
     public void SetNombreUsuario(string nombreUsuario)
