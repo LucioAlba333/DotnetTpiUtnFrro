@@ -8,9 +8,9 @@ public class Especialidad : BusinessEntity
 	//public ICollection<Plan> Planes{get;}
 	
 
-	public Especialidad(int id, string? descripcion) : base(id)
+	public Especialidad(int id, string descripcion) : base(id)
 	{
-		_descripcion = descripcion ?? throw new ArgumentNullException(nameof(descripcion));
+		SetDescripcion(descripcion);
 	}
 
 	public Especialidad(Especialidad especialidad) : base(especialidad)
