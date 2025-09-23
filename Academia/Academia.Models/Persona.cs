@@ -18,23 +18,21 @@ public class Persona : BusinessEntity
         string apellido, 
         string direccion, 
         string telefono, 
-        string email, 
-        int idPlan, 
+        string email,  
         int legajo, 
         DateTime fechaNacimiento, 
         TipoPersona tipoPersona, 
         Plan plan) : base(id)
     {
-        _nombre = nombre ?? throw new ArgumentNullException(nameof(nombre));
-        _apellido = apellido ?? throw new ArgumentNullException(nameof(apellido));
-        _direccion = direccion ?? throw new ArgumentNullException(nameof(direccion));
-        _telefono = telefono  ?? throw new ArgumentNullException(nameof(telefono));
-        _email = email  ?? throw new ArgumentNullException(nameof(email));
-        _idPlan = idPlan ;
-        _legajo = legajo > 0 ? legajo : throw new ArgumentOutOfRangeException(nameof(legajo));
-        _fechaNacimiento = fechaNacimiento;
-        _tipoPersona = tipoPersona;
-        _plan = plan;
+        this.SetNombre(nombre);
+        this.SetApellido(apellido); 
+        this.SetDireccion(direccion);
+        this.SetTelefono(telefono);
+        this.SetEmail(email);
+        this.SetPlan(plan);
+        this.SetTipoPersona(tipoPersona);
+        this.SetFechaNacimiento(fechaNacimiento);
+        this.SetLegajo(legajo);
     }
 
     public string Nombre => _nombre;

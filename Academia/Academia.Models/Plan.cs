@@ -12,8 +12,8 @@ public class Plan : BusinessEntity
     public Especialidad Especialidad => _especialidad;
     public Plan(int id, string descripcion, Especialidad especialidad) : base(id)
     {
-	    _descripcion = descripcion;
-	    _especialidad = especialidad;
+		SetDescripcion(descripcion);
+		SetEspecialidad(especialidad);
     }
 
     public Plan(Plan plan) : base(plan)

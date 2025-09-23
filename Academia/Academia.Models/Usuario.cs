@@ -14,9 +14,10 @@ public class Usuario : BusinessEntity
 
     public Usuario(int id, Persona persona, string nombreUsuario, string clave) : base(id)
     {
-        _persona = persona;
-        _nombreUsuario = nombreUsuario ?? throw new ArgumentNullException(nameof(nombreUsuario));
-        _clave = clave  ?? throw new ArgumentNullException(nameof(clave));
+        SetPersona(persona);
+        SetNombreUsuario(nombreUsuario);
+        SetClave(clave);
+
     }
 
     public void SetNombreUsuario(string nombreUsuario)
