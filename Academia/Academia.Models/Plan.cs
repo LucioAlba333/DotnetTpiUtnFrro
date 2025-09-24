@@ -4,34 +4,37 @@ namespace Academia.Models;
 
 public class Plan : BusinessEntity
 {
-    private string _descripcion;
-    private Especialidad _especialidad;
+	public string Descripcion { get; private set; }
 
-    public string Descripcion => _descripcion;
+	public int EspecialidadId { get; private set; }
 
-    public Especialidad Especialidad => _especialidad;
-    public Plan(int id, string descripcion, Especialidad especialidad) : base(id)
-    {
+	public Especialidad Especialidad { get; private set; }
+
+	protected Plan() {}
+	public Plan(int id, string descripcion, Especialidad especialidad) : base(id)
+	{
 		SetDescripcion(descripcion);
 		SetEspecialidad(especialidad);
-    }
-
-    public Plan(Plan plan) : base(plan)
-	{
-		_descripcion = plan.Descripcion;
-		_especialidad = plan.Especialidad;
 	}
+
+	public Plan(Plan plan) : base(plan)
+	{
+		Descripcion = plan.Descripcion;
+		Especialidad = plan.Especialidad;
+		EspecialidadId = plan.EspecialidadId;
+	}
+
 	public void SetDescripcion(string descripcion)
 	{
 		if (string.IsNullOrWhiteSpace(descripcion))
 			throw new ArgumentNullException(nameof(descripcion));
-		_descripcion = descripcion;
+		Descripcion = descripcion;
 	}
 
 	public void SetEspecialidad(Especialidad especialidad)
 	{
-		_especialidad = especialidad ?? throw new ArgumentNullException(nameof(especialidad));
+		Especialidad = especialidad ?? throw new ArgumentNullException(nameof(especialidad));
+		EspecialidadId = especialidad.Id;
 	}
-
-   
 }
+

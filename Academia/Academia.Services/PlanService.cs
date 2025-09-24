@@ -2,70 +2,103 @@ using Academia.Data;
 using Academia.Dtos;
 using Academia.Models;
 using Academia.Services.Interfaces;
+using Microsoft.VisualBasic.CompilerServices;
 
 namespace Academia.Services;
 
 public class PlanService: IEntityService<PlanDto>
 {
-    public void New(PlanDto dto)
-    {
-        dto.Id = PlanData.GenerarId();
-        Especialidad especialidad = new Especialidad(dto.EspecialidadId,dto.DescripcionEspecialidad);
-        Plan plan = new Plan(dto.Id, dto.Descripcion, especialidad);
-        PlanData.Planes.Add(plan);
-    }
+    private readonly PlanRepository _planRepository;
+    private readonly EspecialidadRepository _especialidadRepository;
 
-    public bool Delete(int id)
+    public PlanService(PlanRepository planRepository, EspecialidadRepository especialidadRepository)
     {
-        Plan? plan
-            = PlanData.Planes.Find(x => x.Id == id);
-        if (plan != null)
+        _planRepository = planRepository;
+        _especialidadRepository = especialidadRepository;
+    }
+    public async Task New(PlanDto dto)
+    {
+        try
         {
-            PlanData.Planes.Remove(plan);
-            return true;
+            if(await _planRepository.PlanExists(dto.Descripcion))
+                throw new ApplicationException("El plan ya existe");
+            Especialidad? especialidad = await _especialidadRepository.Get(dto.EspecialidadId);
+            Plan plan = new Plan(dto.Id, dto.Descripcion,especialidad);
+            await _planRepository.Add(plan);
         }
-        return false;
+        catch (Exception e)
+        {
+            throw new ApplicationException("error al crear el plan",e);
+        }
     }
 
-    public PlanDto? Get(int id)
+    public async Task<bool> Delete(int id)
     {
-        Plan? plan =
-            PlanData.Planes.Find(x => x.Id == id);
+        try
+        {
+           return await _planRepository.Delete(id);
+        }
+        catch (Exception e)
+        {
+            throw new ApplicationException("error al eliminar el plan",e);
+        }
+    }
 
-        if (plan != null)
+    public async Task<PlanDto?> Get(int id)
+    {
+        try
+        {
+            Plan? plan = await _planRepository.Get(id);
+            if(plan == null)
+                return null;
             return new PlanDto
             {
-                Id = plan.Id, 
+                Id = plan.Id,
                 Descripcion = plan.Descripcion,
-                EspecialidadId = plan.Especialidad.Id,
+                EspecialidadId = plan.EspecialidadId,
                 DescripcionEspecialidad = plan.Especialidad.Descripcion,
             };
-        return null;
-    }
-
-    public IEnumerable<PlanDto> GetAll()
-    {
-        var planes= PlanData.Planes.Select(p => new Plan(p)).ToList();
-        return planes.Select(plan => new PlanDto
-        {
-            Id = plan.Id,
-            Descripcion = plan.Descripcion,
-            EspecialidadId =  plan.Especialidad.Id,
-            DescripcionEspecialidad = plan.Especialidad.Descripcion,
-        });
-    }
-
-    public bool Update(PlanDto dto)
-    {
-        Plan? p =
-            PlanData.Planes.Find(x => x.Id == dto.Id);
-        if (p != null)
-        {
-            Especialidad especialidad = new Especialidad(dto.EspecialidadId, dto.DescripcionEspecialidad);
-            p.SetDescripcion(dto.Descripcion);
-            p.SetEspecialidad(especialidad);
-            return true;
         }
-        return false;
-    }    
+        catch (Exception e)
+        {
+            throw new ApplicationException("error al obtener el plan",e);
+        }
+    }
+
+    public async Task<IEnumerable<PlanDto>> GetAll()
+    {
+        try
+        {
+            var planes =  await _planRepository.GetAll();
+            return planes.Select(p => new PlanDto
+            {
+                Id = p.Id,
+                Descripcion = p.Descripcion,
+                EspecialidadId = p.EspecialidadId,
+                DescripcionEspecialidad = p.Especialidad.Descripcion,
+            });
+        }
+        catch (Exception e)
+        {
+         
+            throw new ApplicationException("error al obtener todos los planes",e);
+        }
+    }
+
+    public async Task<bool> Update(PlanDto dto)
+    {
+        try
+        {
+            if( await _planRepository.PlanExists(dto.Descripcion,dto.Id))
+                throw new ApplicationException("El plan ya existe");
+            Especialidad? especialidad = await _especialidadRepository.Get(dto.EspecialidadId);
+            Plan plan = new Plan(dto.Id, dto.Descripcion,especialidad);
+            return await _planRepository.Update(plan);
+            
+        }
+        catch (Exception e)
+        {
+            throw new ApplicationException("error al editar el plan",e);
+        }
+    }
 }

@@ -2,28 +2,22 @@
 
 public class Especialidad : BusinessEntity
 {
-	private string _descripcion;
-	
-	public string Descripcion => _descripcion;
-	//public ICollection<Plan> Planes{get;}
-	
-
+	public string Descripcion { get; private set; }
 	public Especialidad(int id, string descripcion) : base(id)
 	{
 		SetDescripcion(descripcion);
 	}
 
+	protected Especialidad() { }
 	public Especialidad(Especialidad especialidad) : base(especialidad)
 	{
-		_descripcion = especialidad.Descripcion;
-		//Planes = especialidad.Planes;
+		Descripcion = especialidad.Descripcion;
 	}
 
 	public void SetDescripcion(string descripcion)
 	{
 		if (string.IsNullOrWhiteSpace(descripcion))
 			throw new ArgumentNullException(nameof(descripcion));
-		_descripcion = descripcion;
+		Descripcion = descripcion;
 	}
 }
-
