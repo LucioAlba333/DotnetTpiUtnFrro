@@ -9,7 +9,7 @@ public class PersonaDto
     public string Email { get; set; } = string.Empty;
     public int Legajo { get; set; }
     public DateTime FechaNacimiento { get; set; }
-    //public int IdPlan { get; set; }
+    public int IdPlan { get; set; }
     public string DescripcionPlan { get; set; } = string.Empty;
     public string TipoPersona { get; set; } = string.Empty;
 }

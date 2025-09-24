@@ -45,7 +45,7 @@ public class Persona : BusinessEntity
 
     public string Email => _email;
 
-    public int IdPlan1 => _idPlan;
+    public int IdPlan => _idPlan;
 
     public int Legajo => _legajo;
 
