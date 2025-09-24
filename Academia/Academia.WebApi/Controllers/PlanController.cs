@@ -22,40 +22,20 @@ namespace Academia.WebApi.Controllers
 			_planDtoValidator = planDtoValidator;
 		}
 		[HttpGet("{id:int}")]
-		public ActionResult<PlanDto> Get(int id)
+		public async Task<ActionResult<PlanDto>> Get(int id)
 		{
-			var p = _planService.Get(id);
+			var p = await _planService.Get(id);
 			if (p == null)
 			{
 				return NotFound();
 			}
-			/* actualizo la descripcion antes de la especialidad para reflejar cambios.
-			 probablemente lo cambie al implementar el acceso a datos*/ 
-			var e = _especialidadService.Get(p.EspecialidadId);
-			if (e != null)
-				p.DescripcionEspecialidad = e.Descripcion;
-            else
-            {
-                p.DescripcionEspecialidad = "Sin Especialidad";
-            }
             return Ok(p);
 
 		}
 		[HttpGet(Name = "GetAllPlanes")]
-		public ActionResult<IEnumerable<PlanDto>> GetAll()
+		public async Task<ActionResult<IEnumerable<PlanDto>>> GetAll()
 		{
-			var planes =_planService.GetAll().ToList();
-			/*Lo mismo que el anterior comentario*/
-			foreach (var p in planes)
-			{
-				var especialidad = _especialidadService.Get(p.EspecialidadId);
-				if (especialidad != null)
-					p.DescripcionEspecialidad = especialidad.Descripcion;
-				else
-				{
-					p.DescripcionEspecialidad = "Sin Especialidad";
-				}
-			}
+			var planes = await _planService.GetAll();
 			return Ok(planes);
 			
 		}
@@ -70,11 +50,11 @@ namespace Academia.WebApi.Controllers
 					.Select(e => new {e.PropertyName, e.ErrorMessage});
 				return BadRequest(errors);
 			}
-			var e = _especialidadService.Get(plan.EspecialidadId);
+			var e = await _especialidadService.Get(plan.EspecialidadId);
 			if (e == null)
 				return NotFound("el plan no tiene una especialidad valida");
 			plan.DescripcionEspecialidad = e.Descripcion;
-			_planService.New(plan);
+			await _planService.New(plan);
 			return CreatedAtAction(nameof(Get), new { plan.Id }, plan);
 		}
 		[HttpPut("{id:int}")]
@@ -91,18 +71,18 @@ namespace Academia.WebApi.Controllers
 				return BadRequest();
 			if (ModelState.IsValid == false)
 				return BadRequest(ModelState);
-			var especialidad = _especialidadService.Get(plan.EspecialidadId);
+			var especialidad = await _especialidadService.Get(plan.EspecialidadId);
 			if (especialidad == null)
 				return NotFound();
-			bool up = _planService.Update(plan);
+			bool up = await _planService.Update(plan);
 			if (!up)
 				return NotFound();
 			return NoContent();
 		}
 		[HttpDelete("{id:int}")]
-		public ActionResult Delete(int id)
+		public async Task<ActionResult> Delete(int id)
 		{
-			bool del = _planService.Delete(id);
+			bool del = await _planService.Delete(id);
 			if (!del)
 				return NotFound();
 			return NoContent();

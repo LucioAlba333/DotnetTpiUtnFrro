@@ -3,10 +3,10 @@ namespace Academia.Services.Interfaces
 {
 	public interface IEntityService<T>
 	{
-		void New(T dto);
-		bool Delete(int id);
-		T? Get(int id);
-		IEnumerable<T> GetAll();
-		bool Update(T dto);
+		Task New(T dto);
+		Task<bool> Delete(int id);
+		Task<T?> Get(int id);
+		Task<IEnumerable<T>> GetAll();
+		Task<bool> Update(T dto);
 	}
 }

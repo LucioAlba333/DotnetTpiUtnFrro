@@ -21,9 +21,9 @@ namespace Academia.WebApi.Controllers
 		}
 
 		[HttpGet("{id:int}")]
-		public ActionResult<EspecialidadDto> Get(int id)
+		public async Task<ActionResult<EspecialidadDto>> Get(int id)
 		{
-			var e = _especialidadService.Get(id);
+			var e = await _especialidadService.Get(id);
 			if (e == null)
 			{
 				return NotFound();
@@ -31,9 +31,10 @@ namespace Academia.WebApi.Controllers
 			return Ok(e);
 		}
 		[HttpGet(Name = "GetAllEspecialidades")]
-		public ActionResult<IEnumerable<EspecialidadDto>> GetAll()
+		public async Task<ActionResult<IEnumerable<EspecialidadDto>>> GetAll()
 		{
-			return _especialidadService.GetAll().ToList();
+			var e= await _especialidadService.GetAll();
+			return Ok(e);
 		}
 		[HttpPost]
 		public async Task<ActionResult<EspecialidadDto>> Create(EspecialidadDto especialidad)
@@ -45,7 +46,7 @@ namespace Academia.WebApi.Controllers
 					.Select(e => new {e.PropertyName, e.ErrorMessage} );
 				return BadRequest(errors);
 			}
-			_especialidadService.New(especialidad);
+			await _especialidadService.New(especialidad);
 			return CreatedAtAction(nameof(Get), new { especialidad.Id }, especialidad);
 		}
 		[HttpPut("{id:int}")]
@@ -60,16 +61,16 @@ namespace Academia.WebApi.Controllers
 			}
 			if (id != especialidad.Id)
 				return BadRequest();
-			bool up = _especialidadService.Update(especialidad);
+			bool up = await _especialidadService.Update(especialidad);
 			if (!up)
 				return NotFound();
 			return NoContent();
 
 		}
 		[HttpDelete("{id:int}")]
-		public ActionResult Delete(int id)
+		public async Task<ActionResult> Delete(int id)
 		{
-			bool del = _especialidadService.Delete(id);
+			bool del = await _especialidadService.Delete(id);
 			if (!del)
 				return NotFound();
 			return NoContent();

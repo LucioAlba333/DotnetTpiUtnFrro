@@ -7,56 +7,95 @@ namespace Academia.Services;
 
 public class EspecialidadService: IEntityService<EspecialidadDto>
 {
-    public void New(EspecialidadDto dto)
-    {
-        dto.Id = EspecialidadData.GenerarId();
-        Especialidad especialidad = new Especialidad(dto.Id, dto.Descripcion);
-        EspecialidadData.Especialidades.Add(especialidad);
-    }
+    private readonly EspecialidadRepository _repository;
 
-    public bool Delete(int id)
+    public EspecialidadService(EspecialidadRepository repository)
     {
-        Especialidad? especialidad =
-            EspecialidadData.Especialidades.Find(x => x.Id == id);
-        if (especialidad != null)
+        _repository = repository;
+    }
+   
+    public async Task New(EspecialidadDto dto)
+    {
+        try
         {
-            EspecialidadData.Especialidades.Remove(especialidad);
-            return true;
+            if (await _repository.EspecialidadExists(dto.Descripcion))
+            {
+                throw new ArgumentException($"ya existe una especialidad con descripcion '{dto.Descripcion}'.");
+            }
+            Especialidad especialidad = new Especialidad(dto.Id, dto.Descripcion);
+            await _repository.Add(especialidad);
         }
-        return false;
-    }
-
-    public EspecialidadDto? Get(int id)
-    {
-        Especialidad? e = EspecialidadData.Especialidades.Find(x => x.Id == id);
-
-        if (e != null)
+        catch (Exception e)
         {
-            return new EspecialidadDto { Id = e.Id, Descripcion = e.Descripcion };
+            throw new ApplicationException("error al crear la especialidad", e);
         }
-
-        return null;
     }
 
-    public IEnumerable<EspecialidadDto> GetAll()
+    public async Task<bool> Delete(int id)
     {
-     var especialidades = EspecialidadData.Especialidades.Select(e => new Especialidad(e)).ToList();
-     return especialidades.Select(especialidad => new EspecialidadDto
-     {
-         Id = especialidad.Id, 
-         Descripcion = especialidad.Descripcion
-     });
-    }
 
-    public bool Update(EspecialidadDto dto)
-    {
-        Especialidad? e =
-            EspecialidadData.Especialidades.Find(x => x.Id == dto.Id);
-        if (e != null)
+        try
         {
-            e.SetDescripcion(dto.Descripcion);
-            return true;
+            return await _repository.Delete(id);
         }
-        return false;
+        catch (Exception e)
+        {
+            throw new ApplicationException($"error al eliminar la especialidad con id: {id}", e);
+        }
+    }
+
+    public async Task<EspecialidadDto?> Get(int id)
+    {
+        try
+        {
+            Especialidad? especialidad = await _repository.Get(id);
+            if (especialidad == null)
+                return null;
+            return new EspecialidadDto
+            {
+                Id = especialidad.Id,
+                Descripcion = especialidad.Descripcion
+            };
+        }
+        catch (Exception e)
+        {
+            throw new ApplicationException($"error al obtener la especialidad con id: {id}", e);
+        }
+    }
+
+    public async Task<IEnumerable<EspecialidadDto>> GetAll()
+    {
+        try
+        {
+            var especialidades = await _repository.GetAll();
+            return especialidades.Select(e => new EspecialidadDto
+            {
+                Id = e.Id,
+                Descripcion = e.Descripcion
+            }).ToList();
+
+        }
+        catch (Exception e)
+        {
+            throw new ApplicationException("error al obtener todas las especialidades", e);
+        }
+    }
+
+    public async Task<bool> Update(EspecialidadDto dto)
+    {
+        try
+        {
+            if (await _repository.EspecialidadExists(dto.Descripcion, dto.Id))
+            {
+                throw new ArgumentException($"Ya existe otra especialidad con descripcion '{dto.Descripcion}'.");
+            }
+            Especialidad especialidad = new Especialidad(dto.Id, dto.Descripcion);
+            return await _repository.Update(especialidad);
+
+        }
+        catch (Exception e)
+        {
+            throw new ApplicationException("error al editar la especialidad", e);
+        }
     }
 }
