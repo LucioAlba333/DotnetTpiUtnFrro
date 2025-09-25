@@ -5,8 +5,12 @@ namespace Academia.Data;
 public class Context : DbContext
 {
     public DbSet<Especialidad> Especialidades { get; set; }
+    public DbSet<Persona> Personas { get; set; }
     public DbSet<Plan> Planes { get; set; }
-
+    public DbSet<Usuario> Usuarios { get; set; }
+    public DbSet<Modulo> Modulos { get; set; }
+    public DbSet<ModuloUsuario> ModuloUsuarios { get; set; }
+    
     public void InitDatabase()
     {
         this.Database.EnsureCreated();
@@ -44,13 +48,104 @@ public class Context : DbContext
                 .IsUnique();
             entity.Property(e => e.EspecialidadId)
                 .IsRequired();
-            modelBuilder.Entity<Plan>()
-                .HasOne(p => p.Especialidad)
+            entity.HasOne(e => e.Especialidad)
                 .WithMany()
-                .HasForeignKey(p => p.EspecialidadId);
+                .HasForeignKey(e => e.EspecialidadId);
             entity.HasData(
                 new {Id=1, Descripcion = "Plan sistemas 2025", EspecialidadId = 1});
-
         });
+        
+        modelBuilder.Entity<Usuario>( entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.Id)
+                .ValueGeneratedOnAdd();
+            entity.Property(e => e.NombreUsuario)
+                .IsRequired()
+                .HasMaxLength(50);
+            entity.Property(e => e.Clave)
+                .IsRequired()
+                .HasMaxLength(50);
+            entity.Property(e=> e.IdPersona)
+                .IsRequired();
+            entity.HasOne(e => e.Persona)
+                .WithMany()
+                .HasForeignKey(e => e.IdPersona);
+            entity.HasIndex(e=> e.IdPersona)
+                .IsUnique();
+            entity.HasIndex(e=>e.NombreUsuario)
+                .IsUnique();
+        });
+        modelBuilder.Entity<Modulo>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.Id)
+                .ValueGeneratedOnAdd();
+            entity.Property(e => e.Descripcion)
+                .IsRequired()
+                .HasMaxLength(50);
+        });
+        modelBuilder.Entity<ModuloUsuario>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.Id)
+                .ValueGeneratedOnAdd();
+            entity.HasOne(e => e.Usuario)
+                .WithMany()
+                .HasForeignKey(e => e.IdUsuario);
+            entity.HasOne(e => e.Modulo)
+                .WithMany()
+                .HasForeignKey(e => e.IdModulo);
+            entity.Property(e => e.Alta).IsRequired();
+            entity.Property(e => e.Modificacion).IsRequired();
+            entity.Property(e => e.Consulta).IsRequired();
+            entity.Property(e=> e.Baja).IsRequired();
+        });
+        modelBuilder.Entity<Persona>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.Id)
+                .ValueGeneratedOnAdd();
+
+            entity.Property(e => e.Nombre)
+                .IsRequired()
+                .HasMaxLength(50);
+
+            entity.Property(e => e.Apellido)
+                .IsRequired()
+                .HasMaxLength(50);
+
+            entity.Property(e => e.Direccion)
+                .IsRequired()
+                .HasMaxLength(50);
+
+            entity.Property(e => e.Telefono)
+                .IsRequired()
+                .HasMaxLength(50);
+
+            entity.Property(e => e.Email)
+                .IsRequired()
+                .HasMaxLength(50);
+
+            entity.Property(e => e.Legajo)
+                .IsRequired();
+
+            entity.Property(e => e.FechaNacimiento)
+                .IsRequired();
+
+            entity.Property(e => e.TipoPersona)
+                .IsRequired()
+                .HasConversion<int>(); 
+
+            entity.HasOne(e => e.Plan)
+                .WithMany()
+                .HasForeignKey(e => e.IdPlan)
+                .OnDelete(DeleteBehavior.Restrict);
+            entity.HasIndex(e=> e.Email)
+                .IsUnique();
+            entity.HasIndex(e=> e.Legajo)
+                .IsUnique();
+        });
+
     }
 }
