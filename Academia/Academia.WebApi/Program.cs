@@ -12,6 +12,10 @@ builder.Services.AddDbContext<Context>(options =>
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.Configure<JwtSettings>(
+	builder.Configuration.GetSection("JwtSettings")
+);
+
 builder.Services.AddScoped<PlanRepository>();
 builder.Services.AddScoped<EspecialidadRepository>();
 builder.Services.AddScoped<IEntityService<EspecialidadDto>, EspecialidadService>();
@@ -28,7 +32,7 @@ if (app.Environment.IsDevelopment())
 using (var scope = app.Services.CreateScope())
 {
 	var context = scope.ServiceProvider.GetRequiredService<Context>();
-	context.InitDatabase();
+	await context.InitDatabase();
 }
 app.UseHttpsRedirection();
 app.UseAuthorization();

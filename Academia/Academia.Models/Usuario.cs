@@ -8,6 +8,7 @@ public class Usuario : BusinessEntity
   
     public string Clave { get; private set; }
 
+    protected Usuario() { }
     public Usuario(int id, Persona persona, string nombreUsuario, string clave) : base(id)
     {
         SetPersona(persona);

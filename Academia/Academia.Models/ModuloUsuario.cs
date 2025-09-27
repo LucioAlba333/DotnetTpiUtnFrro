@@ -11,6 +11,7 @@ public class ModuloUsuario : BusinessEntity
     public bool Modificacion {get; private set;}
     public bool Consulta {get; private set;}
 
+    protected ModuloUsuario() { }
     public ModuloUsuario(
         int id, 
         Usuario usuario, 

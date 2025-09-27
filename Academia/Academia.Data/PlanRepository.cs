@@ -5,7 +5,7 @@ namespace Academia.Data;
 
 public class PlanRepository
 {
-	private Context _context;
+	private readonly Context _context;
 
 	public PlanRepository(Context context)
 	{
@@ -46,8 +46,7 @@ public class PlanRepository
 		var plan = await _context.Planes.FindAsync(entity.Id);
 		if (plan == null)
 			return false;
-		plan.SetDescripcion(entity.Descripcion);
-		_context.Planes.Update(plan);
+		_context.Entry(plan).CurrentValues.SetValues(entity);
 		await _context.SaveChangesAsync();
 		return true;
 	}

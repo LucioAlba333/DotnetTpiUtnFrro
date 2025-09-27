@@ -4,6 +4,7 @@ public class Modulo : BusinessEntity
 {
     public string Descripcion { get; private set; }
 
+    protected Modulo() { }
     public Modulo(int id, string descripcion) : base(id)
     {
         SetDescripcion(descripcion);

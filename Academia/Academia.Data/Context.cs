@@ -1,9 +1,15 @@
 using Academia.Models;
 using Microsoft.EntityFrameworkCore;
+
+
+
 namespace Academia.Data;
 
 public class Context : DbContext
 {
+    public Context(DbContextOptions<Context> options) : base(options)
+    {
+    }
     public DbSet<Especialidad> Especialidades { get; set; }
     public DbSet<Persona> Personas { get; set; }
     public DbSet<Plan> Planes { get; set; }
@@ -11,15 +17,11 @@ public class Context : DbContext
     public DbSet<Modulo> Modulos { get; set; }
     public DbSet<ModuloUsuario> ModuloUsuarios { get; set; }
     
-    public void InitDatabase()
+    public async Task InitDatabase()
     {
-        this.Database.EnsureCreated();
+       await Database.EnsureCreatedAsync();
     }
-
-    public Context(DbContextOptions<Context> options) : base(options)
-    {
-    }
-
+    
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
@@ -76,15 +78,19 @@ public class Context : DbContext
             entity.HasIndex(e=>e.NombreUsuario)
                 .IsUnique();
         });
-        modelBuilder.Entity<Modulo>(entity =>
-        {
-            entity.HasKey(e => e.Id);
-            entity.Property(e => e.Id)
-                .ValueGeneratedOnAdd();
-            entity.Property(e => e.Descripcion)
-                .IsRequired()
-                .HasMaxLength(50);
-        });
+            modelBuilder.Entity<Modulo>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.Id)
+                    .ValueGeneratedOnAdd();
+                entity.Property(e => e.Descripcion)
+                    .IsRequired()
+                    .HasMaxLength(50);
+                entity.HasData(
+                    new {Id=1, Descripcion = "Especialidades"}, 
+                    new {Id=2, Descripcion = "Planes"}
+                    );
+            });
         modelBuilder.Entity<ModuloUsuario>(entity =>
         {
             entity.HasKey(e => e.Id);

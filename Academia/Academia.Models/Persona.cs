@@ -7,12 +7,13 @@ public class Persona : BusinessEntity
     public string Direccion { get; private set; }
     public string Telefono { get; private set; }
     public string Email { get; private set; }
-    public int IdPlan { get; private set; }
+    public int? IdPlan { get; private set; }
     public int Legajo { get; private set; }
     public DateTime FechaNacimiento { get; private set; }
     public TipoPersona TipoPersona { get; private set; }
-    public Plan Plan { get; private set; }
+    public Plan? Plan { get; private set; }
 
+    protected Persona() { }
     public Persona(
         int id,
         string nombre,
@@ -23,7 +24,7 @@ public class Persona : BusinessEntity
         int legajo,
         DateTime fechaNacimiento,
         TipoPersona tipoPersona,
-        Plan plan
+        Plan? plan
     ) : base(id)
     {
         SetNombre(nombre);
@@ -34,7 +35,10 @@ public class Persona : BusinessEntity
         SetLegajo(legajo);
         SetFechaNacimiento(fechaNacimiento);
         SetTipoPersona(tipoPersona);
-        SetPlan(plan);
+        if (plan != null)
+        {
+            SetPlan(plan);
+        }
     }
 
     public void SetNombre(string nombre)
@@ -95,8 +99,6 @@ public class Persona : BusinessEntity
 
     public void SetPlan(Plan plan)
     {
-        if (plan == null)
-            throw new ArgumentNullException(nameof(plan));
         Plan = plan;
         IdPlan = plan.Id;
     }
