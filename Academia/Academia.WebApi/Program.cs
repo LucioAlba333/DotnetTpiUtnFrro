@@ -15,9 +15,10 @@ builder.Services.AddSwaggerGen();
 builder.Services.Configure<JwtSettings>(
 	builder.Configuration.GetSection("JwtSettings")
 );
-
 builder.Services.AddScoped<PlanRepository>();
 builder.Services.AddScoped<EspecialidadRepository>();
+builder.Services.AddScoped<UsuarioRepository>();
+builder.Services.AddScoped<PersonaDtoValidator>();
 builder.Services.AddScoped<IEntityService<EspecialidadDto>, EspecialidadService>();
 builder.Services.AddScoped<IEntityService<PlanDto>, PlanService>();
 builder.Services.AddScoped<IValidator<EspecialidadDto>, EspecialidadDtoValidator>();

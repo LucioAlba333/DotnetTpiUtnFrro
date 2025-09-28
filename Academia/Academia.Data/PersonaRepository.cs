@@ -37,7 +37,7 @@ public class PersonaRepository
     {
         return await _context.Personas
             .Include(e=>e.Plan)
-            .OrderBy(e=>e.Id)
+            .OrderByDescending(e=>e.Id)
             .ToListAsync();
     }
 
@@ -49,5 +49,16 @@ public class PersonaRepository
         _context.Entry(personaToUpdate).CurrentValues.SetValues(persona);
         await _context.SaveChangesAsync();
         return true;
+    }
+
+    public async Task<bool> EmailExists(string email, int? excludeId = null)
+    {
+        var query = _context.Personas
+            .Where(p => p.Email.ToLower() == email.ToLower());
+        if (excludeId.HasValue)
+        {
+            query = query.Where(c => c.Id != excludeId.Value);
+        }
+        return await query.AnyAsync();
     }
 }
