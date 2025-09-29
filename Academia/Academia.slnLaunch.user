@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "Nuevo perfil",
+    "Projects": [
+      {
+        "Path": "Academia.WebApi\\Academia.WebApi.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "Academia.Desktop\\Academia.Desktop.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

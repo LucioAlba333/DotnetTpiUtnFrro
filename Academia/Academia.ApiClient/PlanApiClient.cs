@@ -4,13 +4,14 @@ using Academia.Dtos;
 
 namespace Academia.ApiClient;
 
-public class PlanApiClient
+public class PlanApiClient : ApiClient
 {
     public static async Task<IEnumerable<PlanDto>> GetAllAsync()
     {
         try
         {
-            var response = await ApiClient.Client.GetAsync("api/Plan");
+            using var client = await GetHttpClient();
+            var response = await client.GetAsync("api/Plan");
             if (!response.IsSuccessStatusCode)
             {
                 var error = await response.Content.ReadAsStringAsync();
@@ -41,7 +42,8 @@ public class PlanApiClient
     {
         try
         {
-            var response = await ApiClient.Client.GetAsync($"api/Plan/{id}");
+            using var client = await GetHttpClient();
+            var response = await client.GetAsync($"api/Plan/{id}");
             if (!response.IsSuccessStatusCode)
             {
                 var error = await response.Content.ReadAsStringAsync();
@@ -67,7 +69,8 @@ public class PlanApiClient
     {
         try
         {
-            var response = await ApiClient.Client.PostAsJsonAsync("api/Plan", plan);
+            using var client = await GetHttpClient();
+            var response = await client.PostAsJsonAsync("api/Plan", plan);
             if (!response.IsSuccessStatusCode)
             {
                 var error = await response.Content.ReadAsStringAsync();
@@ -88,7 +91,8 @@ public class PlanApiClient
     {
         try
         {
-            var response = await ApiClient.Client.PutAsJsonAsync("api/Plan/"+plan.Id, plan);
+            using var client = await GetHttpClient();
+            var response = await client.PutAsJsonAsync("api/Plan/"+plan.Id, plan);
             if (!response.IsSuccessStatusCode)
             {
                 var error = await response.Content.ReadAsStringAsync();
@@ -109,7 +113,8 @@ public class PlanApiClient
     {
         try
         {
-            var response = await ApiClient.Client.DeleteAsync($"api/Plan/{id}");
+            using var client = await GetHttpClient();
+            var response = await client.DeleteAsync($"api/Plan/{id}");
             if (!response.IsSuccessStatusCode)
             {
                 var error = await response.Content.ReadAsStringAsync();

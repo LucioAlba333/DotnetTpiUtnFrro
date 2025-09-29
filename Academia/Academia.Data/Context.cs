@@ -67,7 +67,7 @@ public class Context : DbContext
                 .HasMaxLength(50);
             entity.Property(e => e.Clave)
                 .IsRequired()
-                .HasMaxLength(50);
+                .HasMaxLength(300);
             entity.Property(e=> e.IdPersona)
                 .IsRequired();
             entity.HasOne(e => e.Persona)
@@ -151,7 +151,18 @@ public class Context : DbContext
                 .IsUnique();
             entity.HasIndex(e=> e.Legajo)
                 .IsUnique();
+            entity.HasData(new
+            {
+                Id = 1,
+                Nombre = "admin",
+                Apellido = "admin",
+                Direccion = "xxx",
+                Telefono = "xxx",
+                Email = "admin@admin.com",
+                Legajo = 1,
+                FechaNacimiento = new DateTime(1995, 4, 12),
+                TipoPersona = TipoPersona.Administrador, 
+            });
         });
-
     }
 }

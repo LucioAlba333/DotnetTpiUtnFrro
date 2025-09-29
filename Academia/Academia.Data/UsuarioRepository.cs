@@ -30,12 +30,12 @@ public class UsuarioRepository
 
     public async Task<Usuario?> Get(int id)
     {
-        return await _context.Usuarios.FirstOrDefaultAsync(e => e.Id == id);
+        return await _context.Usuarios.Include(e => e.Persona).FirstOrDefaultAsync(e => e.Id == id);
     }
 
     public async Task<Usuario?> GetByUsername(string username)
     {
-        return await _context.Usuarios.FirstOrDefaultAsync(e => e.NombreUsuario == username);
+        return await _context.Usuarios.Include(e => e.Persona).FirstOrDefaultAsync(e => e.NombreUsuario == username);
     }
 
     public async Task<IEnumerable<Usuario>> GetAll()

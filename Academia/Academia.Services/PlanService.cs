@@ -23,8 +23,11 @@ public class PlanService: IEntityService<PlanDto>
             if(await _planRepository.PlanExists(dto.Descripcion))
                 throw new ApplicationException("El plan ya existe");
             Especialidad? especialidad = await _especialidadRepository.Get(dto.EspecialidadId);
-            Plan plan = new Plan(dto.Id, dto.Descripcion,especialidad);
-            await _planRepository.Add(plan);
+            if (especialidad != null)
+            {
+                Plan plan = new Plan(dto.Id, dto.Descripcion,especialidad);
+                await _planRepository.Add(plan);
+            }
         }
         catch (Exception e)
         {

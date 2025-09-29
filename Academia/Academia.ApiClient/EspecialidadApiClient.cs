@@ -3,13 +3,14 @@ using System.Text.Json;
 using Academia.Dtos;
 namespace Academia.ApiClient;
 
-public class EspecialidadApiClient
+public class EspecialidadApiClient : ApiClient
 {
     public static async Task<EspecialidadDto?> GetAsync(int id)
     {
         try
         {
-            var response = await ApiClient.Client.GetAsync("api/Especialidad/" + id);
+            using var client = await GetHttpClient();
+            var response = await client.GetAsync("api/Especialidad/" + id);
             if (!response.IsSuccessStatusCode)
             {
                 var error = await response.Content.ReadAsStringAsync();
@@ -37,7 +38,8 @@ public class EspecialidadApiClient
     {
         try
         {
-            var response = await ApiClient.Client.GetAsync("api/Especialidad");
+            using var client = await GetHttpClient();
+            var response = await client.GetAsync("api/Especialidad");
             if (!response.IsSuccessStatusCode)
             {
                 var error = await response.Content.ReadAsStringAsync();
@@ -67,7 +69,8 @@ public class EspecialidadApiClient
     {
         try
         {
-            var response = await ApiClient.Client.PostAsJsonAsync("api/Especialidad", especialidad);
+            using var client = await GetHttpClient();
+            var response = await client.PostAsJsonAsync("api/Especialidad", especialidad);
             if (!response.IsSuccessStatusCode)
             {
                 var error = await response.Content.ReadAsStringAsync();
@@ -89,7 +92,8 @@ public class EspecialidadApiClient
     {
         try
         {
-            var response = await ApiClient.Client.PutAsJsonAsync("api/Especialidad/"+especialidad.Id, especialidad);
+            using var client = await GetHttpClient();
+            var response = await client.PutAsJsonAsync("api/Especialidad/"+especialidad.Id, especialidad);
             if (!response.IsSuccessStatusCode)
             {
                 var error = await response.Content.ReadAsStringAsync();
@@ -110,7 +114,8 @@ public class EspecialidadApiClient
     {
         try
         {
-            var response = await ApiClient.Client.DeleteAsync("api/Especialidad/" + id);
+            using var client = await GetHttpClient();
+            var response = await client.DeleteAsync("api/Especialidad/" + id);
             if (!response.IsSuccessStatusCode)
             {
                 var error = await response.Content.ReadAsStringAsync();

@@ -10,6 +10,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Academia.ApiClient\Academia.ApiClient.csproj" />
+      <ProjectReference Include="..\Academia.Auth.WinForms\Academia.Auth.WinForms.csproj" />
       <ProjectReference Include="..\Academia.Models\Academia.Models.csproj" />
     </ItemGroup>
 

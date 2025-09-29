@@ -23,7 +23,7 @@ public class Persona : BusinessEntity
         string email,
         int legajo,
         DateTime fechaNacimiento,
-        TipoPersona tipoPersona,
+        string tipoPersona,
         Plan? plan
     ) : base(id)
     {
@@ -90,10 +90,11 @@ public class Persona : BusinessEntity
         FechaNacimiento = fechaNacimiento;
     }
 
-    public void SetTipoPersona(TipoPersona tipoPersona)
+    public void SetTipoPersona(string tipoPersonaArg)
     {
-        if (!Enum.IsDefined(typeof(TipoPersona), tipoPersona))
-            throw new ArgumentOutOfRangeException(nameof(tipoPersona));
+        if (!Enum.TryParse<TipoPersona>(tipoPersonaArg, ignoreCase: true, out var tipoPersona))
+            throw new ArgumentOutOfRangeException(nameof(tipoPersonaArg), $"Valor inválido: {tipoPersonaArg}");
+
         TipoPersona = tipoPersona;
     }
 
