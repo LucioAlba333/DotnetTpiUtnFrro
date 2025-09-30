@@ -43,6 +43,7 @@ builder.Services.AddAuthorization(options =>
 });
 builder.Services.AddScoped<PasswordEncrypter>();
 builder.Services.AddScoped<PlanRepository>();
+builder.Services.AddScoped<MateriaRepository>();
 builder.Services.AddScoped<EspecialidadRepository>();
 builder.Services.AddScoped<PersonaRepository>();
 builder.Services.AddScoped<UsuarioRepository>();
@@ -51,6 +52,7 @@ builder.Services.AddScoped<UsuarioService>();
 builder.Services.AddScoped<IEntityService<PersonaDto>, PersonaService>();
 builder.Services.AddScoped<IEntityService<EspecialidadDto>, EspecialidadService>();
 builder.Services.AddScoped<IEntityService<PlanDto>, PlanService>();
+builder.Services.AddScoped<IEntityService<MateriaDto>, MateriaService>();
 builder.Services.AddScoped<IValidator<EspecialidadDto>, EspecialidadDtoValidator>();
 builder.Services.AddScoped<IValidator<PlanDto>, PlanDtoValidator>();
 var app = builder.Build();

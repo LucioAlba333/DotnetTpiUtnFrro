@@ -1,10 +1,12 @@
 using Academia.Dtos;
 using Academia.Services.Interfaces;
 using FluentValidation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Academia.WebApi.Controllers;
 
+[Authorize]
 [Route("api/[controller]")]
 [ApiController]
 public class PersonaController : ControllerBase
@@ -68,7 +70,7 @@ public class PersonaController : ControllerBase
         bool up =  await _personaService.Update(p);
         if (!up)
             return NotFound();
-        return Ok();
+        return NoContent();
     }
 
     [HttpDelete("{id:int}")]
@@ -79,7 +81,7 @@ public class PersonaController : ControllerBase
         {
             return NotFound();
         }
-        return Ok();
+        return NoContent();
     }
     
     

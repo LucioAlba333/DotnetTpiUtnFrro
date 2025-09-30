@@ -16,6 +16,7 @@ public class Context : DbContext
     public DbSet<Usuario> Usuarios { get; set; }
     public DbSet<Modulo> Modulos { get; set; }
     public DbSet<ModuloUsuario> ModuloUsuarios { get; set; }
+    public DbSet<Materia> Materias { get; set; }
     
     public async Task InitDatabase()
     {
@@ -163,6 +164,22 @@ public class Context : DbContext
                 FechaNacimiento = new DateTime(1995, 4, 12),
                 TipoPersona = TipoPersona.Administrador, 
             });
+        });
+        modelBuilder.Entity<Materia>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.Id)
+                .ValueGeneratedOnAdd();
+            entity.Property(e => e.Descripcion)
+                .IsRequired()
+                .HasMaxLength(50);
+            entity.Property(e => e.HsSemanales)
+                .IsRequired();
+            entity.Property(e => e.HsTotales)
+                .IsRequired();
+            entity.HasOne(e => e.Plan)
+                .WithMany()
+                .HasForeignKey(e => e.IdPlan);
         });
     }
 }

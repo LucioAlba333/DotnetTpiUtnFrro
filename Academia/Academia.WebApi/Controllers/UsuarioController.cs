@@ -52,7 +52,7 @@ namespace Academia.WebApi.Controllers
             {
                 return NotFound();
             }
-            return Ok();
+            return NoContent();
         }
 
         [HttpDelete("{id:int}")]
@@ -63,7 +63,7 @@ namespace Academia.WebApi.Controllers
             {
                 return NotFound();
             }
-            return Ok();
+            return NoContent();
             
         }
     }
