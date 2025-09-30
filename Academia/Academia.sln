@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Academia.Dtos", "Academia.D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Academia.Validaciones", "Academia.Validaciones\Academia.Validaciones.csproj", "{D70E3A29-4B7A-423F-B748-E32531102D7B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Academia.Auth.WinForms", "Academia.Auth.WinForms\Academia.Auth.WinForms.csproj", "{174F74DA-5CD5-4483-91E8-0ED648093565}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{D70E3A29-4B7A-423F-B748-E32531102D7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D70E3A29-4B7A-423F-B748-E32531102D7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D70E3A29-4B7A-423F-B748-E32531102D7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{174F74DA-5CD5-4483-91E8-0ED648093565}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{174F74DA-5CD5-4483-91E8-0ED648093565}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{174F74DA-5CD5-4483-91E8-0ED648093565}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{174F74DA-5CD5-4483-91E8-0ED648093565}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

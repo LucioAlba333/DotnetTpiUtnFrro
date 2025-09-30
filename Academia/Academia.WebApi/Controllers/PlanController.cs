@@ -1,10 +1,12 @@
 using Academia.Dtos;
 using Academia.Services.Interfaces;
 using FluentValidation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Academia.WebApi.Controllers
 {
+	[Authorize]
 	[Route("api/[controller]")]
 	[ApiController]
 	public class PlanController : ControllerBase
@@ -50,10 +52,10 @@ namespace Academia.WebApi.Controllers
 					.Select(e => new {e.PropertyName, e.ErrorMessage});
 				return BadRequest(errors);
 			}
-			var e = await _especialidadService.Get(plan.EspecialidadId);
+			/*var e = await _especialidadService.Get(plan.EspecialidadId);
 			if (e == null)
 				return NotFound("el plan no tiene una especialidad valida");
-			plan.DescripcionEspecialidad = e.Descripcion;
+			plan.DescripcionEspecialidad = e.Descripcion;*/
 			await _planService.New(plan);
 			return CreatedAtAction(nameof(Get), new { plan.Id }, plan);
 		}

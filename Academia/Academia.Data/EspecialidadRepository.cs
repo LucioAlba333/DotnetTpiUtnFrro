@@ -5,7 +5,7 @@ namespace Academia.Data;
 
 public class EspecialidadRepository
 {
-	private Context _context;
+	private readonly Context _context;
 	public EspecialidadRepository(Context context)
 	{
 		_context = context;
@@ -46,7 +46,7 @@ public class EspecialidadRepository
 		{
 			return false;
 		}
-		especialidad.SetDescripcion(entity.Descripcion);
+		_context.Entry(especialidad).CurrentValues.SetValues(entity);
 		await _context.SaveChangesAsync();
 		return true;
 	}

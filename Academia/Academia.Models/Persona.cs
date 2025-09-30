@@ -2,122 +2,106 @@ namespace Academia.Models;
 
 public class Persona : BusinessEntity
 {
-    private string _nombre;
-    private string _apellido;
-    private string _direccion;
-    private string _telefono;
-    private string _email;
-    private int _idPlan;
-    private int _legajo;
-    private DateTime _fechaNacimiento;
-    private TipoPersona _tipoPersona;
-    private Plan _plan;
+    public string Nombre { get; private set; }
+    public string Apellido { get; private set; }
+    public string Direccion { get; private set; }
+    public string Telefono { get; private set; }
+    public string Email { get; private set; }
+    public int? IdPlan { get; private set; }
+    public int Legajo { get; private set; }
+    public DateTime FechaNacimiento { get; private set; }
+    public TipoPersona TipoPersona { get; private set; }
+    public Plan? Plan { get; private set; }
 
-    public Persona(int id, 
-        string nombre, 
-        string apellido, 
-        string direccion, 
-        string telefono, 
-        string email,  
-        int legajo, 
-        DateTime fechaNacimiento, 
-        TipoPersona tipoPersona, 
-        Plan plan) : base(id)
+    protected Persona() { }
+    public Persona(
+        int id,
+        string nombre,
+        string apellido,
+        string direccion,
+        string telefono,
+        string email,
+        int legajo,
+        DateTime fechaNacimiento,
+        string tipoPersona,
+        Plan? plan
+    ) : base(id)
     {
-        this.SetNombre(nombre);
-        this.SetApellido(apellido); 
-        this.SetDireccion(direccion);
-        this.SetTelefono(telefono);
-        this.SetEmail(email);
-        this.SetPlan(plan);
-        this.SetTipoPersona(tipoPersona);
-        this.SetFechaNacimiento(fechaNacimiento);
-        this.SetLegajo(legajo);
+        SetNombre(nombre);
+        SetApellido(apellido);
+        SetDireccion(direccion);
+        SetTelefono(telefono);
+        SetEmail(email);
+        SetLegajo(legajo);
+        SetFechaNacimiento(fechaNacimiento);
+        SetTipoPersona(tipoPersona);
+        if (plan != null)
+        {
+            SetPlan(plan);
+        }
     }
-
-    public string Nombre => _nombre;
-
-    public string Apellido => _apellido;
-
-    public string Direccion => _direccion;
-
-    public string Telefono => _telefono;
-
-    public string Email => _email;
-
-    public int IdPlan1 => _idPlan;
-
-    public int Legajo => _legajo;
-
-    public DateTime FechaNacimiento => _fechaNacimiento;
-
-    public TipoPersona TipoPersona => _tipoPersona;
-
-    public Plan Plan => _plan;
 
     public void SetNombre(string nombre)
     {
         if (string.IsNullOrWhiteSpace(nombre))
             throw new ArgumentNullException(nameof(nombre));
-        _nombre = nombre;
+        Nombre = nombre;
     }
 
     public void SetApellido(string apellido)
     {
         if (string.IsNullOrWhiteSpace(apellido))
             throw new ArgumentNullException(nameof(apellido));
-        _apellido = apellido;
+        Apellido = apellido;
     }
 
     public void SetDireccion(string direccion)
     {
         if (string.IsNullOrWhiteSpace(direccion))
             throw new ArgumentNullException(nameof(direccion));
-        _direccion = direccion;
+        Direccion = direccion;
     }
 
     public void SetTelefono(string telefono)
     {
         if (string.IsNullOrWhiteSpace(telefono))
             throw new ArgumentNullException(nameof(telefono));
-        _telefono = telefono;
+        Telefono = telefono;
     }
 
     public void SetEmail(string email)
     {
         if (string.IsNullOrWhiteSpace(email))
             throw new ArgumentNullException(nameof(email));
-        _email = email;
+        Email = email;
     }
 
     public void SetLegajo(int legajo)
     {
         if (legajo <= 0)
             throw new ArgumentOutOfRangeException(nameof(legajo));
-        _legajo = legajo;
+        Legajo = legajo;
     }
-    
-    
+
     public void SetFechaNacimiento(DateTime fechaNacimiento)
     {
         if (fechaNacimiento < new DateTime(1900, 01, 01) || fechaNacimiento > DateTime.Now)
-            throw new ArgumentOutOfRangeException(nameof(fechaNacimiento)); 
-        _fechaNacimiento = fechaNacimiento;
+            throw new ArgumentOutOfRangeException(nameof(fechaNacimiento));
+        FechaNacimiento = fechaNacimiento;
+    }
+
+    public void SetTipoPersona(string tipoPersonaArg)
+    {
+        if (!Enum.TryParse<TipoPersona>(tipoPersonaArg, ignoreCase: true, out var tipoPersona))
+            throw new ArgumentOutOfRangeException(nameof(tipoPersonaArg), $"Valor inválido: {tipoPersonaArg}");
+
+        TipoPersona = tipoPersona;
     }
 
     public void SetPlan(Plan plan)
     {
-        if (plan == null)
-            throw new ArgumentNullException(nameof(plan));
-        _plan = plan;
-        _idPlan = plan.Id;
+        Plan = plan;
+        IdPlan = plan.Id;
     }
-
-    public void SetTipoPersona(TipoPersona tipoPersona)
-    {
-        if (!Enum.IsDefined(typeof(TipoPersona), tipoPersona))
-            throw new ArgumentOutOfRangeException(nameof(tipoPersona));
-        _tipoPersona = tipoPersona;
-    }
-    
 }
+

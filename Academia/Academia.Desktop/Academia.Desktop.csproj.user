@@ -13,6 +13,9 @@
     <Compile Update="Views\Especialidades\Modals\EliminarModal.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Views\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Views\Planes\Modals\CrearModal.cs">
       <SubType>Form</SubType>
     </Compile>
