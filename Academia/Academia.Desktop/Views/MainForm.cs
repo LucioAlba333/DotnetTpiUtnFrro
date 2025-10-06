@@ -1,4 +1,5 @@
 using Academia.Desktop.Views.Especialidades;
+using Academia.Desktop.Views.Materias;
 using Academia.Desktop.Views.Planes;
 namespace Academia.Desktop.Views;
 
@@ -54,5 +55,23 @@ public partial class MainForm : Form
             Dock = DockStyle.Fill,
         };
         planesForm.Show();
+    }
+
+    private void materiasToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        foreach (Form form in this.MdiChildren)
+        {
+            if (form is MateriasForm)
+            {
+                form.BringToFront();
+                return;
+            }
+        }
+        var materiasForm = new MateriasForm
+        {
+            MdiParent = this,
+            Dock = DockStyle.Fill,
+        };
+        materiasForm.Show();
     }
 }

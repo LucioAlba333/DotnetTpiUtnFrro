@@ -37,6 +37,7 @@ partial class MainForm
         organizacionAcademicaToolStripMenuItem = new ToolStripMenuItem();
         IrEspecialidades = new ToolStripMenuItem();
         espeToolStripMenuItem = new ToolStripMenuItem();
+        materiasToolStripMenuItem = new ToolStripMenuItem();
         menuStripMain.SuspendLayout();
         SuspendLayout();
         // 
@@ -65,7 +66,7 @@ partial class MainForm
         // 
         // organizacionAcademicaToolStripMenuItem
         // 
-        organizacionAcademicaToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { IrEspecialidades, espeToolStripMenuItem });
+        organizacionAcademicaToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { IrEspecialidades, espeToolStripMenuItem, materiasToolStripMenuItem });
         organizacionAcademicaToolStripMenuItem.Name = "organizacionAcademicaToolStripMenuItem";
         organizacionAcademicaToolStripMenuItem.Size = new Size(151, 20);
         organizacionAcademicaToolStripMenuItem.Text = "Organizacion Academica";
@@ -83,6 +84,13 @@ partial class MainForm
         espeToolStripMenuItem.Size = new Size(180, 22);
         espeToolStripMenuItem.Text = "Planes";
         espeToolStripMenuItem.Click += espeToolStripMenuItem_Click;
+        // 
+        // materiasToolStripMenuItem
+        // 
+        materiasToolStripMenuItem.Name = "materiasToolStripMenuItem";
+        materiasToolStripMenuItem.Size = new Size(180, 22);
+        materiasToolStripMenuItem.Text = "Materias";
+        materiasToolStripMenuItem.Click += materiasToolStripMenuItem_Click;
         // 
         // MainForm
         // 
@@ -108,4 +116,5 @@ partial class MainForm
     private ToolStripMenuItem organizacionAcademicaToolStripMenuItem;
     private ToolStripMenuItem IrEspecialidades;
     private ToolStripMenuItem espeToolStripMenuItem;
+    private ToolStripMenuItem materiasToolStripMenuItem;
 }

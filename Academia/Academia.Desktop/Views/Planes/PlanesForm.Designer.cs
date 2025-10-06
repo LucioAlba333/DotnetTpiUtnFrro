@@ -29,17 +29,18 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PlanesForm));
-            toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
-            tableLayoutPanelPlanes = new System.Windows.Forms.TableLayoutPanel();
-            dataGridViewPlanes = new System.Windows.Forms.DataGridView();
-            buttonActualizar = new System.Windows.Forms.Button();
-            buttonVolver = new System.Windows.Forms.Button();
-            toolStripPlanes = new System.Windows.Forms.ToolStrip();
-            toolStripButtonNuevo = new System.Windows.Forms.ToolStripButton();
-            toolStripButtonEditar = new System.Windows.Forms.ToolStripButton();
-            toolStripButtonEliminar = new System.Windows.Forms.ToolStripButton();
+            toolStripContainer1 = new ToolStripContainer();
+            tableLayoutPanelPlanes = new TableLayoutPanel();
+            dataGridViewPlanes = new DataGridView();
+            buttonActualizar = new Button();
+            buttonVolver = new Button();
+            toolStripPlanes = new ToolStrip();
+            toolStripButtonNuevo = new ToolStripButton();
+            toolStripButtonEditar = new ToolStripButton();
+            toolStripButtonEliminar = new ToolStripButton();
             toolStripContainer1.ContentPanel.SuspendLayout();
             toolStripContainer1.TopToolStripPanel.SuspendLayout();
+            toolStripContainer1.SuspendLayout();
             tableLayoutPanelPlanes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewPlanes).BeginInit();
             toolStripPlanes.SuspendLayout();
@@ -48,62 +49,36 @@
             // toolStripContainer1
             // 
             // 
-            // 
-            // 
-            toolStripContainer1.BottomToolStripPanel.Location = new System.Drawing.Point(0, 0);
-            toolStripContainer1.BottomToolStripPanel.Name = "";
-            toolStripContainer1.BottomToolStripPanel.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            toolStripContainer1.BottomToolStripPanel.RowMargin = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            // 
-            // 
+            // toolStripContainer1.ContentPanel
             // 
             toolStripContainer1.ContentPanel.Controls.Add(tableLayoutPanelPlanes);
-            toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(800, 450);
-            toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            // 
-            // 
-            // 
-            toolStripContainer1.LeftToolStripPanel.Location = new System.Drawing.Point(0, 0);
-            toolStripContainer1.LeftToolStripPanel.Name = "";
-            toolStripContainer1.LeftToolStripPanel.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            toolStripContainer1.LeftToolStripPanel.RowMargin = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            toolStripContainer1.Location = new System.Drawing.Point(0, 0);
+            toolStripContainer1.ContentPanel.Size = new Size(800, 425);
+            toolStripContainer1.Dock = DockStyle.Fill;
+            toolStripContainer1.Location = new Point(0, 0);
             toolStripContainer1.Name = "toolStripContainer1";
-            // 
-            // 
-            // 
-            toolStripContainer1.RightToolStripPanel.Location = new System.Drawing.Point(0, 0);
-            toolStripContainer1.RightToolStripPanel.Name = "";
-            toolStripContainer1.RightToolStripPanel.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            toolStripContainer1.RightToolStripPanel.RowMargin = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            toolStripContainer1.Size = new System.Drawing.Size(800, 450);
+            toolStripContainer1.Size = new Size(800, 450);
             toolStripContainer1.TabIndex = 0;
             toolStripContainer1.Text = "toolStripContainer1";
             // 
-            // 
+            // toolStripContainer1.TopToolStripPanel
             // 
             toolStripContainer1.TopToolStripPanel.Controls.Add(toolStripPlanes);
-            toolStripContainer1.TopToolStripPanel.Location = new System.Drawing.Point(0, 0);
-            toolStripContainer1.TopToolStripPanel.Name = "";
-            toolStripContainer1.TopToolStripPanel.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            toolStripContainer1.TopToolStripPanel.RowMargin = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            toolStripContainer1.TopToolStripPanel.Size = new System.Drawing.Size(800, 25);
             // 
             // tableLayoutPanelPlanes
             // 
             tableLayoutPanelPlanes.ColumnCount = 2;
-            tableLayoutPanelPlanes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            tableLayoutPanelPlanes.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tableLayoutPanelPlanes.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanelPlanes.ColumnStyles.Add(new ColumnStyle());
             tableLayoutPanelPlanes.Controls.Add(dataGridViewPlanes, 0, 0);
             tableLayoutPanelPlanes.Controls.Add(buttonActualizar, 0, 1);
             tableLayoutPanelPlanes.Controls.Add(buttonVolver, 1, 1);
-            tableLayoutPanelPlanes.Dock = System.Windows.Forms.DockStyle.Fill;
-            tableLayoutPanelPlanes.Location = new System.Drawing.Point(0, 0);
+            tableLayoutPanelPlanes.Dock = DockStyle.Fill;
+            tableLayoutPanelPlanes.Location = new Point(0, 0);
             tableLayoutPanelPlanes.Name = "tableLayoutPanelPlanes";
             tableLayoutPanelPlanes.RowCount = 2;
-            tableLayoutPanelPlanes.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            tableLayoutPanelPlanes.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            tableLayoutPanelPlanes.Size = new System.Drawing.Size(800, 450);
+            tableLayoutPanelPlanes.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanelPlanes.RowStyles.Add(new RowStyle());
+            tableLayoutPanelPlanes.Size = new Size(800, 425);
             tableLayoutPanelPlanes.TabIndex = 0;
             // 
             // dataGridViewPlanes
@@ -112,22 +87,22 @@
             dataGridViewPlanes.AllowUserToDeleteRows = false;
             dataGridViewPlanes.AllowUserToResizeColumns = false;
             dataGridViewPlanes.AllowUserToResizeRows = false;
-            dataGridViewPlanes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewPlanes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewPlanes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewPlanes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             tableLayoutPanelPlanes.SetColumnSpan(dataGridViewPlanes, 2);
-            dataGridViewPlanes.Dock = System.Windows.Forms.DockStyle.Fill;
-            dataGridViewPlanes.Location = new System.Drawing.Point(3, 3);
+            dataGridViewPlanes.Dock = DockStyle.Fill;
+            dataGridViewPlanes.Location = new Point(3, 3);
             dataGridViewPlanes.Name = "dataGridViewPlanes";
             dataGridViewPlanes.ReadOnly = true;
-            dataGridViewPlanes.Size = new System.Drawing.Size(794, 415);
+            dataGridViewPlanes.Size = new Size(794, 390);
             dataGridViewPlanes.TabIndex = 0;
             // 
             // buttonActualizar
             // 
-            buttonActualizar.Anchor = ((System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right));
-            buttonActualizar.Location = new System.Drawing.Point(641, 424);
+            buttonActualizar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            buttonActualizar.Location = new Point(641, 399);
             buttonActualizar.Name = "buttonActualizar";
-            buttonActualizar.Size = new System.Drawing.Size(75, 23);
+            buttonActualizar.Size = new Size(75, 23);
             buttonActualizar.TabIndex = 1;
             buttonActualizar.Text = "Actualizar";
             buttonActualizar.UseVisualStyleBackColor = true;
@@ -135,9 +110,9 @@
             // 
             // buttonVolver
             // 
-            buttonVolver.Location = new System.Drawing.Point(722, 424);
+            buttonVolver.Location = new Point(722, 399);
             buttonVolver.Name = "buttonVolver";
-            buttonVolver.Size = new System.Drawing.Size(75, 23);
+            buttonVolver.Size = new Size(75, 23);
             buttonVolver.TabIndex = 2;
             buttonVolver.Text = "Volver";
             buttonVolver.UseVisualStyleBackColor = true;
@@ -145,58 +120,61 @@
             // 
             // toolStripPlanes
             // 
-            toolStripPlanes.Dock = System.Windows.Forms.DockStyle.None;
-            toolStripPlanes.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            toolStripPlanes.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripButtonNuevo, toolStripButtonEditar, toolStripButtonEliminar });
-            toolStripPlanes.Location = new System.Drawing.Point(13, 0);
+            toolStripPlanes.Dock = DockStyle.None;
+            toolStripPlanes.GripStyle = ToolStripGripStyle.Hidden;
+            toolStripPlanes.Items.AddRange(new ToolStripItem[] { toolStripButtonNuevo, toolStripButtonEditar, toolStripButtonEliminar });
+            toolStripPlanes.Location = new Point(3, 0);
             toolStripPlanes.Name = "toolStripPlanes";
-            toolStripPlanes.Size = new System.Drawing.Size(72, 25);
+            toolStripPlanes.Size = new Size(72, 25);
             toolStripPlanes.TabIndex = 0;
             toolStripPlanes.Text = "Crear/Editar/Eliminar";
             // 
             // toolStripButtonNuevo
             // 
-            toolStripButtonNuevo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            toolStripButtonNuevo.Image = ((System.Drawing.Image)resources.GetObject("toolStripButtonNuevo.Image"));
-            toolStripButtonNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripButtonNuevo.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            toolStripButtonNuevo.Image = (Image)resources.GetObject("toolStripButtonNuevo.Image");
+            toolStripButtonNuevo.ImageTransparentColor = Color.Magenta;
             toolStripButtonNuevo.Name = "toolStripButtonNuevo";
-            toolStripButtonNuevo.Size = new System.Drawing.Size(23, 22);
+            toolStripButtonNuevo.Size = new Size(23, 22);
             toolStripButtonNuevo.Text = "Nuevo";
             toolStripButtonNuevo.Click += toolStripButtonNuevo_Click;
             // 
             // toolStripButtonEditar
             // 
-            toolStripButtonEditar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            toolStripButtonEditar.Image = ((System.Drawing.Image)resources.GetObject("toolStripButtonEditar.Image"));
-            toolStripButtonEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripButtonEditar.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            toolStripButtonEditar.Image = (Image)resources.GetObject("toolStripButtonEditar.Image");
+            toolStripButtonEditar.ImageTransparentColor = Color.Magenta;
             toolStripButtonEditar.Name = "toolStripButtonEditar";
-            toolStripButtonEditar.Size = new System.Drawing.Size(23, 22);
+            toolStripButtonEditar.Size = new Size(23, 22);
             toolStripButtonEditar.Text = "Editar";
             toolStripButtonEditar.Click += toolStripButtonEditar_Click;
             // 
             // toolStripButtonEliminar
             // 
-            toolStripButtonEliminar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            toolStripButtonEliminar.Image = ((System.Drawing.Image)resources.GetObject("toolStripButtonEliminar.Image"));
-            toolStripButtonEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripButtonEliminar.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            toolStripButtonEliminar.Image = (Image)resources.GetObject("toolStripButtonEliminar.Image");
+            toolStripButtonEliminar.ImageTransparentColor = Color.Magenta;
             toolStripButtonEliminar.Name = "toolStripButtonEliminar";
-            toolStripButtonEliminar.Size = new System.Drawing.Size(23, 22);
+            toolStripButtonEliminar.Size = new Size(23, 22);
             toolStripButtonEliminar.Text = "Eliminar";
             toolStripButtonEliminar.Click += toolStripButtonEliminar_Click;
             // 
             // PlanesForm
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(800, 450);
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
             ControlBox = false;
             Controls.Add(toolStripContainer1);
-            FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            FormBorderStyle = FormBorderStyle.None;
+            Name = "PlanesForm";
             Text = "Form1";
             Load += PlanesForm_Load;
             toolStripContainer1.ContentPanel.ResumeLayout(false);
             toolStripContainer1.TopToolStripPanel.ResumeLayout(false);
             toolStripContainer1.TopToolStripPanel.PerformLayout();
+            toolStripContainer1.ResumeLayout(false);
+            toolStripContainer1.PerformLayout();
             tableLayoutPanelPlanes.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridViewPlanes).EndInit();
             toolStripPlanes.ResumeLayout(false);

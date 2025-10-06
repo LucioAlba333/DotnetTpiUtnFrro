@@ -25,7 +25,7 @@ public class MateriaService : IEntityService<MateriaDto>
             {
                 Materia materia = new Materia(
                     dto.Id,
-                    dto.Descipcion,
+                    dto.Descripcion,
                     dto.HsSemanales,
                     dto.HsTotales,
                     plan);
@@ -61,7 +61,7 @@ public class MateriaService : IEntityService<MateriaDto>
             return new MateriaDto
             {
                 Id = materia.Id,
-                Descipcion = materia.Descripcion,
+                Descripcion = materia.Descripcion,
                 HsSemanales = materia.HsSemanales,
                 HsTotales = materia.HsTotales,
                 IdPlan = materia.IdPlan,
@@ -82,7 +82,7 @@ public class MateriaService : IEntityService<MateriaDto>
             return materias.Select(m => new MateriaDto
             {
                 Id = m.Id,
-                Descipcion = m.Descripcion,
+                Descripcion = m.Descripcion,
                 HsSemanales = m.HsSemanales,
                 HsTotales = m.HsTotales,
                 IdPlan = m.IdPlan,
@@ -100,7 +100,7 @@ public class MateriaService : IEntityService<MateriaDto>
         try
         {
             Plan? plan = await _planRepository.Get(dto.IdPlan);
-            Materia materia = new Materia(dto.Id,dto.Descipcion,dto.HsSemanales,dto.HsTotales,plan);
+            Materia materia = new Materia(dto.Id,dto.Descripcion,dto.HsSemanales,dto.HsTotales,plan);
             return await _materiaRepository.Update(materia);
         }
         catch (Exception e)

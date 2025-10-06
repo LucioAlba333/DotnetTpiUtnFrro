@@ -30,18 +30,19 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EspecialidadesForm));
-            toolStripContainerEspecialidades = new System.Windows.Forms.ToolStripContainer();
-            tableLayoutPanelEspecialidades = new System.Windows.Forms.TableLayoutPanel();
-            dataGridViewEspecialidades = new System.Windows.Forms.DataGridView();
-            buttonActualizar = new System.Windows.Forms.Button();
-            buttonVolver = new System.Windows.Forms.Button();
-            toolStripEspecialidades = new System.Windows.Forms.ToolStrip();
-            toolStripButtonNuevo = new System.Windows.Forms.ToolStripButton();
-            toolStripButtonEditar = new System.Windows.Forms.ToolStripButton();
-            toolStripButtonEliminar = new System.Windows.Forms.ToolStripButton();
-            toolTip1 = new System.Windows.Forms.ToolTip(components);
+            toolStripContainerEspecialidades = new ToolStripContainer();
+            tableLayoutPanelEspecialidades = new TableLayoutPanel();
+            dataGridViewEspecialidades = new DataGridView();
+            buttonActualizar = new Button();
+            buttonVolver = new Button();
+            toolStripEspecialidades = new ToolStrip();
+            toolStripButtonNuevo = new ToolStripButton();
+            toolStripButtonEditar = new ToolStripButton();
+            toolStripButtonEliminar = new ToolStripButton();
+            toolTip1 = new ToolTip(components);
             toolStripContainerEspecialidades.ContentPanel.SuspendLayout();
             toolStripContainerEspecialidades.TopToolStripPanel.SuspendLayout();
+            toolStripContainerEspecialidades.SuspendLayout();
             tableLayoutPanelEspecialidades.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewEspecialidades).BeginInit();
             toolStripEspecialidades.SuspendLayout();
@@ -50,62 +51,36 @@
             // toolStripContainerEspecialidades
             // 
             // 
-            // 
-            // 
-            toolStripContainerEspecialidades.BottomToolStripPanel.Location = new System.Drawing.Point(0, 0);
-            toolStripContainerEspecialidades.BottomToolStripPanel.Name = "";
-            toolStripContainerEspecialidades.BottomToolStripPanel.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            toolStripContainerEspecialidades.BottomToolStripPanel.RowMargin = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            // 
-            // 
+            // toolStripContainerEspecialidades.ContentPanel
             // 
             toolStripContainerEspecialidades.ContentPanel.Controls.Add(tableLayoutPanelEspecialidades);
-            toolStripContainerEspecialidades.ContentPanel.Size = new System.Drawing.Size(800, 450);
-            toolStripContainerEspecialidades.Dock = System.Windows.Forms.DockStyle.Fill;
-            // 
-            // 
-            // 
-            toolStripContainerEspecialidades.LeftToolStripPanel.Location = new System.Drawing.Point(0, 0);
-            toolStripContainerEspecialidades.LeftToolStripPanel.Name = "";
-            toolStripContainerEspecialidades.LeftToolStripPanel.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            toolStripContainerEspecialidades.LeftToolStripPanel.RowMargin = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            toolStripContainerEspecialidades.Location = new System.Drawing.Point(0, 0);
+            toolStripContainerEspecialidades.ContentPanel.Size = new Size(800, 425);
+            toolStripContainerEspecialidades.Dock = DockStyle.Fill;
+            toolStripContainerEspecialidades.Location = new Point(0, 0);
             toolStripContainerEspecialidades.Name = "toolStripContainerEspecialidades";
-            // 
-            // 
-            // 
-            toolStripContainerEspecialidades.RightToolStripPanel.Location = new System.Drawing.Point(0, 0);
-            toolStripContainerEspecialidades.RightToolStripPanel.Name = "";
-            toolStripContainerEspecialidades.RightToolStripPanel.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            toolStripContainerEspecialidades.RightToolStripPanel.RowMargin = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            toolStripContainerEspecialidades.Size = new System.Drawing.Size(800, 450);
+            toolStripContainerEspecialidades.Size = new Size(800, 450);
             toolStripContainerEspecialidades.TabIndex = 0;
             toolStripContainerEspecialidades.Text = "toolStripContainer1";
             // 
-            // 
+            // toolStripContainerEspecialidades.TopToolStripPanel
             // 
             toolStripContainerEspecialidades.TopToolStripPanel.Controls.Add(toolStripEspecialidades);
-            toolStripContainerEspecialidades.TopToolStripPanel.Location = new System.Drawing.Point(0, 0);
-            toolStripContainerEspecialidades.TopToolStripPanel.Name = "";
-            toolStripContainerEspecialidades.TopToolStripPanel.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            toolStripContainerEspecialidades.TopToolStripPanel.RowMargin = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            toolStripContainerEspecialidades.TopToolStripPanel.Size = new System.Drawing.Size(800, 25);
             // 
             // tableLayoutPanelEspecialidades
             // 
             tableLayoutPanelEspecialidades.ColumnCount = 2;
-            tableLayoutPanelEspecialidades.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            tableLayoutPanelEspecialidades.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tableLayoutPanelEspecialidades.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanelEspecialidades.ColumnStyles.Add(new ColumnStyle());
             tableLayoutPanelEspecialidades.Controls.Add(dataGridViewEspecialidades, 0, 0);
             tableLayoutPanelEspecialidades.Controls.Add(buttonActualizar, 0, 1);
             tableLayoutPanelEspecialidades.Controls.Add(buttonVolver, 1, 1);
-            tableLayoutPanelEspecialidades.Dock = System.Windows.Forms.DockStyle.Fill;
-            tableLayoutPanelEspecialidades.Location = new System.Drawing.Point(0, 0);
+            tableLayoutPanelEspecialidades.Dock = DockStyle.Fill;
+            tableLayoutPanelEspecialidades.Location = new Point(0, 0);
             tableLayoutPanelEspecialidades.Name = "tableLayoutPanelEspecialidades";
             tableLayoutPanelEspecialidades.RowCount = 2;
-            tableLayoutPanelEspecialidades.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            tableLayoutPanelEspecialidades.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            tableLayoutPanelEspecialidades.Size = new System.Drawing.Size(800, 450);
+            tableLayoutPanelEspecialidades.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanelEspecialidades.RowStyles.Add(new RowStyle());
+            tableLayoutPanelEspecialidades.Size = new Size(800, 425);
             tableLayoutPanelEspecialidades.TabIndex = 0;
             // 
             // dataGridViewEspecialidades
@@ -114,23 +89,23 @@
             dataGridViewEspecialidades.AllowUserToDeleteRows = false;
             dataGridViewEspecialidades.AllowUserToResizeColumns = false;
             dataGridViewEspecialidades.AllowUserToResizeRows = false;
-            dataGridViewEspecialidades.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewEspecialidades.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewEspecialidades.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewEspecialidades.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             tableLayoutPanelEspecialidades.SetColumnSpan(dataGridViewEspecialidades, 2);
-            dataGridViewEspecialidades.Dock = System.Windows.Forms.DockStyle.Fill;
-            dataGridViewEspecialidades.Location = new System.Drawing.Point(3, 3);
+            dataGridViewEspecialidades.Dock = DockStyle.Fill;
+            dataGridViewEspecialidades.Location = new Point(3, 3);
             dataGridViewEspecialidades.MultiSelect = false;
             dataGridViewEspecialidades.Name = "dataGridViewEspecialidades";
             dataGridViewEspecialidades.ReadOnly = true;
-            dataGridViewEspecialidades.Size = new System.Drawing.Size(794, 415);
+            dataGridViewEspecialidades.Size = new Size(794, 390);
             dataGridViewEspecialidades.TabIndex = 0;
             // 
             // buttonActualizar
             // 
-            buttonActualizar.Anchor = ((System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right));
-            buttonActualizar.Location = new System.Drawing.Point(641, 424);
+            buttonActualizar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            buttonActualizar.Location = new Point(641, 399);
             buttonActualizar.Name = "buttonActualizar";
-            buttonActualizar.Size = new System.Drawing.Size(75, 23);
+            buttonActualizar.Size = new Size(75, 23);
             buttonActualizar.TabIndex = 1;
             buttonActualizar.Text = "Actualizar";
             buttonActualizar.UseVisualStyleBackColor = true;
@@ -138,9 +113,9 @@
             // 
             // buttonVolver
             // 
-            buttonVolver.Location = new System.Drawing.Point(722, 424);
+            buttonVolver.Location = new Point(722, 399);
             buttonVolver.Name = "buttonVolver";
-            buttonVolver.Size = new System.Drawing.Size(75, 23);
+            buttonVolver.Size = new Size(75, 23);
             buttonVolver.TabIndex = 2;
             buttonVolver.Text = "Volver";
             buttonVolver.UseVisualStyleBackColor = true;
@@ -148,58 +123,61 @@
             // 
             // toolStripEspecialidades
             // 
-            toolStripEspecialidades.Dock = System.Windows.Forms.DockStyle.None;
-            toolStripEspecialidades.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            toolStripEspecialidades.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripButtonNuevo, toolStripButtonEditar, toolStripButtonEliminar });
-            toolStripEspecialidades.Location = new System.Drawing.Point(5, 0);
+            toolStripEspecialidades.Dock = DockStyle.None;
+            toolStripEspecialidades.GripStyle = ToolStripGripStyle.Hidden;
+            toolStripEspecialidades.Items.AddRange(new ToolStripItem[] { toolStripButtonNuevo, toolStripButtonEditar, toolStripButtonEliminar });
+            toolStripEspecialidades.Location = new Point(5, 0);
             toolStripEspecialidades.Name = "toolStripEspecialidades";
-            toolStripEspecialidades.Size = new System.Drawing.Size(72, 25);
+            toolStripEspecialidades.Size = new Size(72, 25);
             toolStripEspecialidades.TabIndex = 0;
             toolStripEspecialidades.Text = "Nuevo/Editar/Borrar";
             // 
             // toolStripButtonNuevo
             // 
-            toolStripButtonNuevo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            toolStripButtonNuevo.Image = ((System.Drawing.Image)resources.GetObject("toolStripButtonNuevo.Image"));
-            toolStripButtonNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripButtonNuevo.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            toolStripButtonNuevo.Image = (Image)resources.GetObject("toolStripButtonNuevo.Image");
+            toolStripButtonNuevo.ImageTransparentColor = Color.Magenta;
             toolStripButtonNuevo.Name = "toolStripButtonNuevo";
-            toolStripButtonNuevo.Size = new System.Drawing.Size(23, 22);
+            toolStripButtonNuevo.Size = new Size(23, 22);
             toolStripButtonNuevo.Text = "Nuevo";
             toolStripButtonNuevo.Click += toolStripButtonNuevo_Click;
             // 
             // toolStripButtonEditar
             // 
-            toolStripButtonEditar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            toolStripButtonEditar.Image = ((System.Drawing.Image)resources.GetObject("toolStripButtonEditar.Image"));
-            toolStripButtonEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripButtonEditar.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            toolStripButtonEditar.Image = (Image)resources.GetObject("toolStripButtonEditar.Image");
+            toolStripButtonEditar.ImageTransparentColor = Color.Magenta;
             toolStripButtonEditar.Name = "toolStripButtonEditar";
-            toolStripButtonEditar.Size = new System.Drawing.Size(23, 22);
+            toolStripButtonEditar.Size = new Size(23, 22);
             toolStripButtonEditar.Text = "Editar";
             toolStripButtonEditar.Click += toolStripButtonEditar_Click;
             // 
             // toolStripButtonEliminar
             // 
-            toolStripButtonEliminar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            toolStripButtonEliminar.Image = ((System.Drawing.Image)resources.GetObject("toolStripButtonEliminar.Image"));
-            toolStripButtonEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            toolStripButtonEliminar.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            toolStripButtonEliminar.Image = (Image)resources.GetObject("toolStripButtonEliminar.Image");
+            toolStripButtonEliminar.ImageTransparentColor = Color.Magenta;
             toolStripButtonEliminar.Name = "toolStripButtonEliminar";
-            toolStripButtonEliminar.Size = new System.Drawing.Size(23, 22);
+            toolStripButtonEliminar.Size = new Size(23, 22);
             toolStripButtonEliminar.Text = "Eliminar";
             toolStripButtonEliminar.Click += toolStripButtonEliminar_Click;
             // 
             // EspecialidadesForm
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(800, 450);
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
             ControlBox = false;
             Controls.Add(toolStripContainerEspecialidades);
-            FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            FormBorderStyle = FormBorderStyle.None;
+            Name = "EspecialidadesForm";
             Text = "Academia/Especialidades";
             Load += EspecialidadesForm_Load;
             toolStripContainerEspecialidades.ContentPanel.ResumeLayout(false);
             toolStripContainerEspecialidades.TopToolStripPanel.ResumeLayout(false);
             toolStripContainerEspecialidades.TopToolStripPanel.PerformLayout();
+            toolStripContainerEspecialidades.ResumeLayout(false);
+            toolStripContainerEspecialidades.PerformLayout();
             tableLayoutPanelEspecialidades.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridViewEspecialidades).EndInit();
             toolStripEspecialidades.ResumeLayout(false);

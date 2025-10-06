@@ -1,14 +1,5 @@
 ﻿using Academia.ApiClient;
 using Academia.Desktop.Views.Especialidades.Modals;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using Academia.Dtos;
 
 namespace Academia.Desktop.Views.Especialidades
@@ -42,7 +33,6 @@ namespace Academia.Desktop.Views.Especialidades
         {
             try
             {
-
                 List<EspecialidadDto> especialidades = (List<EspecialidadDto>)await EspecialidadApiClient.GetAllAsync();
                 this.dataGridViewEspecialidades.DataSource = null;
                 this.dataGridViewEspecialidades.DataSource = especialidades;
