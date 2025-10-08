@@ -20,14 +20,18 @@ public class PlanService: IEntityService<PlanDto>
     {
         try
         {
-            if(await _planRepository.PlanExists(dto.Descripcion))
-                throw new ApplicationException("El plan ya existe");
+            if (await _planRepository.PlanExists(dto.Descripcion))
+                throw new ArgumentException("El plan ya existe");
             Especialidad? especialidad = await _especialidadRepository.Get(dto.EspecialidadId);
             if (especialidad != null)
             {
-                Plan plan = new Plan(dto.Id, dto.Descripcion,especialidad);
+                Plan plan = new Plan(dto.Id, dto.Descripcion, especialidad);
                 await _planRepository.Add(plan);
             }
+        }
+        catch (ArgumentException)
+        {
+            throw;
         }
         catch (Exception e)
         {
@@ -92,12 +96,16 @@ public class PlanService: IEntityService<PlanDto>
     {
         try
         {
-            if( await _planRepository.PlanExists(dto.Descripcion,dto.Id))
-                throw new ApplicationException("El plan ya existe");
+            if (await _planRepository.PlanExists(dto.Descripcion, dto.Id))
+                throw new ArgumentException("El plan ya existe");
             Especialidad? especialidad = await _especialidadRepository.Get(dto.EspecialidadId);
-            Plan plan = new Plan(dto.Id, dto.Descripcion,especialidad);
+            Plan plan = new Plan(dto.Id, dto.Descripcion, especialidad);
             return await _planRepository.Update(plan);
-            
+
+        }
+        catch (ArgumentException)
+        {
+            throw;
         }
         catch (Exception e)
         {

@@ -7,9 +7,10 @@ public class PlanDtoValidator: AbstractValidator<PlanDto>
 {
     public PlanDtoValidator()
     {
-        RuleFor(p=> p.Descripcion)
+        RuleFor(p => p.Descripcion)
             .Cascade(CascadeMode.Stop)
             .NotEmpty()
+            .WithMessage("la descripcion es obligatoria y debe tener menos de 50 caracteres")
             .MaximumLength(50)
             .WithMessage("la descripcion es obligatoria y debe tener menos de 50 caracteres");
     }

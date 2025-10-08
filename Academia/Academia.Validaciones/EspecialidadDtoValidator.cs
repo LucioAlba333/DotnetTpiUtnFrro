@@ -10,6 +10,7 @@ public class EspecialidadDtoValidator : AbstractValidator<EspecialidadDto>
         RuleFor(x => x.Descripcion)
             .Cascade(CascadeMode.Stop)
             .NotEmpty()
+            .WithMessage("la descripcion es obligatoria y debe tener menos de 50 caracteres")
             .MaximumLength(50)
             .WithMessage("la descripcion es obligatoria y debe tener menos de 50 caracteres");
     }

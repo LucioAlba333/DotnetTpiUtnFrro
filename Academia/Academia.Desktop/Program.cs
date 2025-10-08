@@ -16,7 +16,7 @@ static class Program
         ApplicationConfiguration.Initialize();
         Application.ThreadException += Application_ThreadException;
         Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
-        Task.Run(async () => await MainAsync()).GetAwaiter().GetResult();
+        MainAsync().GetAwaiter().GetResult();
     }
 
     static async Task MainAsync()

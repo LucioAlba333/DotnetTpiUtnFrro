@@ -1,13 +1,16 @@
 using Academia.Dtos;
 using Academia.Services.Interfaces;
+using Academia.WebApi.Filters;
 using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+
 
 namespace Academia.WebApi.Controllers
 {
 	[Authorize]
 	[Route("api/[controller]")]
+	[TypeFilter(typeof(ExceptionManager))]
 	[ApiController]
 	public class EspecialidadController : ControllerBase
 	{

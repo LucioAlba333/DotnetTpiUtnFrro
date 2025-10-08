@@ -22,8 +22,14 @@ public class EspecialidadService: IEntityService<EspecialidadDto>
             {
                 throw new ArgumentException($"ya existe una especialidad con descripcion '{dto.Descripcion}'.");
             }
+
             Especialidad especialidad = new Especialidad(dto.Id, dto.Descripcion);
             await _repository.Add(especialidad);
+        }
+        catch (ArgumentException)
+        {
+            throw;
+
         }
         catch (Exception e)
         {
@@ -89,9 +95,14 @@ public class EspecialidadService: IEntityService<EspecialidadDto>
             {
                 throw new ArgumentException($"Ya existe otra especialidad con descripcion '{dto.Descripcion}'.");
             }
+
             Especialidad especialidad = new Especialidad(dto.Id, dto.Descripcion);
             return await _repository.Update(especialidad);
 
+        }
+        catch (ArgumentException)
+        {
+            throw;
         }
         catch (Exception e)
         {

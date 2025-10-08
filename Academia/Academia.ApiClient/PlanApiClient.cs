@@ -14,8 +14,7 @@ public class PlanApiClient : ApiClient
             var response = await client.GetAsync("api/Plan");
             if (!response.IsSuccessStatusCode)
             {
-                var error = await response.Content.ReadAsStringAsync();
-                throw new Exception($"status: {response.StatusCode} - {error}");
+                await ErrorResponse.SendError(response);
             }
 
             var json = await response.Content.ReadAsStreamAsync();
@@ -45,9 +44,8 @@ public class PlanApiClient : ApiClient
             using var client = await GetHttpClient();
             var response = await client.GetAsync($"api/Plan/{id}");
             if (!response.IsSuccessStatusCode)
-            {
-                var error = await response.Content.ReadAsStringAsync();
-                throw new Exception($"Status: {response.StatusCode} - {error}");
+            { 
+                await ErrorResponse.SendError(response);
             }
 
             var json = await response.Content.ReadAsStreamAsync();
@@ -73,8 +71,7 @@ public class PlanApiClient : ApiClient
             var response = await client.PostAsJsonAsync("api/Plan", plan);
             if (!response.IsSuccessStatusCode)
             {
-                var error = await response.Content.ReadAsStringAsync();
-                throw new Exception($"Error al crear plan. Status: {response.StatusCode} - {error}");
+                await ErrorResponse.SendError(response);
             }
         }
         catch (HttpRequestException e)
@@ -95,8 +92,7 @@ public class PlanApiClient : ApiClient
             var response = await client.PutAsJsonAsync("api/Plan/"+plan.Id, plan);
             if (!response.IsSuccessStatusCode)
             {
-                var error = await response.Content.ReadAsStringAsync();
-                throw new Exception($"Error al actualizar Plan Status: {response.StatusCode} - {error}");
+                await ErrorResponse.SendError(response);
             }
         }
         catch (HttpRequestException e)
@@ -117,8 +113,7 @@ public class PlanApiClient : ApiClient
             var response = await client.DeleteAsync($"api/Plan/{id}");
             if (!response.IsSuccessStatusCode)
             {
-                var error = await response.Content.ReadAsStringAsync();
-                throw new Exception($"Error al eliminar el plan. Status: {response.StatusCode} - {error}");
+                await ErrorResponse.SendError(response);
             }
         }
         catch (HttpRequestException e)
