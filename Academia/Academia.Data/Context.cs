@@ -89,7 +89,10 @@ public class Context : DbContext
                     .HasMaxLength(50);
                 entity.HasData(
                     new {Id=1, Descripcion = "Especialidades"}, 
-                    new {Id=2, Descripcion = "Planes"}
+                    new {Id=2, Descripcion = "Planes"},
+                    new {Id=3, Descripcion = "Usuarios"},
+                    new {Id=4, Descripcion = "Personas"},
+                    new {Id=5, Descripcion = "Materias"}
                     );
             });
         modelBuilder.Entity<ModuloUsuario>(entity =>

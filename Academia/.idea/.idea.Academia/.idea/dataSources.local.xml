@@ -17,5 +17,21 @@
         </introspection-scope>
       </schema-mapping>
     </data-source>
+    <data-source name="Academia@localhost [2]" uuid="6f3207c0-ee29-4fcc-9865-afb012008b6f">
+      <database-info product="Microsoft SQL Server" version="16.00.1150" jdbc-version="4.2" driver-name="JetBrains JDBC Driver for SQL Server" driver-version="1.0" dbms="MSSQL" exact-version="16.0.1150" exact-driver-version="1.0">
+        <extra-name-characters>$#@</extra-name-characters>
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed" />
+      <secret-storage>master_key</secret-storage>
+      <auth-provider>no-auth</auth-provider>
+      <schema-mapping>
+        <introspection-scope>
+          <node kind="database" qname="@">
+            <node kind="schema" qname="@" />
+          </node>
+        </introspection-scope>
+      </schema-mapping>
+    </data-source>
   </component>
 </project>
