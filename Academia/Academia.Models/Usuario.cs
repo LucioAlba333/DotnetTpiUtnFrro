@@ -7,7 +7,7 @@ public class Usuario : BusinessEntity
     public string NombreUsuario { get; private set; }
   
     public string Clave { get; private set; }
-
+    public ICollection<ModuloUsuario> Permisos { get; set; } = new List<ModuloUsuario>();
     protected Usuario() { }
     public Usuario(int id, Persona persona, string nombreUsuario, string clave) : base(id)
     {

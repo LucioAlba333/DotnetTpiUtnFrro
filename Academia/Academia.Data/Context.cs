@@ -95,22 +95,25 @@ public class Context : DbContext
                     new {Id=5, Descripcion = "Materias"}
                     );
             });
-        modelBuilder.Entity<ModuloUsuario>(entity =>
-        {
-            entity.HasKey(e => e.Id);
-            entity.Property(e => e.Id)
-                .ValueGeneratedOnAdd();
-            entity.HasOne(e => e.Usuario)
-                .WithMany()
-                .HasForeignKey(e => e.IdUsuario);
-            entity.HasOne(e => e.Modulo)
-                .WithMany()
-                .HasForeignKey(e => e.IdModulo);
-            entity.Property(e => e.Alta).IsRequired();
-            entity.Property(e => e.Modificacion).IsRequired();
-            entity.Property(e => e.Consulta).IsRequired();
-            entity.Property(e=> e.Baja).IsRequired();
-        });
+            modelBuilder.Entity<ModuloUsuario>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+
+                entity.Property(e => e.Alta).IsRequired();
+                entity.Property(e => e.Baja).IsRequired();
+                entity.Property(e => e.Modificacion).IsRequired();
+                entity.Property(e => e.Consulta).IsRequired();
+
+                entity.HasOne(e => e.Usuario)
+                    .WithMany()
+                    .HasForeignKey(e => e.IdUsuario) 
+                    .OnDelete(DeleteBehavior.Cascade);
+
+                entity.HasOne(e => e.Modulo)
+                    .WithMany()
+                    .HasForeignKey(e => e.IdModulo)
+                    .OnDelete(DeleteBehavior.Cascade);
+            });
         modelBuilder.Entity<Persona>(entity =>
         {
             entity.HasKey(e => e.Id);

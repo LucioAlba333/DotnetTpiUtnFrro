@@ -47,6 +47,7 @@ builder.Services.AddScoped<MateriaRepository>();
 builder.Services.AddScoped<EspecialidadRepository>();
 builder.Services.AddScoped<PersonaRepository>();
 builder.Services.AddScoped<UsuarioRepository>();
+builder.Services.AddScoped<ModuloUsuarioRepository>();
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<UsuarioService>();
 builder.Services.AddScoped<IEntityService<PersonaDto>, PersonaService>();

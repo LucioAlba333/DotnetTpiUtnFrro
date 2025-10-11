@@ -10,15 +10,18 @@ public class UsuarioService
     private readonly PasswordEncrypter _passwordEncrypter;
     private readonly UsuarioRepository  _usuarioRepository;
     private readonly PersonaRepository  _personaRepository;
+    private readonly ModuloUsuarioRepository _moduloUsuarioRepository;
 
     public UsuarioService(
         PasswordEncrypter passwordEncrypter,
         UsuarioRepository usuarioRepository,
-        PersonaRepository personaRepository)
+        PersonaRepository personaRepository,
+        ModuloUsuarioRepository moduloUsuarioRepository)
     {
         _passwordEncrypter = passwordEncrypter;
         _usuarioRepository = usuarioRepository;
         _personaRepository = personaRepository;
+        _moduloUsuarioRepository = moduloUsuarioRepository;
     }
 
     public async Task New(UsuarioCreateDto usuarioCreateDto)
@@ -32,6 +35,7 @@ public class UsuarioService
                 string passwordHash = _passwordEncrypter.Hash(usuarioCreateDto.Clave);
                 Usuario usuario = new Usuario(0,persona,usuarioCreateDto.NombreUsuario,passwordHash);
                 await _usuarioRepository.Add(usuario);
+                await _moduloUsuarioRepository.Add(usuario);
             }
                 
 
@@ -141,6 +145,7 @@ public class UsuarioService
             string passwordHash = _passwordEncrypter.Hash(adminPassword);
             Usuario usuario = new Usuario(0, persona, adminUsername, passwordHash);
             await _usuarioRepository.Add(usuario);
+            await _moduloUsuarioRepository.Add(usuario);
         }
     }
 

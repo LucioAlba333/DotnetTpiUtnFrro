@@ -35,7 +35,10 @@ public class UsuarioRepository
 
     public async Task<Usuario?> GetByUsername(string username)
     {
-        return await _context.Usuarios.Include(e => e.Persona).FirstOrDefaultAsync(e => e.NombreUsuario == username);
+        return await _context.Usuarios
+            .Include(e => e.Permisos)
+            .ThenInclude(p => p.Modulo)
+            .Include(e => e.Persona).FirstOrDefaultAsync(e => e.NombreUsuario == username);
     }
 
     public async Task<IEnumerable<Usuario>> GetAll()

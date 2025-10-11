@@ -4,6 +4,7 @@ using Academia.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Academia.Data.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20251011020126_Restart")]
+    partial class Restart
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -150,16 +153,11 @@ namespace Academia.Data.Migrations
                     b.Property<bool>("Modificacion")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("UsuarioId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("IdModulo");
 
                     b.HasIndex("IdUsuario");
-
-                    b.HasIndex("UsuarioId");
 
                     b.ToTable("ModuloUsuarios");
                 });
@@ -327,10 +325,6 @@ namespace Academia.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Academia.Models.Usuario", null)
-                        .WithMany("Permisos")
-                        .HasForeignKey("UsuarioId");
-
                     b.Navigation("Modulo");
 
                     b.Navigation("Usuario");
@@ -366,11 +360,6 @@ namespace Academia.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Persona");
-                });
-
-            modelBuilder.Entity("Academia.Models.Usuario", b =>
-                {
-                    b.Navigation("Permisos");
                 });
 #pragma warning restore 612, 618
         }

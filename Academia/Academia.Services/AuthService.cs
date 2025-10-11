@@ -49,13 +49,30 @@ public class AuthService
     {
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Key!));
         var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-        var claims = new[]
+        var claims = new List<Claim>
         {
             new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
             new Claim(ClaimTypes.Name, user.NombreUsuario),
             new Claim(ClaimTypes.Email, user.Persona.Email),
             new Claim("jti",Guid.NewGuid().ToString())
         };
+        foreach (var permiso in user.Permisos)
+        {
+            var nombreModulo = permiso.Modulo.Descripcion.ToLower();
+
+            if (permiso.Consulta)
+                claims.Add(new Claim("permission", $"{nombreModulo}.leer"));
+
+            if (permiso.Alta)
+                claims.Add(new Claim("permission", $"{nombreModulo}.agregar"));
+
+            if (permiso.Modificacion)
+                claims.Add(new Claim("permission", $"{nombreModulo}.actualizar"));
+
+            if (permiso.Baja)
+                claims.Add(new Claim("permission", $"{nombreModulo}.eliminar"));
+            
+        }
         var token = new JwtSecurityToken(
             issuer: _jwtSettings.Issuer,
             audience: _jwtSettings.Audience,
