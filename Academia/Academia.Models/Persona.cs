@@ -93,7 +93,7 @@ public class Persona : BusinessEntity
     public void SetTipoPersona(string tipoPersonaArg)
     {
         if (!Enum.TryParse<TipoPersona>(tipoPersonaArg, ignoreCase: true, out var tipoPersona))
-            throw new ArgumentOutOfRangeException(nameof(tipoPersonaArg), $"Valor inválido: {tipoPersonaArg}");
+            throw new ArgumentOutOfRangeException(nameof(tipoPersonaArg), $"Valor invalido: {tipoPersonaArg}");
 
         TipoPersona = tipoPersona;
     }
