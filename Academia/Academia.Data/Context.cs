@@ -17,6 +17,8 @@ public class Context : DbContext
     public DbSet<Modulo> Modulos { get; set; }
     public DbSet<ModuloUsuario> ModuloUsuarios { get; set; }
     public DbSet<Materia> Materias { get; set; }
+    public DbSet<Comision> Comisiones {  get; set; }
+
     
     public async Task InitDatabase()
     {
@@ -186,6 +188,64 @@ public class Context : DbContext
             entity.HasOne(e => e.Plan)
                 .WithMany()
                 .HasForeignKey(e => e.IdPlan);
+        });
+        modelBuilder.Entity<Comision>(entity =>
+        {
+            entity.HasKey(e =>e.Id);
+            entity.Property(e => e.Id)
+                .ValueGeneratedOnAdd();
+            entity.Property(e => e.Descripcion)
+                .IsRequired();
+            entity.Property(e => e.AnioEspecialidad)
+                .IsRequired();
+            entity.HasOne(e =>e.Plan)
+                .WithMany()
+                .HasForeignKey(e => e.IdPlan);
+        });
+        modelBuilder.Entity<Curso>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.Id) 
+                .ValueGeneratedOnAdd();
+            entity.Property(e => e.AnioCalendario)
+                .IsRequired();
+            entity.Property(e => e.Cupo)
+                .IsRequired();
+            entity.HasOne(e => e.Materia)
+                .WithMany()
+                .HasForeignKey(e => e.IdMateria);
+            entity.HasOne(e => e.Comision) 
+                .WithMany()
+                .HasForeignKey(e =>e.IdComision);
+        });
+        modelBuilder.Entity<DocenteCursos>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.Id)
+                .ValueGeneratedOnAdd();
+            entity.Property(e => e.Cargo)
+                .IsRequired()
+                .HasConversion<int>();
+            entity.HasOne(e => e.Docente)
+                .WithMany()
+                .HasForeignKey(e =>e.IdDocente);
+            entity.HasOne(e => e.Curso)
+                .WithMany()
+                .HasForeignKey(e => e.IdCurso);
+        });
+        modelBuilder.Entity<Inscripcion>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.Id)
+                .ValueGeneratedOnAdd();
+            entity.Property(e => e.Nota);
+            entity.Property(e => e.Condicion);
+            entity.HasOne(e => e.Alumno)
+                .WithMany()
+                .HasForeignKey(e => e.IdAlumno);
+            entity.HasOne(e => e.Curso)
+                .WithMany()
+                .HasForeignKey(e => e.IdCurso);
         });
     }
 }
