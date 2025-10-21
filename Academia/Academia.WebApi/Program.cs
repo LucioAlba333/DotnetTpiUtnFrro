@@ -55,8 +55,10 @@ builder.Services.AddScoped<IEntityService<PersonaDto>, PersonaService>();
 builder.Services.AddScoped<IEntityService<EspecialidadDto>, EspecialidadService>();
 builder.Services.AddScoped<IEntityService<PlanDto>, PlanService>();
 builder.Services.AddScoped<IEntityService<MateriaDto>, MateriaService>();
+builder.Services.AddScoped <IEntityService<ComisionDto>, ComisionService>();
 builder.Services.AddScoped<IValidator<EspecialidadDto>, EspecialidadDtoValidator>();
 builder.Services.AddScoped<IValidator<PlanDto>, PlanDtoValidator>();
+builder.Services.AddScoped<IValidator<ComisionDto>, ComisionDtoValidator>();
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
