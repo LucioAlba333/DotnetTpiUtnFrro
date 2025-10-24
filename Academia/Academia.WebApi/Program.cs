@@ -49,6 +49,7 @@ builder.Services.AddScoped<PersonaRepository>();
 builder.Services.AddScoped<UsuarioRepository>();
 builder.Services.AddScoped<ModuloUsuarioRepository>();
 builder.Services.AddScoped<ComisionRepository>();
+builder.Services.AddScoped<CursoRepository>();
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<UsuarioService>();
 builder.Services.AddScoped<IEntityService<PersonaDto>, PersonaService>();
@@ -56,9 +57,11 @@ builder.Services.AddScoped<IEntityService<EspecialidadDto>, EspecialidadService>
 builder.Services.AddScoped<IEntityService<PlanDto>, PlanService>();
 builder.Services.AddScoped<IEntityService<MateriaDto>, MateriaService>();
 builder.Services.AddScoped <IEntityService<ComisionDto>, ComisionService>();
+builder.Services.AddScoped<IEntityService<CursoDto>, CursoService>();
 builder.Services.AddScoped<IValidator<EspecialidadDto>, EspecialidadDtoValidator>();
 builder.Services.AddScoped<IValidator<PlanDto>, PlanDtoValidator>();
 builder.Services.AddScoped<IValidator<ComisionDto>, ComisionDtoValidator>();
+builder.Services.AddScoped<IValidator<CursoDto>, CursoDtoValidator>();
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())

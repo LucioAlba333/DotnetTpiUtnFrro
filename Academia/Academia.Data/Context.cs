@@ -18,6 +18,7 @@ public class Context : DbContext
     public DbSet<ModuloUsuario> ModuloUsuarios { get; set; }
     public DbSet<Materia> Materias { get; set; }
     public DbSet<Comision> Comisiones {  get; set; }
+    public DbSet<Curso> Cursos { get; set; }
 
     
     public async Task InitDatabase()

@@ -30,4 +30,58 @@ public class ComisionController : ControllerBase
             return NotFound();
         return Ok(comisionDto);
     }
+
+    [HttpGet(Name = "GetAllComisiones")]
+    public async Task<ActionResult<IEnumerable<ComisionDto>>> GetAll()
+    {
+        var comisionDtos = await _comisionService.GetAll();
+        return Ok(comisionDtos);
+    }
+
+    [HttpPost]
+    public async Task<ActionResult<ComisionDto>> Create(ComisionDto comisionDto)
+    {
+        var result =  await _comisionValidator.ValidateAsync(comisionDto);
+        if (!result.IsValid)
+        {
+            var errors = result.Errors
+                .Select(e => new {e.PropertyName, e.ErrorMessage} );
+            return BadRequest(errors);
+        }
+        await _comisionService.New(comisionDto);
+        return CreatedAtAction(nameof(Get), new { id = comisionDto.Id }, comisionDto);
+    }
+
+    [HttpPut("{id:int}")]
+    public async Task<ActionResult<ComisionDto>> Update(int id, [FromBody] ComisionDto comisionDto)
+    {
+        var result = await _comisionValidator.ValidateAsync(comisionDto);
+        if (!result.IsValid)
+        {
+            var errors = result.Errors
+                .Select(e => new {e.PropertyName, e.ErrorMessage});
+            return BadRequest(errors);
+        }
+
+        if (id != comisionDto.Id)
+        {
+            return BadRequest();
+        }
+
+        bool up = await _comisionService.Update(comisionDto);
+        if (!up)
+        {
+            return NotFound();
+        }
+        return NoContent();
+    }
+
+    [HttpDelete("{id:int}")]
+    public async Task<ActionResult<ComisionDto>> Delete(int id)
+    {
+        bool del = await _comisionService.Delete(id);
+        if (!del)
+            return NotFound();
+        return NoContent();
+    }
 }
