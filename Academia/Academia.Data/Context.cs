@@ -20,6 +20,7 @@ public class Context : DbContext
     public DbSet<Comision> Comisiones {  get; set; }
     public DbSet<Curso> Cursos { get; set; }
     public DbSet<DocenteCursos>  DocenteCursos { get; set; }
+    public DbSet<Inscripcion> Inscripciones { get; set; }
     
     public async Task InitDatabase()
     {
@@ -95,7 +96,11 @@ public class Context : DbContext
                     new {Id=2, Descripcion = "Planes"},
                     new {Id=3, Descripcion = "Usuarios"},
                     new {Id=4, Descripcion = "Personas"},
-                    new {Id=5, Descripcion = "Materias"}
+                    new {Id=5, Descripcion = "Materias"},
+                    new {Id=6, Descripcion = "Comisiones"},
+                    new {Id=7, Descripcion = "Cursos"},
+                    new {Id=8, Descripcion = "DocentesCursos"},
+                    new {Id=9, Descripcion = "Inscripciones"}
                     );
             });
             modelBuilder.Entity<ModuloUsuario>(entity =>

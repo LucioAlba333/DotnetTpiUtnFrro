@@ -26,6 +26,34 @@ public class ModuloUsuarioRepository
                 case TipoPersona.Administrador:
                     alta = baja = modificacion = consulta = true;
                     break;
+
+                case TipoPersona.Alumno:
+
+                    if (modulo.Descripcion == "Inscripciones")
+                    {
+                        alta = baja = consulta = true;
+                    }
+                    else if (modulo.Descripcion == "Cursos")
+                    {
+                        consulta = true;
+                    }
+                    break;
+
+                case TipoPersona.Profesor:
+                    if (modulo.Descripcion == "Cursos" || modulo.Descripcion == "Materias")
+                    {
+                        consulta = true;
+                    }
+
+                    else if (modulo.Descripcion == "DocentesCursos")
+                    {
+                        consulta = modificacion = true;
+                    }
+                    else if (modulo.Descripcion == "Inscripciones")
+                    {
+                        consulta = modificacion = true;
+                    }
+                    break;
             }
             ModuloUsuario moduloUsuario = new ModuloUsuario(
                 0,

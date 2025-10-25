@@ -8,6 +8,7 @@ using Academia.Services.Interfaces;
 using Academia.Services;
 using Academia.Validaciones;
 using FluentValidation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -39,7 +40,23 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 builder.Services.AddAuthorization(options =>
 {
-	options.FallbackPolicy = options.DefaultPolicy;
+	options.FallbackPolicy = new AuthorizationPolicyBuilder()
+		.RequireAuthenticatedUser()
+		.Build();
+
+
+	var modulos = new[] { "especialidades", "planes", "usuarios", "personas", "materias", "comisiones", "cursos", "docentescursos", "inscripciones" };
+	var acciones = new[] { "leer", "agregar", "actualizar", "eliminar" };
+
+	foreach (var modulo in modulos)
+	{
+		foreach (var accion in acciones)
+		{
+			var claimName = $"{modulo}.{accion}";
+			options.AddPolicy(claimName, policy =>
+				policy.RequireClaim("permission", claimName));
+		}
+	}
 });
 builder.Services.AddScoped<PasswordEncrypter>();
 builder.Services.AddScoped<PlanRepository>();

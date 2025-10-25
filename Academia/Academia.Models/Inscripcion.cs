@@ -10,12 +10,15 @@ public class Inscripcion: BusinessEntity
     public int IdCurso {get; private set;}
 
     protected Inscripcion(){}
-    public Inscripcion(int id, Persona alumno, Curso curso, string condicion, int nota) : base(id)
+    public Inscripcion(int id, Persona alumno, Curso curso, string? condicion, int? nota) : base(id)
     {
         SetAlumno(alumno);
         SetCurso(curso);
-        SetCondicion(condicion);
-        SetNota(nota);
+        if (nota != null) 
+            SetNota(nota.Value);
+        if (condicion != null)
+            SetCondicion(condicion);
+        
     }
 
     public void SetAlumno(Persona alumno)
