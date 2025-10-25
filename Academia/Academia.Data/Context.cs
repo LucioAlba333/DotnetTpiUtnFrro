@@ -19,7 +19,7 @@ public class Context : DbContext
     public DbSet<Materia> Materias { get; set; }
     public DbSet<Comision> Comisiones {  get; set; }
     public DbSet<Curso> Cursos { get; set; }
-
+    public DbSet<DocenteCursos>  DocenteCursos { get; set; }
     
     public async Task InitDatabase()
     {

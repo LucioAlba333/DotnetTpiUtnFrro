@@ -33,11 +33,9 @@ public class DocenteCursos: BusinessEntity
 
     public void SetCargo(string cargo)
     {
-        if (!Enum.TryParse<TiposCargos>(cargo, ignoreCase: true, out var tipoCargo))
-        {
-            throw new ArgumentOutOfRangeException(nameof(cargo),$"Valor invalido: {cargo}");
-        }
-        Cargo = tipoCargo;
+        if (!Enum.TryParse<TiposCargos>(cargo, out var cargo2))
+            throw new ArgumentException("Cargo docente inválido");
+        Cargo  = cargo2;
     }
     
 
