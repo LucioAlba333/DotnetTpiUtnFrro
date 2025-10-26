@@ -9,18 +9,18 @@ namespace Academia.WebApi.Controllers;
 [ApiController]
 [Route("api/[controller]")]
 [TypeFilter(typeof(ExceptionManager))]
-public class DocenteCursosController : ControllerBase
+public class InscripcionController : ControllerBase
 {
-    private readonly IEntityService<DocenteCursosDto> _service;
+    private readonly IEntityService<InscripcionDto> _service;
 
-    public DocenteCursosController(IEntityService<DocenteCursosDto> service)
+    public InscripcionController(IEntityService<InscripcionDto> service)
     {
         _service = service;
     }
 
-    [Authorize(Policy = "docentescursos.consulta")]
+    [Authorize(Policy = "inscripciones.consulta")]
     [HttpGet("{id:int}")]
-    public async Task<ActionResult<DocenteCursosDto>> Get(int id)
+    public async Task<ActionResult<InscripcionDto>> Get(int id)
     {
         var dto = await _service.Get(id);
         if (dto == null)
@@ -28,25 +28,25 @@ public class DocenteCursosController : ControllerBase
         return Ok(dto);
     }
 
-    [Authorize(Policy = "docentescursos.consulta")]
-    [HttpGet(Name = "GetAllDocenteCursos")]
-    public async Task<ActionResult<IEnumerable<DocenteCursosDto>>> GetAll()
+    [Authorize(Policy = "inscripciones.consulta")]
+    [HttpGet(Name = "GetAllInscripciones")]
+    public async Task<ActionResult<IEnumerable<InscripcionDto>>> GetAll()
     {
         var dtos = await _service.GetAll();
         return Ok(dtos);
     }
 
-    [Authorize(Policy = "docentescursos.alta")]
+    [Authorize(Policy = "inscripciones.alta")]
     [HttpPost]
-    public async Task<ActionResult<DocenteCursosDto>> Create(DocenteCursosDto dto)
+    public async Task<ActionResult<InscripcionDto>> Create(InscripcionDto dto)
     {
         await _service.New(dto);
         return CreatedAtAction(nameof(Get), new { id = dto.Id }, dto);
     }
-    
-    [Authorize(Policy = "docentescursos.modificacion")]
+
+    [Authorize(Policy = "inscripciones.modificacion")]
     [HttpPut("{id:int}")]
-    public async Task<ActionResult<DocenteCursosDto>> Update(int id, [FromBody] DocenteCursosDto dto)
+    public async Task<ActionResult<InscripcionDto>> Update(int id, [FromBody] InscripcionDto dto)
     {
         if (id != dto.Id)
             return BadRequest();
@@ -58,9 +58,9 @@ public class DocenteCursosController : ControllerBase
         return NoContent();
     }
 
-    [Authorize(Policy = "docentescursos.baja")]
+    [Authorize(Policy = "inscripciones.baja")]
     [HttpDelete("{id:int}")]
-    public async Task<ActionResult<DocenteCursosDto>> Delete(int id)
+    public async Task<ActionResult<InscripcionDto>> Delete(int id)
     {
         bool deleted = await _service.Delete(id);
         if (!deleted)

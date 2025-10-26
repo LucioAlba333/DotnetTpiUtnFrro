@@ -8,6 +8,7 @@ public class DocenteCursos: BusinessEntity
     public int IdCurso { get; private set; }
     public int IdDocente { get; private set; }
 
+    protected DocenteCursos() { }
     public DocenteCursos(int id, Curso curso, Persona docente, string cargo) : base(id)
     {
         SetCurso(curso);

@@ -1,13 +1,15 @@
 using Academia.Dtos;
 using Academia.Services.Interfaces;
+using Academia.WebApi.Filters;
 using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Academia.WebApi.Controllers;
 
-[Authorize]
+
 [Route("api/[controller]")]
+[TypeFilter(typeof(ExceptionManager))]
 [ApiController]
 public class PersonaController : ControllerBase
 {
@@ -22,6 +24,7 @@ public class PersonaController : ControllerBase
         _personaDtoValidator = personaDtoValidator;
     }
 
+    [Authorize(Policy = "personas.consulta")]
     [HttpGet("{id:int}")]
     public async Task<ActionResult<PersonaDto>> Get(int id)
     {
@@ -32,14 +35,16 @@ public class PersonaController : ControllerBase
         }
         return Ok(p);
     }
-
+    
+    [Authorize(Policy = "personas.consulta")]
     [HttpGet(Name = "GetAllPersonas")]
     public async Task<ActionResult<IEnumerable<PersonaDto>>> GetAll()
     {
         var personas = await _personaService.GetAll();
         return Ok(personas);
     }
-
+    
+    [Authorize(Policy = "personas.alta")]
     [HttpPost]
     public async Task<ActionResult<PersonaDto>> Create(PersonaDto p)
     {
@@ -55,6 +60,7 @@ public class PersonaController : ControllerBase
         return CreatedAtAction(nameof(Get), new { id = p.Id }, p);
     }
 
+    [Authorize(Policy = "personas.modificacion")]
     [HttpPut("{id:int}")]
     public async Task<ActionResult<PersonaDto>> Update(int id, [FromBody] PersonaDto p)
     {
@@ -73,6 +79,7 @@ public class PersonaController : ControllerBase
         return NoContent();
     }
 
+    [Authorize(Policy = "personas.baja")]
     [HttpDelete("{id:int}")]
     public async Task<ActionResult> Delete(int id)
     {

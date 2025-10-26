@@ -1,7 +1,6 @@
 using System.Text;
 using Academia.Data;
 using Academia.Dtos;
-using Academia.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Academia.Services.Interfaces;
@@ -9,7 +8,6 @@ using Academia.Services;
 using Academia.Validaciones;
 using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -46,7 +44,7 @@ builder.Services.AddAuthorization(options =>
 
 
 	var modulos = new[] { "especialidades", "planes", "usuarios", "personas", "materias", "comisiones", "cursos", "docentescursos", "inscripciones" };
-	var acciones = new[] { "leer", "agregar", "actualizar", "eliminar" };
+	var acciones = new[] { "consulta", "alta", "modificacion", "baja" };
 
 	foreach (var modulo in modulos)
 	{
@@ -67,14 +65,18 @@ builder.Services.AddScoped<UsuarioRepository>();
 builder.Services.AddScoped<ModuloUsuarioRepository>();
 builder.Services.AddScoped<ComisionRepository>();
 builder.Services.AddScoped<CursoRepository>();
+builder.Services.AddScoped<DocenteCursosRepository>();
+builder.Services.AddScoped<InscripcionRepository>();
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<UsuarioService>();
 builder.Services.AddScoped<IEntityService<PersonaDto>, PersonaService>();
 builder.Services.AddScoped<IEntityService<EspecialidadDto>, EspecialidadService>();
 builder.Services.AddScoped<IEntityService<PlanDto>, PlanService>();
 builder.Services.AddScoped<IEntityService<MateriaDto>, MateriaService>();
-builder.Services.AddScoped <IEntityService<ComisionDto>, ComisionService>();
+builder.Services.AddScoped<IEntityService<ComisionDto>, ComisionService>();
 builder.Services.AddScoped<IEntityService<CursoDto>, CursoService>();
+builder.Services.AddScoped<IEntityService<DocenteCursosDto>, DocenteCursosService>();
+builder.Services.AddScoped<IEntityService<InscripcionDto>, InscripcionService>();
 builder.Services.AddScoped<IValidator<EspecialidadDto>, EspecialidadDtoValidator>();
 builder.Services.AddScoped<IValidator<PlanDto>, PlanDtoValidator>();
 builder.Services.AddScoped<IValidator<ComisionDto>, ComisionDtoValidator>();

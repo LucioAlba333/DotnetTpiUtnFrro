@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Academia.WebApi.Controllers
 {
-	[Authorize]
+	
 	[Route("api/[controller]")]
 	[TypeFilter(typeof(ExceptionManager))]
 	[ApiController]
@@ -25,6 +25,7 @@ namespace Academia.WebApi.Controllers
 			_especialidadDtoValidator = especialidadDtoValidator;
 		}
 
+		[Authorize(Policy = "especialidades.consulta")]
 		[HttpGet("{id:int}")]
 		public async Task<ActionResult<EspecialidadDto>> Get(int id)
 		{
@@ -35,12 +36,14 @@ namespace Academia.WebApi.Controllers
 			}
 			return Ok(e);
 		}
+		[Authorize(Policy = "especialidades.consulta")]
 		[HttpGet(Name = "GetAllEspecialidades")]
 		public async Task<ActionResult<IEnumerable<EspecialidadDto>>> GetAll()
 		{
 			var e= await _especialidadService.GetAll();
 			return Ok(e);
 		}
+		[Authorize(Policy = "especialidades.alta")]
 		[HttpPost]
 		public async Task<ActionResult<EspecialidadDto>> Create(EspecialidadDto especialidad)
 		{
@@ -54,6 +57,7 @@ namespace Academia.WebApi.Controllers
 			await _especialidadService.New(especialidad);
 			return CreatedAtAction(nameof(Get), new { especialidad.Id }, especialidad);
 		}
+		[Authorize(Policy = "especialidades.modificacion")]
 		[HttpPut("{id:int}")]
 		public async Task<ActionResult> Update(int id, [FromBody] EspecialidadDto especialidad)
 		{
@@ -72,6 +76,7 @@ namespace Academia.WebApi.Controllers
 			return NoContent();
 
 		}
+		[Authorize(Policy = "especialidades.baja")]
 		[HttpDelete("{id:int}")]
 		public async Task<ActionResult> Delete(int id)
 		{

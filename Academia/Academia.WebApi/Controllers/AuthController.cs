@@ -1,5 +1,6 @@
 using Academia.Dtos;
 using Academia.Services;
+using Academia.WebApi.Filters;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,6 +8,7 @@ namespace Academia.WebApi.Controllers
 {
     [AllowAnonymous]
     [Route("api/[controller]")]
+    [TypeFilter(typeof(ExceptionManager))]
     [ApiController]
     public class AuthController : ControllerBase
     {
@@ -17,6 +19,7 @@ namespace Academia.WebApi.Controllers
             _authService = authService;
         }
 
+       
         [HttpPost("login")]
         public async Task<ActionResult<LoginResponse>> Login(LoginRequest loginRequest)
         {

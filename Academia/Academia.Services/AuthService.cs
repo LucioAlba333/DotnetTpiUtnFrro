@@ -61,16 +61,16 @@ public class AuthService
             var nombreModulo = permiso.Modulo.Descripcion.ToLower();
 
             if (permiso.Consulta)
-                claims.Add(new Claim("permission", $"{nombreModulo}.leer"));
+                claims.Add(new Claim("permission", $"{nombreModulo}.consulta"));
 
             if (permiso.Alta)
-                claims.Add(new Claim("permission", $"{nombreModulo}.agregar"));
+                claims.Add(new Claim("permission", $"{nombreModulo}.alta"));
 
             if (permiso.Modificacion)
-                claims.Add(new Claim("permission", $"{nombreModulo}.actualizar"));
+                claims.Add(new Claim("permission", $"{nombreModulo}.modificacion"));
 
             if (permiso.Baja)
-                claims.Add(new Claim("permission", $"{nombreModulo}.eliminar"));
+                claims.Add(new Claim("permission", $"{nombreModulo}.baja"));
             
         }
         var token = new JwtSecurityToken(

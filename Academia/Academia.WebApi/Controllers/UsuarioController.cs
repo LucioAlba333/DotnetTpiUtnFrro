@@ -1,11 +1,14 @@
 using Academia.Dtos;
 using Academia.Services;
+using Academia.WebApi.Filters;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Academia.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [TypeFilter(typeof(ExceptionManager))]
     public class UsuarioController : ControllerBase
     {
         private readonly UsuarioService _usuarioService;
@@ -15,6 +18,7 @@ namespace Academia.WebApi.Controllers
             _usuarioService = usuarioService;
         }
 
+        [Authorize(Policy = "usuarios.consulta")]
         [HttpGet("{id:int}")]
         public async Task<ActionResult<UsuarioDto>> Get(int id)
         {
@@ -26,6 +30,7 @@ namespace Academia.WebApi.Controllers
             return Ok(usuario);
         }
 
+        [Authorize(Policy = "usuarios.consulta")]
         [HttpGet(Name = "GetAll Usuarios")]
         public async Task<ActionResult<IEnumerable<UsuarioDto>>> GetAll()
         {
@@ -33,6 +38,7 @@ namespace Academia.WebApi.Controllers
             return Ok(usuarios);
         }
 
+        [Authorize(Policy = "usuarios.alta")]
         [HttpPost]
         public async Task<ActionResult<UsuarioCreateDto>> Create(UsuarioCreateDto usuarioCreateDto)
         {
@@ -40,6 +46,7 @@ namespace Academia.WebApi.Controllers
             return Ok();
         }
 
+        [AllowAnonymous]
         [HttpPut("{id:int}")]
         public async Task<ActionResult<UsuarioUpdateDto>> Update(int id, [FromBody] UsuarioUpdateDto usuarioUpdateDto)
         {
@@ -55,6 +62,7 @@ namespace Academia.WebApi.Controllers
             return NoContent();
         }
 
+        [Authorize(Policy = "usuarios.baja")]
         [HttpDelete("{id:int}")]
         public async Task<ActionResult> Delete(int id)
         {

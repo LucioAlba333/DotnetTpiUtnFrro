@@ -2,17 +2,16 @@ using System.Net.Http.Json;
 using System.Text.Json;
 using Academia.Dtos;
 
-
 namespace Academia.ApiClient;
 
-public class MateriaApiClient : ApiClient
+public class InscripcionApiClient : ApiClient
 {
-    public static async Task<IEnumerable<MateriaDto>> GetAllAsync()
+    public static async Task<IEnumerable<InscripcionDto>> GetAllAsync()
     {
         try
         {
             using var client = await GetHttpClient();
-            var response = await client.GetAsync("api/Materia");
+            var response = await client.GetAsync("api/Inscripcion");
             if (!response.IsSuccessStatusCode)
             {
                 var error = await response.Content.ReadAsStringAsync();
@@ -20,26 +19,27 @@ public class MateriaApiClient : ApiClient
             }
 
             var json = await response.Content.ReadAsStreamAsync();
-            var materias = JsonSerializer.Deserialize<IEnumerable<MateriaDto>>(json,
+            var inscripciones = JsonSerializer.Deserialize<IEnumerable<InscripcionDto>>(json,
                 new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-            return materias ?? [];
+
+            return inscripciones ?? [];
         }
         catch (HttpRequestException e)
         {
-            throw new Exception($"Error de conexion al obtener las materias: {e.Message}");
+            throw new Exception($"Error de conexión al obtener las inscripciones: {e.Message}");
         }
         catch (TaskCanceledException e)
         {
-            throw new Exception($"Timeout al  obtener las materias: {e.Message}");
+            throw new Exception($"Timeout al obtener las inscripciones: {e.Message}");
         }
     }
 
-    public static async Task<MateriaDto?> GetAsync(int id)
+    public static async Task<InscripcionDto?> GetAsync(int id)
     {
         try
         {
             using var client = await GetHttpClient();
-            var response = await client.GetAsync($"api/Materia/{id}");
+            var response = await client.GetAsync($"api/Inscripcion/{id}");
             if (!response.IsSuccessStatusCode)
             {
                 var error = await response.Content.ReadAsStringAsync();
@@ -47,28 +47,27 @@ public class MateriaApiClient : ApiClient
             }
 
             var json = await response.Content.ReadAsStreamAsync();
-            var materia = JsonSerializer.Deserialize<MateriaDto>(json,
+            var inscripcion = JsonSerializer.Deserialize<InscripcionDto>(json,
                 new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-            return materia;
 
-
+            return inscripcion;
         }
         catch (HttpRequestException e)
         {
-            throw new Exception($"Error de conexion al obtener la materia con Id {id}: {e.Message}");
+            throw new Exception($"Error de conexión al obtener la inscripción con Id {id}: {e.Message}");
         }
         catch (TaskCanceledException e)
         {
-            throw new Exception($"Timeout al  obtener la materia con Id {id}: {e.Message}");
+            throw new Exception($"Timeout al obtener la inscripción con Id {id}: {e.Message}");
         }
     }
 
-    public static async Task AddAsync(MateriaDto materiaDto)
+    public static async Task AddAsync(InscripcionDto inscripcionDto)
     {
         try
         {
             using var client = await GetHttpClient();
-            var response = await client.PostAsJsonAsync("api/Materia", materiaDto);
+            var response = await client.PostAsJsonAsync("api/Inscripcion", inscripcionDto);
             if (!response.IsSuccessStatusCode)
             {
                 var error = await response.Content.ReadAsStringAsync();
@@ -77,20 +76,20 @@ public class MateriaApiClient : ApiClient
         }
         catch (HttpRequestException e)
         {
-            throw new Exception($"Error de conexion al crear la materia: {e.Message}");
+            throw new Exception($"Error de conexión al crear la inscripción: {e.Message}");
         }
         catch (TaskCanceledException e)
         {
-            throw new Exception($"Timeout al  crear materia: {e.Message}");
+            throw new Exception($"Timeout al crear la inscripción: {e.Message}");
         }
     }
 
-    public static async Task UpdateAsync(MateriaDto materiaDto)
+    public static async Task UpdateAsync(InscripcionDto inscripcionDto)
     {
         try
         {
             using var client = await GetHttpClient();
-            var response = await client.PutAsJsonAsync("api/Materia" + materiaDto.Id, materiaDto);
+            var response = await client.PutAsJsonAsync($"api/Inscripcion/{inscripcionDto.Id}", inscripcionDto);
             if (!response.IsSuccessStatusCode)
             {
                 var error = await response.Content.ReadAsStringAsync();
@@ -99,11 +98,11 @@ public class MateriaApiClient : ApiClient
         }
         catch (HttpRequestException e)
         {
-            throw new Exception($"Error de conexion al editar materia: {e.Message}");
+            throw new Exception($"Error de conexión al editar la inscripción: {e.Message}");
         }
         catch (TaskCanceledException e)
         {
-            throw new Exception($"Timeout al  editar materia: {e.Message}");
+            throw new Exception($"Timeout al editar la inscripción: {e.Message}");
         }
     }
 
@@ -112,7 +111,7 @@ public class MateriaApiClient : ApiClient
         try
         {
             using var client = await GetHttpClient();
-            var response = await client.DeleteAsync($"api/Materia/{id}");
+            var response = await client.DeleteAsync($"api/Inscripcion/{id}");
             if (!response.IsSuccessStatusCode)
             {
                 var error = await response.Content.ReadAsStringAsync();
@@ -121,11 +120,11 @@ public class MateriaApiClient : ApiClient
         }
         catch (HttpRequestException e)
         {
-            throw new Exception($"Error de conexion al eliminar materia: {e.Message}");
+            throw new Exception($"Error de conexión al eliminar la inscripción: {e.Message}");
         }
         catch (TaskCanceledException e)
         {
-            throw new Exception($"Timeout al  eliminar materia: {e.Message}");
+            throw new Exception($"Timeout al eliminar la inscripción: {e.Message}");
         }
     }
 }

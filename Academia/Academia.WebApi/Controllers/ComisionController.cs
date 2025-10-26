@@ -2,6 +2,7 @@ using Academia.Dtos;
 using Academia.Services.Interfaces;
 using Academia.WebApi.Filters;
 using FluentValidation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Academia.WebApi.Controllers;
@@ -22,6 +23,7 @@ public class ComisionController : ControllerBase
         _comisionValidator = comisionValidator;
     }
 
+    [Authorize(Policy = "comisiones.consulta")]
     [HttpGet("{id:int}")]
     public async Task<ActionResult<ComisionDto>> Get(int id)
     {
@@ -31,6 +33,7 @@ public class ComisionController : ControllerBase
         return Ok(comisionDto);
     }
 
+    [Authorize(Policy = "comisiones.consulta")]
     [HttpGet(Name = "GetAllComisiones")]
     public async Task<ActionResult<IEnumerable<ComisionDto>>> GetAll()
     {
@@ -38,6 +41,7 @@ public class ComisionController : ControllerBase
         return Ok(comisionDtos);
     }
 
+    [Authorize(Policy = "comisiones.alta")]
     [HttpPost]
     public async Task<ActionResult<ComisionDto>> Create(ComisionDto comisionDto)
     {
@@ -52,6 +56,7 @@ public class ComisionController : ControllerBase
         return CreatedAtAction(nameof(Get), new { id = comisionDto.Id }, comisionDto);
     }
 
+    [Authorize(Policy = "comisiones.modificacion")]
     [HttpPut("{id:int}")]
     public async Task<ActionResult<ComisionDto>> Update(int id, [FromBody] ComisionDto comisionDto)
     {
@@ -76,6 +81,7 @@ public class ComisionController : ControllerBase
         return NoContent();
     }
 
+    [Authorize(Policy = "comisiones.baja")]
     [HttpDelete("{id:int}")]
     public async Task<ActionResult<ComisionDto>> Delete(int id)
     {

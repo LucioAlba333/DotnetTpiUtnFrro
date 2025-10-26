@@ -2,17 +2,16 @@ using System.Net.Http.Json;
 using System.Text.Json;
 using Academia.Dtos;
 
-
 namespace Academia.ApiClient;
 
-public class MateriaApiClient : ApiClient
+public class CursoApiClient : ApiClient
 {
-    public static async Task<IEnumerable<MateriaDto>> GetAllAsync()
+    public static async Task<IEnumerable<CursoDto>> GetAllAsync()
     {
         try
         {
             using var client = await GetHttpClient();
-            var response = await client.GetAsync("api/Materia");
+            var response = await client.GetAsync("api/Curso");
             if (!response.IsSuccessStatusCode)
             {
                 var error = await response.Content.ReadAsStringAsync();
@@ -20,26 +19,27 @@ public class MateriaApiClient : ApiClient
             }
 
             var json = await response.Content.ReadAsStreamAsync();
-            var materias = JsonSerializer.Deserialize<IEnumerable<MateriaDto>>(json,
+            var cursos = JsonSerializer.Deserialize<IEnumerable<CursoDto>>(json,
                 new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-            return materias ?? [];
+
+            return cursos ?? [];
         }
         catch (HttpRequestException e)
         {
-            throw new Exception($"Error de conexion al obtener las materias: {e.Message}");
+            throw new Exception($"Error de conexión al obtener los cursos: {e.Message}");
         }
         catch (TaskCanceledException e)
         {
-            throw new Exception($"Timeout al  obtener las materias: {e.Message}");
+            throw new Exception($"Timeout al obtener los cursos: {e.Message}");
         }
     }
 
-    public static async Task<MateriaDto?> GetAsync(int id)
+    public static async Task<CursoDto?> GetAsync(int id)
     {
         try
         {
             using var client = await GetHttpClient();
-            var response = await client.GetAsync($"api/Materia/{id}");
+            var response = await client.GetAsync($"api/Curso/{id}");
             if (!response.IsSuccessStatusCode)
             {
                 var error = await response.Content.ReadAsStringAsync();
@@ -47,28 +47,27 @@ public class MateriaApiClient : ApiClient
             }
 
             var json = await response.Content.ReadAsStreamAsync();
-            var materia = JsonSerializer.Deserialize<MateriaDto>(json,
+            var curso = JsonSerializer.Deserialize<CursoDto>(json,
                 new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-            return materia;
 
-
+            return curso;
         }
         catch (HttpRequestException e)
         {
-            throw new Exception($"Error de conexion al obtener la materia con Id {id}: {e.Message}");
+            throw new Exception($"Error de conexión al obtener el curso con Id {id}: {e.Message}");
         }
         catch (TaskCanceledException e)
         {
-            throw new Exception($"Timeout al  obtener la materia con Id {id}: {e.Message}");
+            throw new Exception($"Timeout al obtener el curso con Id {id}: {e.Message}");
         }
     }
 
-    public static async Task AddAsync(MateriaDto materiaDto)
+    public static async Task AddAsync(CursoDto cursoDto)
     {
         try
         {
             using var client = await GetHttpClient();
-            var response = await client.PostAsJsonAsync("api/Materia", materiaDto);
+            var response = await client.PostAsJsonAsync("api/Curso", cursoDto);
             if (!response.IsSuccessStatusCode)
             {
                 var error = await response.Content.ReadAsStringAsync();
@@ -77,20 +76,20 @@ public class MateriaApiClient : ApiClient
         }
         catch (HttpRequestException e)
         {
-            throw new Exception($"Error de conexion al crear la materia: {e.Message}");
+            throw new Exception($"Error de conexión al crear el curso: {e.Message}");
         }
         catch (TaskCanceledException e)
         {
-            throw new Exception($"Timeout al  crear materia: {e.Message}");
+            throw new Exception($"Timeout al crear el curso: {e.Message}");
         }
     }
 
-    public static async Task UpdateAsync(MateriaDto materiaDto)
+    public static async Task UpdateAsync(CursoDto cursoDto)
     {
         try
         {
             using var client = await GetHttpClient();
-            var response = await client.PutAsJsonAsync("api/Materia" + materiaDto.Id, materiaDto);
+            var response = await client.PutAsJsonAsync($"api/Curso/{cursoDto.Id}", cursoDto);
             if (!response.IsSuccessStatusCode)
             {
                 var error = await response.Content.ReadAsStringAsync();
@@ -99,11 +98,11 @@ public class MateriaApiClient : ApiClient
         }
         catch (HttpRequestException e)
         {
-            throw new Exception($"Error de conexion al editar materia: {e.Message}");
+            throw new Exception($"Error de conexión al editar el curso: {e.Message}");
         }
         catch (TaskCanceledException e)
         {
-            throw new Exception($"Timeout al  editar materia: {e.Message}");
+            throw new Exception($"Timeout al editar el curso: {e.Message}");
         }
     }
 
@@ -112,7 +111,7 @@ public class MateriaApiClient : ApiClient
         try
         {
             using var client = await GetHttpClient();
-            var response = await client.DeleteAsync($"api/Materia/{id}");
+            var response = await client.DeleteAsync($"api/Curso/{id}");
             if (!response.IsSuccessStatusCode)
             {
                 var error = await response.Content.ReadAsStringAsync();
@@ -121,11 +120,11 @@ public class MateriaApiClient : ApiClient
         }
         catch (HttpRequestException e)
         {
-            throw new Exception($"Error de conexion al eliminar materia: {e.Message}");
+            throw new Exception($"Error de conexión al eliminar el curso: {e.Message}");
         }
         catch (TaskCanceledException e)
         {
-            throw new Exception($"Timeout al  eliminar materia: {e.Message}");
+            throw new Exception($"Timeout al eliminar el curso: {e.Message}");
         }
     }
 }

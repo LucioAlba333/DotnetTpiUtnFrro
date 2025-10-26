@@ -113,7 +113,7 @@ public class Context : DbContext
                 entity.Property(e => e.Consulta).IsRequired();
 
                 entity.HasOne(e => e.Usuario)
-                    .WithMany()
+                    .WithMany(u => u.Permisos)
                     .HasForeignKey(e => e.IdUsuario) 
                     .OnDelete(DeleteBehavior.Cascade);
 
@@ -219,10 +219,12 @@ public class Context : DbContext
                 .IsRequired();
             entity.HasOne(e => e.Materia)
                 .WithMany()
-                .HasForeignKey(e => e.IdMateria);
+                .HasForeignKey(e => e.IdMateria)
+                .OnDelete(DeleteBehavior.Restrict);
             entity.HasOne(e => e.Comision) 
                 .WithMany()
-                .HasForeignKey(e =>e.IdComision);
+                .HasForeignKey(e =>e.IdComision)
+                .OnDelete(DeleteBehavior.Restrict);
         });
         modelBuilder.Entity<DocenteCursos>(entity =>
         {
@@ -234,10 +236,12 @@ public class Context : DbContext
                 .HasConversion<int>();
             entity.HasOne(e => e.Docente)
                 .WithMany()
-                .HasForeignKey(e =>e.IdDocente);
+                .HasForeignKey(e =>e.IdDocente)
+                .OnDelete(DeleteBehavior.Restrict);
             entity.HasOne(e => e.Curso)
                 .WithMany()
-                .HasForeignKey(e => e.IdCurso);
+                .HasForeignKey(e => e.IdCurso)
+                .OnDelete(DeleteBehavior.Cascade);
         });
         modelBuilder.Entity<Inscripcion>(entity =>
         {
@@ -248,10 +252,12 @@ public class Context : DbContext
             entity.Property(e => e.Condicion);
             entity.HasOne(e => e.Alumno)
                 .WithMany()
-                .HasForeignKey(e => e.IdAlumno);
+                .HasForeignKey(e => e.IdAlumno)
+                .OnDelete(DeleteBehavior.Cascade);
             entity.HasOne(e => e.Curso)
                 .WithMany()
-                .HasForeignKey(e => e.IdCurso);
+                .HasForeignKey(e => e.IdCurso)
+                .OnDelete(DeleteBehavior.Restrict);
         });
     }
 }

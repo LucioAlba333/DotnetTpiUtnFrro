@@ -2,6 +2,7 @@ using Academia.Dtos;
 using Academia.Services.Interfaces;
 using Academia.WebApi.Filters;
 using FluentValidation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Academia.WebApi.Controllers;
@@ -22,6 +23,7 @@ public class CursoController : ControllerBase
         _cursoValidator = cursoValidator;
     }
 
+    [Authorize(Policy = "cursos.consulta")]
     [HttpGet("{id:int}")]
     public async Task<ActionResult<CursoDto>> Get(int id)
     {
@@ -31,6 +33,7 @@ public class CursoController : ControllerBase
         return Ok(cursoDto);
     }
 
+    [Authorize(Policy = "cursos.consulta")]
     [HttpGet(Name = "GetAllCursos")]
     public async Task<ActionResult<IEnumerable<CursoDto>>> GetAll()
     {
@@ -38,6 +41,7 @@ public class CursoController : ControllerBase
         return Ok(cursoDtos);
     }
 
+    [Authorize(Policy = "cursos.alta")]
     [HttpPost]
     public async Task<ActionResult<CursoDto>> Create(CursoDto cursoDto)
     {
@@ -53,6 +57,7 @@ public class CursoController : ControllerBase
         return CreatedAtAction(nameof(Get), new { id = cursoDto.Id }, cursoDto);
     }
 
+    [Authorize(Policy = "cursos.modificacion")]
     [HttpPut("{id:int}")]
     public async Task<ActionResult<CursoDto>> Update(int id, [FromBody] CursoDto cursoDto)
     {
@@ -78,6 +83,7 @@ public class CursoController : ControllerBase
         return NoContent();
     }
 
+    [Authorize(Policy = "cursos.baja")]
     [HttpDelete("{id:int}")]
     public async Task<ActionResult<CursoDto>> Delete(int id)
     {

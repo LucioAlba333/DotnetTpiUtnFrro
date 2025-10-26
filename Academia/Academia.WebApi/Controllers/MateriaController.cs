@@ -1,12 +1,13 @@
 using Academia.Dtos;
 using Academia.Services.Interfaces;
+using Academia.WebApi.Filters;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Academia.WebApi.Controllers;
 
-[Authorize]
 [Route("api/[controller]")]
+[TypeFilter(typeof(ExceptionManager))]
 [ApiController]
 public class MateriaController : ControllerBase
 {
@@ -17,6 +18,7 @@ public class MateriaController : ControllerBase
         _materiaService = materiaService;
     }
 
+    [Authorize(Policy = "materias.consulta")]
     [HttpGet("{id:int}")]
     public async Task<ActionResult<MateriaDto>> Get(int id)
     {
@@ -28,6 +30,7 @@ public class MateriaController : ControllerBase
         return Ok(m);
     }
 
+    [Authorize(Policy = "materias.consulta")]
     [HttpGet(Name = "GetAllMaterias")]
     public async Task<ActionResult<IEnumerable<MateriaDto>>> GetAllMaterias()
     {
@@ -35,6 +38,7 @@ public class MateriaController : ControllerBase
         return Ok(m);
     }
 
+    [Authorize(Policy = "materias.alta")]
     [HttpPost]
     public async Task<ActionResult<MateriaDto>> Create(MateriaDto materiaDto)
     {
@@ -42,6 +46,7 @@ public class MateriaController : ControllerBase
         return CreatedAtAction(nameof(Get), new { id = materiaDto.Id }, materiaDto);
     }
 
+    [Authorize(Policy = "materias.modificacion")]
     [HttpPut("{id:int}")]
     public async Task<ActionResult> Update(int id, [FromBody] MateriaDto materiaDto)
     {
@@ -57,6 +62,7 @@ public class MateriaController : ControllerBase
         return Ok();
     }
 
+    [Authorize(Policy = "materias.baja")]
     [HttpDelete("{id:int}")]
     public async Task<ActionResult> Delete(int id)
     {

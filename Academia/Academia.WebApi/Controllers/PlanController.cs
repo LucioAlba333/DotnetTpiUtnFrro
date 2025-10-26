@@ -7,24 +7,24 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Academia.WebApi.Controllers
 {
-	[Authorize]
+
 	[Route("api/[controller]")]
 	[TypeFilter(typeof(ExceptionManager))]
 	[ApiController]
 	public class PlanController : ControllerBase
 	{
 		private readonly IEntityService<PlanDto> _planService;
-		private readonly IEntityService<EspecialidadDto> _especialidadService;
+
 		private readonly IValidator<PlanDto> _planDtoValidator;
 
 		public PlanController(IEntityService<PlanDto> p, 
-			IEntityService<EspecialidadDto> e, 
+
 			IValidator<PlanDto> planDtoValidator)
 		{
 			_planService = p;
-			_especialidadService = e;
 			_planDtoValidator = planDtoValidator;
 		}
+		[Authorize(Policy = "planes.consulta")]
 		[HttpGet("{id:int}")]
 		public async Task<ActionResult<PlanDto>> Get(int id)
 		{
@@ -36,6 +36,7 @@ namespace Academia.WebApi.Controllers
             return Ok(p);
 
 		}
+		[Authorize(Policy = "planes.consulta")]
 		[HttpGet(Name = "GetAllPlanes")]
 		public async Task<ActionResult<IEnumerable<PlanDto>>> GetAll()
 		{
@@ -43,6 +44,7 @@ namespace Academia.WebApi.Controllers
 			return Ok(planes);
 			
 		}
+		[Authorize(Policy = "planes.alta")]
 		[HttpPost]
 		public async Task<ActionResult<PlanDto>> Create(PlanDto plan)
 		{
@@ -57,6 +59,7 @@ namespace Academia.WebApi.Controllers
 			await _planService.New(plan);
 			return CreatedAtAction(nameof(Get), new { plan.Id }, plan);
 		}
+		[Authorize(Policy = "planes.modificacion")]
 		[HttpPut("{id:int}")]
 		public async Task<ActionResult> Update(int id, [FromBody] PlanDto plan)
 		{
@@ -69,16 +72,12 @@ namespace Academia.WebApi.Controllers
 			}
 			if (id != plan.Id)
 				return BadRequest();
-			if (ModelState.IsValid == false)
-				return BadRequest(ModelState);
-			var especialidad = await _especialidadService.Get(plan.EspecialidadId);
-			if (especialidad == null)
-				return NotFound();
 			bool up = await _planService.Update(plan);
 			if (!up)
 				return NotFound();
 			return NoContent();
 		}
+		[Authorize(Policy = "planes.baja")]
 		[HttpDelete("{id:int}")]
 		public async Task<ActionResult> Delete(int id)
 		{
