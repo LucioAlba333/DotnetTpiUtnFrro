@@ -1,4 +1,5 @@
 ﻿using Academia.ApiClient;
+using Academia.Desktop.Views.Materias.Modals;
 using Academia.Dtos;
 
 namespace Academia.Desktop.Views.Materias
@@ -77,6 +78,31 @@ namespace Academia.Desktop.Views.Materias
         private void buttonVolver_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private async void toolStripButtonNuevo_Click(object sender, EventArgs e)
+        {
+            var modal = new CrearModal();
+            var crear = modal.ShowDialog();
+            if (crear == DialogResult.OK)
+                await CargaDatos();
+
+        }
+
+        private async void toolStripButtonEditar_Click(object sender, EventArgs e)
+        {
+            var modal = new EditarModal();
+            var editar = modal.ShowDialog();
+            if (editar == DialogResult.OK)
+                await CargaDatos();
+        }
+
+        private async void toolStripButtonEliminar_Click(object sender, EventArgs e)
+        {
+            var modal = new EliminarModal();
+            var eliminar = modal.ShowDialog();
+            if (eliminar == DialogResult.OK)
+                await CargaDatos();
         }
     }
 

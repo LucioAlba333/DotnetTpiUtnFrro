@@ -126,7 +126,7 @@
             toolStripMaterias.Items.AddRange(new ToolStripItem[] { toolStripButtonNuevo, toolStripButtonEditar, toolStripButtonEliminar });
             toolStripMaterias.Location = new Point(3, 0);
             toolStripMaterias.Name = "toolStripMaterias";
-            toolStripMaterias.Size = new Size(72, 25);
+            toolStripMaterias.Size = new Size(103, 25);
             toolStripMaterias.TabIndex = 0;
             // 
             // toolStripButtonNuevo
@@ -136,7 +136,8 @@
             toolStripButtonNuevo.ImageTransparentColor = Color.Magenta;
             toolStripButtonNuevo.Name = "toolStripButtonNuevo";
             toolStripButtonNuevo.Size = new Size(23, 22);
-            toolStripButtonNuevo.Text = "toolStripButton1";
+            toolStripButtonNuevo.Text = "Nuevo";
+            toolStripButtonNuevo.Click += toolStripButtonNuevo_Click;
             // 
             // toolStripButtonEditar
             // 
@@ -145,7 +146,8 @@
             toolStripButtonEditar.ImageTransparentColor = Color.Magenta;
             toolStripButtonEditar.Name = "toolStripButtonEditar";
             toolStripButtonEditar.Size = new Size(23, 22);
-            toolStripButtonEditar.Text = "toolStripButton2";
+            toolStripButtonEditar.Text = "Editar";
+            toolStripButtonEditar.Click += toolStripButtonEditar_Click;
             // 
             // toolStripButtonEliminar
             // 
@@ -154,7 +156,8 @@
             toolStripButtonEliminar.ImageTransparentColor = Color.Magenta;
             toolStripButtonEliminar.Name = "toolStripButtonEliminar";
             toolStripButtonEliminar.Size = new Size(23, 22);
-            toolStripButtonEliminar.Text = "toolStripButton3";
+            toolStripButtonEliminar.Text = "Eliminar";
+            toolStripButtonEliminar.Click += toolStripButtonEliminar_Click;
             // 
             // MateriasForm
             // 

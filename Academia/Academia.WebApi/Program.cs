@@ -93,12 +93,13 @@ using (var scope = app.Services.CreateScope())
 	var context = scope.ServiceProvider.GetRequiredService<Context>();
 	await context.InitDatabase();
 }
-using (var scope = app.Services.CreateScope())
+/*
+ using (var scope = app.Services.CreateScope())
 {
 	var usuarioService = scope.ServiceProvider.GetRequiredService<UsuarioService>();
 	await usuarioService.SeedAdminUser();
 }
-
+*/
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();

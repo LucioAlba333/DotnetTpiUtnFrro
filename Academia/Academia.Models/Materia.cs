@@ -21,16 +21,9 @@ public class Materia : BusinessEntity
         SetDescripcion(descripcion);
         SetHsSemanales(hsSemanales);
         SetHsTotales(hsTotales);
-        Plan = plan;
+        SetPlan(plan);
     }
-
-    public Materia(BusinessEntity entity, string descripcion, int hsSemanales, int hsTotales, Plan plan) : base(entity)
-    {
-        Descripcion = descripcion;
-        HsSemanales = hsSemanales;
-        HsTotales = hsTotales;
-        Plan = plan;
-    }
+    
 
     public void SetDescripcion(string descripcion)
     {

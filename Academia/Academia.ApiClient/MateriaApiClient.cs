@@ -90,7 +90,7 @@ public class MateriaApiClient : ApiClient
         try
         {
             using var client = await GetHttpClient();
-            var response = await client.PutAsJsonAsync("api/Materia" + materiaDto.Id, materiaDto);
+            var response = await client.PutAsJsonAsync("api/Materia/" + materiaDto.Id, materiaDto);
             if (!response.IsSuccessStatusCode)
             {
                 var error = await response.Content.ReadAsStringAsync();
