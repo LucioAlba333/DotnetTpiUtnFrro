@@ -77,6 +77,7 @@ namespace Academia.Desktop.Views.Alumnos
             bool estaVacio = alumnos.Count > 0;
             this.toolStripButtonEliminar.Enabled = estaVacio;
             this.toolStripButtonEditar.Enabled = estaVacio;
+            this.toolStripButtonGenerarUsuario.Enabled = estaVacio;
         }
 
         private async void buttonActualizar_Click(object sender, EventArgs e)
@@ -114,7 +115,7 @@ namespace Academia.Desktop.Views.Alumnos
                 await CargaDatos();
         }
 
-        private async void toolStripButton1_Click(object sender, EventArgs e)
+        private async void ToolStripButtonGenerarUsuarioClick(object sender, EventArgs e)
         {
             var modal = new GenerarUsuarioModal();
             var generar = modal.ShowDialog();

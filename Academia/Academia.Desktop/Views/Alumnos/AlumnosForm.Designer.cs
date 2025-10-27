@@ -40,7 +40,7 @@ partial class AlumnosForm
         toolStripButtonNuevo = new ToolStripButton();
         toolStripButtonEditar = new ToolStripButton();
         toolStripButtonEliminar = new ToolStripButton();
-        toolStripButton1 = new ToolStripButton();
+        toolStripButtonGenerarUsuario = new ToolStripButton();
         toolStripContainerMaterias.ContentPanel.SuspendLayout();
         toolStripContainerMaterias.TopToolStripPanel.SuspendLayout();
         toolStripContainerMaterias.SuspendLayout();
@@ -126,7 +126,7 @@ partial class AlumnosForm
         // 
         toolStripMaterias.Dock = DockStyle.None;
         toolStripMaterias.GripStyle = ToolStripGripStyle.Hidden;
-        toolStripMaterias.Items.AddRange(new ToolStripItem[] { toolStripButtonNuevo, toolStripButtonEditar, toolStripButtonEliminar, toolStripButton1 });
+        toolStripMaterias.Items.AddRange(new ToolStripItem[] { toolStripButtonNuevo, toolStripButtonEditar, toolStripButtonEliminar, toolStripButtonGenerarUsuario });
         toolStripMaterias.Location = new Point(3, 0);
         toolStripMaterias.Name = "toolStripMaterias";
         toolStripMaterias.Size = new Size(126, 25);
@@ -162,15 +162,15 @@ partial class AlumnosForm
         toolStripButtonEliminar.Text = "Eliminar";
         toolStripButtonEliminar.Click += toolStripButtonEliminar_Click;
         // 
-        // toolStripButton1
+        // toolStripButtonGenerarUsuario
         // 
-        toolStripButton1.DisplayStyle = ToolStripItemDisplayStyle.Image;
-        toolStripButton1.Image = (Image)resources.GetObject("toolStripButton1.Image");
-        toolStripButton1.ImageTransparentColor = Color.Magenta;
-        toolStripButton1.Name = "toolStripButton1";
-        toolStripButton1.Size = new Size(23, 22);
-        toolStripButton1.Text = "generar usuario";
-        toolStripButton1.Click += toolStripButton1_Click;
+        toolStripButtonGenerarUsuario.DisplayStyle = ToolStripItemDisplayStyle.Image;
+        toolStripButtonGenerarUsuario.Image = (Image)resources.GetObject("toolStripButtonGenerarUsuario.Image");
+        toolStripButtonGenerarUsuario.ImageTransparentColor = Color.Magenta;
+        toolStripButtonGenerarUsuario.Name = "toolStripButtonGenerarUsuario";
+        toolStripButtonGenerarUsuario.Size = new Size(23, 22);
+        toolStripButtonGenerarUsuario.Text = "generar usuario";
+        toolStripButtonGenerarUsuario.Click += ToolStripButtonGenerarUsuarioClick;
         // 
         // AlumnosForm
         // 
@@ -205,5 +205,5 @@ partial class AlumnosForm
         private DataGridView dataGridViewAlumnos;
         private Button buttonActualizar;
         private Button buttonVolver;
-    private ToolStripButton toolStripButton1;
+    private ToolStripButton toolStripButtonGenerarUsuario;
 }
