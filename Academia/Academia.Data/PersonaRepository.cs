@@ -28,6 +28,21 @@ public class PersonaRepository
         return true;
     }
 
+    public async Task<IEnumerable<Persona>> GetAlumnos()
+    {
+        return await _context.Personas
+            .Include(e =>e.Plan)
+            .Where(e=> e.TipoPersona==TipoPersona.Alumno)
+            .ToListAsync();;
+    }
+
+    public async Task<IEnumerable<Persona>> GetProfesores()
+    {
+        return await _context.Personas
+            .Where(e => e.TipoPersona == TipoPersona.Profesor)
+            .ToListAsync();
+    }
+
     public async Task<Persona?> Get(int id)
     {
         return await _context.Personas.FirstOrDefaultAsync(e=>e.Id == id);
@@ -61,4 +76,12 @@ public class PersonaRepository
         }
         return await query.AnyAsync();
     }
+    public async Task<int> GenerarLegajo()
+    {
+        var maxLegajo = await _context.Personas
+            .MaxAsync(p => (int?)p.Legajo) ?? 1000;
+
+        return maxLegajo + 1;
+    }
+
 }

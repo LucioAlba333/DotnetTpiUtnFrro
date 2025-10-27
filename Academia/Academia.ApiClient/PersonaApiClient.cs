@@ -14,8 +14,7 @@ public class PersonaApiClient : ApiClient
             var response = await client.GetAsync($"api/Persona");
             if (!response.IsSuccessStatusCode)
             {
-                var error = await response.Content.ReadAsStringAsync();
-                throw new Exception($"status: {response.StatusCode} - {error}");
+                await ErrorResponse.SendError(response);
             }
 
             var json = await response.Content.ReadAsStreamAsync();
@@ -38,7 +37,68 @@ public class PersonaApiClient : ApiClient
             throw new Exception($"timeout al obtener las personas: {e.Message}");
         }
     }
+    public static async Task<IEnumerable<PersonaDto>> GetAlumnosAsync()
+    {
+        try
+        {
+            using var client = await GetHttpClient();
+            var response = await client.GetAsync($"api/Persona/alumnos");
+            if (!response.IsSuccessStatusCode)
+            {
+                await ErrorResponse.SendError(response);
+            }
 
+            var json = await response.Content.ReadAsStreamAsync();
+            var personas = JsonSerializer.Deserialize<IEnumerable<PersonaDto>>(json,
+                new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+            if (personas == null)
+            {
+                return [];
+            }
+
+            return personas;
+
+        }
+        catch (HttpRequestException e)
+        {
+            throw new Exception($"error de conexion al obtener las personas: {e.Message}");
+        }
+        catch (TaskCanceledException e)
+        {
+            throw new Exception($"timeout al obtener las personas: {e.Message}");
+        }
+    }
+    public static async Task<IEnumerable<PersonaDto>> GetProfesoresAsync()
+    {
+        try
+        {
+            using var client = await GetHttpClient();
+            var response = await client.GetAsync($"api/Persona/profesores");
+            if (!response.IsSuccessStatusCode)
+            {
+                await ErrorResponse.SendError(response);
+            }
+
+            var json = await response.Content.ReadAsStreamAsync();
+            var personas = JsonSerializer.Deserialize<IEnumerable<PersonaDto>>(json,
+                new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+            if (personas == null)
+            {
+                return [];
+            }
+
+            return personas;
+
+        }
+        catch (HttpRequestException e)
+        {
+            throw new Exception($"error de conexion al obtener las personas: {e.Message}");
+        }
+        catch (TaskCanceledException e)
+        {
+            throw new Exception($"timeout al obtener las personas: {e.Message}");
+        }
+    }
     public static async Task<PersonaDto?> GetAsync(int id)
     {
         try
@@ -47,8 +107,7 @@ public class PersonaApiClient : ApiClient
             var response = await client.GetAsync($"api/Persona/{id}");
             if (!response.IsSuccessStatusCode)
             {
-                var error = await response.Content.ReadAsStringAsync();
-                throw new Exception($"status: {response.StatusCode} - {error}");
+                await ErrorResponse.SendError(response);
             }
 
             var json = await response.Content.ReadAsStreamAsync();
@@ -73,8 +132,7 @@ public class PersonaApiClient : ApiClient
             var response = await client.PostAsJsonAsync("api/Persona", dto);
             if (!response.IsSuccessStatusCode)
             {
-                var error = await response.Content.ReadAsStringAsync();
-                throw new Exception($"status: {response.StatusCode} - {error}");
+                await ErrorResponse.SendError(response);
             }
         }
         catch (HttpRequestException e)
@@ -92,11 +150,10 @@ public class PersonaApiClient : ApiClient
         try
         {
             using var client = await GetHttpClient();
-            var response = await client.PutAsJsonAsync("api/Persona" + dto.Id, dto);
+            var response = await client.PutAsJsonAsync("api/Persona/" + dto.Id, dto);
             if (!response.IsSuccessStatusCode)
             {
-                var error = await response.Content.ReadAsStringAsync();
-                throw new Exception($"status: {response.StatusCode} - {error}");
+                await ErrorResponse.SendError(response);
             }
 
         }
@@ -119,8 +176,7 @@ public class PersonaApiClient : ApiClient
             var response = await client.DeleteAsync($"api/Persona/{id}");
             if (!response.IsSuccessStatusCode)
             {
-                var error = await response.Content.ReadAsStringAsync();
-                throw new Exception($"status: {response.StatusCode} - {error}");
+                await ErrorResponse.SendError(response);
             }
 
         }

@@ -22,7 +22,7 @@ public class PersonaService : IEntityService<PersonaDto>
         {
             if (await _personaRepository.EmailExists(dto.Email))
             {
-                throw new Exception("ya hay una persona con ese Email");
+                throw new ArgumentException("ya hay una persona con ese Email");
             }
 
             Plan? plan = null;
@@ -31,6 +31,7 @@ public class PersonaService : IEntityService<PersonaDto>
                 plan = await _planRepository.Get(idPlan);
             }
 
+            var legajo = await _personaRepository.GenerarLegajo();
             Persona persona = new Persona(
                 id: dto.Id,
                 nombre: dto.Nombre,
@@ -38,12 +39,16 @@ public class PersonaService : IEntityService<PersonaDto>
                 direccion: dto.Direccion,
                 telefono: dto.Telefono,
                 email: dto.Email,
-                legajo:  dto.Legajo,
-                fechaNacimiento:  dto.FechaNacimiento,
+                legajo: legajo,
+                fechaNacimiento: dto.FechaNacimiento,
                 tipoPersona: dto.TipoPersona,
                 plan: plan);
             await _personaRepository.Add(persona);
-            
+
+        }
+        catch (ArgumentException)
+        {
+            throw;
         }
         catch (Exception e)
         {
@@ -121,6 +126,60 @@ public class PersonaService : IEntityService<PersonaDto>
         }
     }
 
+    public async Task<IEnumerable<PersonaDto>> GetAlumnos()
+    {
+        try
+        {
+            var personas = await _personaRepository.GetAlumnos();
+            return personas.Select(p => new PersonaDto
+            {
+                Id = p.Id,
+                Nombre = p.Nombre,
+                Apellido = p.Apellido,
+                Direccion = p.Direccion,
+                Telefono = p.Telefono,
+                Email = p.Email,
+                Legajo = p.Legajo,
+                FechaNacimiento = p.FechaNacimiento,
+                TipoPersona = p.TipoPersona.ToString(),
+                IdPlan = p.IdPlan,
+                DescripcionPlan = p.Plan?.Descripcion,
+            });
+
+
+        }
+        catch (Exception e)
+        {
+            throw new ApplicationException("error al obtener las personas", e);
+        }
+    }
+    public async Task<IEnumerable<PersonaDto>> GetProfesores()
+    {
+        try
+        {
+            var personas = await _personaRepository.GetProfesores();
+            return personas.Select(p => new PersonaDto
+            {
+                Id = p.Id,
+                Nombre = p.Nombre,
+                Apellido = p.Apellido,
+                Direccion = p.Direccion,
+                Telefono = p.Telefono,
+                Email = p.Email,
+                Legajo = p.Legajo,
+                FechaNacimiento = p.FechaNacimiento,
+                TipoPersona = p.TipoPersona.ToString(),
+                IdPlan = p.IdPlan,
+                DescripcionPlan = p.Plan?.Descripcion,
+            });
+
+
+        }
+        catch (Exception e)
+        {
+            throw new ApplicationException("error al obtener las personas", e);
+        }
+    }
     public async Task<bool> Update(PersonaDto dto)
     {
         try

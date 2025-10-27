@@ -24,6 +24,6 @@ public class PersonaDtoValidator : AbstractValidator<PersonaDto>
     }
     private bool ValidDate(DateTime date)
     {
-        return date < new DateTime(1900, 01, 01) || date > DateTime.Now;
+        return date >= new DateTime(1900, 01, 01) && date <= DateTime.Now;
     }
 }

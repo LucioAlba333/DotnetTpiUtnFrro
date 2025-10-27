@@ -26,6 +26,21 @@
       <Compile Update="Views\Materias\Modals\EliminarModal.cs">
         <SubType>Form</SubType>
       </Compile>
+      <Compile Update="Views\Alumnos\AlumnosForm.cs">
+        <SubType>Form</SubType>
+      </Compile>
+      <Compile Update="Views\Alumnos\Modals\EliminarModal.cs">
+        <SubType>Form</SubType>
+      </Compile>
+      <Compile Update="Views\Alumnos\Modals\CrearModal.cs">
+        <SubType>Form</SubType>
+      </Compile>
+      <Compile Update="Views\Alumnos\Modals\EditarModal.cs">
+        <SubType>Form</SubType>
+      </Compile>
+      <Compile Update="Views\Alumnos\Modals\GenerarUsuarioModal.cs">
+        <SubType>Form</SubType>
+      </Compile>
     </ItemGroup>
 
     <ItemGroup>

@@ -35,12 +35,23 @@ public class AuthService
             return null;
         
         var token = GenerateJwt(user);
+        var permisos = user.Permisos.SelectMany(p =>
+        {
+            var modulo = p.Modulo.Descripcion.ToLower();
+            var lista = new List<string>();
+            if (p.Consulta) lista.Add($"{modulo}.consulta");
+            if (p.Alta) lista.Add($"{modulo}.alta");
+            if (p.Modificacion) lista.Add($"{modulo}.modificacion");
+            if (p.Baja) lista.Add($"{modulo}.baja");
+            return lista;
+        }).Distinct().ToList();
         var espiresAt = DateTime.UtcNow.AddMinutes(GetExpirationMinutes());
         return new LoginResponse
         {
             Token = token,
             Expires = espiresAt,
-            Username = user.NombreUsuario
+            Username = user.NombreUsuario,
+            Permisos = permisos
         };
 
     }

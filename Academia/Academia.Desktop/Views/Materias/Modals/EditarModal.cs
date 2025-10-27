@@ -106,9 +106,7 @@ namespace Academia.Desktop.Views.Materias.Modals
                 this.textBox1.Text = materia.Descripcion;
                 this.numericUpDown1.Value = (decimal)materia.HsSemanales;
                 this.comboBox1.SelectedValue = materia.IdPlan;
-            }
-
-
+            }   
         }
     }
 }

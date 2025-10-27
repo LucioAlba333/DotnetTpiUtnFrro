@@ -9,6 +9,8 @@ public class WinFormsAuthService : IAuthService
     private static string? _currentToken;
     private static DateTime _tokenExpiration;
     private static string? _currentUsername;
+    private static List<string> _currentPermissions = [];
+
     public event Action<bool>? AuthenticationStateChanged;
     public async Task<bool> IsAuthenticatedAsync()
     {
@@ -41,6 +43,7 @@ public class WinFormsAuthService : IAuthService
             _currentToken = response.Token;
             _currentUsername = response.Username;
             _tokenExpiration = response.Expires;
+            _currentPermissions = response.Permisos; 
             AuthenticationStateChanged?.Invoke(true);
             return true;
         }
@@ -62,4 +65,14 @@ public class WinFormsAuthService : IAuthService
             await LogoutAsync();
         }
     }
+    public bool HasPermission(string permission)
+    {
+        return _currentPermissions.Contains(permission);
+    }
+
+    public IEnumerable<string> GetPermissions()
+    {
+        return _currentPermissions.AsReadOnly();
+    }
+
 }

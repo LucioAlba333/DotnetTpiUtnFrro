@@ -14,8 +14,7 @@ public class UsuarioApiClient : ApiClient
             var response = await client.GetAsync("api/Usuario");
             if (!response.IsSuccessStatusCode)
             {
-                var error = await response.Content.ReadAsStringAsync();
-                throw new Exception($"status: {response.StatusCode}, error: {error}");
+                await ErrorResponse.SendError(response);
             }
 
             var json = await response.Content.ReadAsStreamAsync();
@@ -42,8 +41,7 @@ public class UsuarioApiClient : ApiClient
             var response = await client.GetAsync($"api/Usuario/{id}");
             if (!response.IsSuccessStatusCode)
             {
-                var error = await response.Content.ReadAsStringAsync();
-                throw new Exception($"status: {response.StatusCode}, error: {error}");
+                await ErrorResponse.SendError(response);
             }
 
             var json = await response.Content.ReadAsStreamAsync();
@@ -70,8 +68,7 @@ public class UsuarioApiClient : ApiClient
             var response = await client.PostAsJsonAsync("api/Usuario", usuarioCreateDto);
             if (!response.IsSuccessStatusCode)
             {
-                var error = await response.Content.ReadAsStringAsync();
-                throw new Exception($"status: {response.StatusCode}, error: {error}");
+                await ErrorResponse.SendError(response);
             }
         }
         catch (HttpRequestException e)
@@ -92,8 +89,7 @@ public class UsuarioApiClient : ApiClient
             var response = await client.PutAsJsonAsync($"api/Usuario/{usuarioUpdateDto.Id}", usuarioUpdateDto);
             if (!response.IsSuccessStatusCode)
             {
-                var error = await response.Content.ReadAsStringAsync();
-                throw new Exception($"status: {response.StatusCode}, error: {error}");
+                await ErrorResponse.SendError(response);
             }
         }
         catch (HttpRequestException e)
@@ -114,8 +110,7 @@ public class UsuarioApiClient : ApiClient
             var response = await client.DeleteAsync($"api/Usuario/{id}");
             if (!response.IsSuccessStatusCode)
             {
-                var error = await response.Content.ReadAsStringAsync();
-                throw new Exception($"status: {response.StatusCode}, error: {error}");
+                await ErrorResponse.SendError(response);
             }
         }
         catch (HttpRequestException e)

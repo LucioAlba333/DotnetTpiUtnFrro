@@ -1,5 +1,5 @@
 using Academia.Dtos;
-using Academia.Services.Interfaces;
+using Academia.Services;
 using Academia.WebApi.Filters;
 using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
@@ -13,11 +13,11 @@ namespace Academia.WebApi.Controllers;
 [ApiController]
 public class PersonaController : ControllerBase
 {
-    private readonly IEntityService<PersonaDto>  _personaService;
+    private readonly PersonaService  _personaService;
     private readonly IValidator<PersonaDto> _personaDtoValidator;
 
     public PersonaController(
-        IEntityService<PersonaDto> personaService,
+        PersonaService personaService,
         IValidator<PersonaDto> personaDtoValidator)
     {
         _personaService = personaService;
@@ -34,6 +34,21 @@ public class PersonaController : ControllerBase
             return NotFound();
         }
         return Ok(p);
+    }
+    [Authorize(Policy = "personas.consulta")]
+    [HttpGet("alumnos")]
+    public async Task<ActionResult<IEnumerable<PersonaDto>>> GetAllAlumnos()
+    {
+        var personas = await _personaService.GetAlumnos();
+        return Ok(personas);
+    }
+    
+    [Authorize(Policy = "personas.consulta")]
+    [HttpGet("profesores")]
+    public async Task<ActionResult<IEnumerable<PersonaDto>>> GetAllProfesores()
+    {
+        var personas = await _personaService.GetProfesores();
+        return Ok(personas);
     }
     
     [Authorize(Policy = "personas.consulta")]

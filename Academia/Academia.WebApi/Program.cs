@@ -69,7 +69,7 @@ builder.Services.AddScoped<DocenteCursosRepository>();
 builder.Services.AddScoped<InscripcionRepository>();
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<UsuarioService>();
-builder.Services.AddScoped<IEntityService<PersonaDto>, PersonaService>();
+builder.Services.AddScoped<PersonaService>();
 builder.Services.AddScoped<IEntityService<EspecialidadDto>, EspecialidadService>();
 builder.Services.AddScoped<IEntityService<PlanDto>, PlanService>();
 builder.Services.AddScoped<IEntityService<MateriaDto>, MateriaService>();
@@ -81,6 +81,7 @@ builder.Services.AddScoped<IValidator<EspecialidadDto>, EspecialidadDtoValidator
 builder.Services.AddScoped<IValidator<PlanDto>, PlanDtoValidator>();
 builder.Services.AddScoped<IValidator<ComisionDto>, ComisionDtoValidator>();
 builder.Services.AddScoped<IValidator<CursoDto>, CursoDtoValidator>();
+builder.Services.AddScoped<IValidator<PersonaDto>, PersonaDtoValidator>();
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -93,13 +94,13 @@ using (var scope = app.Services.CreateScope())
 	var context = scope.ServiceProvider.GetRequiredService<Context>();
 	await context.InitDatabase();
 }
-/*
+
  using (var scope = app.Services.CreateScope())
 {
 	var usuarioService = scope.ServiceProvider.GetRequiredService<UsuarioService>();
 	await usuarioService.SeedAdminUser();
 }
-*/
+
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();

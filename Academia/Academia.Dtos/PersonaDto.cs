@@ -13,4 +13,7 @@ public class PersonaDto
     public int? IdPlan { get; set; }
     public string? DescripcionPlan { get; set; } = string.Empty;
     public string TipoPersona { get; set; } = string.Empty;
+
+    public string NombreCompleto => $"{Apellido} {Nombre}";
+
 }

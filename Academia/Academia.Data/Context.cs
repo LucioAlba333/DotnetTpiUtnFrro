@@ -73,11 +73,11 @@ public class Context : DbContext
             entity.Property(e => e.Clave)
                 .IsRequired()
                 .HasMaxLength(300);
-            entity.Property(e=> e.IdPersona)
+            entity.Property(e => e.IdPersona)
                 .IsRequired();
             entity.HasOne(e => e.Persona)
-                .WithMany()
-                .HasForeignKey(e => e.IdPersona);
+                .WithOne()
+                .HasForeignKey<Usuario>(e => e.IdPersona);
             entity.HasIndex(e=> e.IdPersona)
                 .IsUnique();
             entity.HasIndex(e=>e.NombreUsuario)
@@ -174,7 +174,7 @@ public class Context : DbContext
                 Direccion = "xxx",
                 Telefono = "xxx",
                 Email = "admin@admin.com",
-                Legajo = 1,
+                Legajo = 1000,
                 FechaNacimiento = new DateTime(1995, 4, 12),
                 TipoPersona = TipoPersona.Administrador, 
             });
