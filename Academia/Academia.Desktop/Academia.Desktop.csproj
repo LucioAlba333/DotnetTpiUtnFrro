@@ -41,6 +41,33 @@
       <Compile Update="Views\Alumnos\Modals\GenerarUsuarioModal.cs">
         <SubType>Form</SubType>
       </Compile>
+      <Compile Update="Views\Profesores\Modals\EliminarModal.cs">
+        <SubType>Form</SubType>
+      </Compile>
+      <Compile Update="Views\Profesores\Modals\CrearModal.cs">
+        <SubType>Form</SubType>
+      </Compile>
+      <Compile Update="Views\Profesores\Modals\EditarModal.cs">
+        <SubType>Form</SubType>
+      </Compile>
+      <Compile Update="Views\Profesores\Modals\GenerarUsuarioModal.cs">
+        <SubType>Form</SubType>
+      </Compile>
+      <Compile Update="Views\Profesores\ProfesoresForm.cs">
+        <SubType>Form</SubType>
+      </Compile>
+      <Compile Update="Views\Comisiones\Modals\CrearModal.cs">
+        <SubType>Form</SubType>
+      </Compile>
+      <Compile Update="Views\Comisiones\Modals\EditarModal.cs">
+        <SubType>Form</SubType>
+      </Compile>
+      <Compile Update="Views\Comisiones\Modals\EliminarModal.cs">
+        <SubType>Form</SubType>
+      </Compile>
+      <Compile Update="Views\Comisiones\ComisionesForm.cs">
+        <SubType>Form</SubType>
+      </Compile>
     </ItemGroup>
 
     <ItemGroup>

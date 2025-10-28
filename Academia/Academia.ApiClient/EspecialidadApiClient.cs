@@ -13,8 +13,7 @@ public class EspecialidadApiClient : ApiClient
             var response = await client.GetAsync("api/Especialidad/" + id);
             if (!response.IsSuccessStatusCode)
             {
-                var error = await response.Content.ReadAsStringAsync();
-                throw new Exception($"Status: {response.StatusCode} - {error}");
+                await ErrorResponse.SendError(response);
             }
 
             var json = await response.Content.ReadAsStreamAsync();
@@ -42,8 +41,7 @@ public class EspecialidadApiClient : ApiClient
             var response = await client.GetAsync("api/Especialidad");
             if (!response.IsSuccessStatusCode)
             {
-                var error = await response.Content.ReadAsStringAsync();
-                throw new Exception($"Status: {response.StatusCode} - {error}");
+                await ErrorResponse.SendError(response);
 
             }
             var json = await response.Content.ReadAsStreamAsync();
@@ -73,8 +71,7 @@ public class EspecialidadApiClient : ApiClient
             var response = await client.PostAsJsonAsync("api/Especialidad", especialidad);
             if (!response.IsSuccessStatusCode)
             {
-                var error = await response.Content.ReadAsStringAsync();
-                throw new Exception($"Error al crear Especialidad. Status: {response.StatusCode} - {error}");
+                await ErrorResponse.SendError(response);
             }
 
         }
@@ -96,8 +93,7 @@ public class EspecialidadApiClient : ApiClient
             var response = await client.PutAsJsonAsync("api/Especialidad/"+especialidad.Id, especialidad);
             if (!response.IsSuccessStatusCode)
             {
-                var error = await response.Content.ReadAsStringAsync();
-                throw new Exception($"Error al actualizar Especialidad. Status: {response.StatusCode} - {error}");
+                await ErrorResponse.SendError(response);
             }
         }
         catch (HttpRequestException e)
@@ -118,8 +114,7 @@ public class EspecialidadApiClient : ApiClient
             var response = await client.DeleteAsync("api/Especialidad/" + id);
             if (!response.IsSuccessStatusCode)
             {
-                var error = await response.Content.ReadAsStringAsync();
-                throw new Exception($"Error al eliminar especialidad. Status: {response.StatusCode} - {error}");
+                await ErrorResponse.SendError(response);
             }
         }
         catch (HttpRequestException e)

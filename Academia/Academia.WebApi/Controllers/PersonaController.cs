@@ -14,14 +14,16 @@ namespace Academia.WebApi.Controllers;
 public class PersonaController : ControllerBase
 {
     private readonly PersonaService  _personaService;
+    private readonly UsuarioService  _usuarioService;
     private readonly IValidator<PersonaDto> _personaDtoValidator;
 
     public PersonaController(
         PersonaService personaService,
-        IValidator<PersonaDto> personaDtoValidator)
+        IValidator<PersonaDto> personaDtoValidator, UsuarioService usuarioService)
     {
         _personaService = personaService;
         _personaDtoValidator = personaDtoValidator;
+        _usuarioService = usuarioService;
     }
 
     [Authorize(Policy = "personas.consulta")]
@@ -105,6 +107,19 @@ public class PersonaController : ControllerBase
         }
         return NoContent();
     }
-    
+    [Authorize]
+    [HttpGet("actual")]
+    public async Task<ActionResult<PersonaDto>> GetPersonaActual()
+    {
+        var username = User.Identity?.Name;
+        if (string.IsNullOrEmpty(username))
+            return Unauthorized();
+
+        var persona = await _usuarioService.GetPersonaByUsername(username);
+        if (persona == null)
+            return NotFound();
+        
+        return Ok(persona);
+    }
     
 }

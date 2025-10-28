@@ -124,6 +124,33 @@ public class PersonaApiClient : ApiClient
         }
     }
 
+    public static async Task<PersonaDto?> GetPersonaActualAsync()
+    {
+        try
+        {
+            using var client = await GetHttpClient();
+            var response = await client.GetAsync($"api/Persona/actual");
+            if (!response.IsSuccessStatusCode)
+            {
+                await ErrorResponse.SendError(response);
+            }
+
+            var json = await response.Content.ReadAsStreamAsync();
+            var persona = JsonSerializer.Deserialize<PersonaDto>(json,
+                new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+
+            return persona;
+
+        }
+        catch (HttpRequestException e)
+        {
+            throw new Exception($"error de conexion al obtener las personas: {e.Message}");
+        }
+        catch (TaskCanceledException e)
+        {
+            throw new Exception($"timeout al obtener las personas: {e.Message}");
+        }
+    }
     public static async Task AddAsync(PersonaDto dto)
     {
         try

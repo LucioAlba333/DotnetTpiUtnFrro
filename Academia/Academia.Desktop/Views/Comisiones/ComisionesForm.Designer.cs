@@ -1,6 +1,6 @@
-﻿namespace Academia.Desktop.Views.Planes
+﻿namespace Academia.Desktop.Views.Comisiones
 {
-    partial class PlanesForm
+    partial class ComisionesForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PlanesForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ComisionesForm));
             toolStripContainer1 = new ToolStripContainer();
             tableLayoutPanelPlanes = new TableLayoutPanel();
             dataGridViewPlanes = new DataGridView();
@@ -167,9 +167,9 @@
             ControlBox = false;
             Controls.Add(toolStripContainer1);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "PlanesForm";
+            Name = "ComisionesForm";
             Text = "Form1";
-            Load += PlanesForm_Load;
+            Load += ComisionesForm_Load;
             toolStripContainer1.ContentPanel.ResumeLayout(false);
             toolStripContainer1.TopToolStripPanel.ResumeLayout(false);
             toolStripContainer1.TopToolStripPanel.PerformLayout();

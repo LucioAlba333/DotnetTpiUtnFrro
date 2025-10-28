@@ -1,6 +1,6 @@
-﻿using System.Data;
-using Academia.ApiClient;
+﻿using Academia.ApiClient;
 using Academia.Dtos;
+
 
 namespace Academia.Auth.WinForms;
 
@@ -10,6 +10,7 @@ public class WinFormsAuthService : IAuthService
     private static DateTime _tokenExpiration;
     private static string? _currentUsername;
     private static List<string> _currentPermissions = [];
+    private static PersonaDto? _currentPersona;
 
     public event Action<bool>? AuthenticationStateChanged;
     public async Task<bool> IsAuthenticatedAsync()
@@ -29,7 +30,7 @@ public class WinFormsAuthService : IAuthService
         return isAuthenticated ? _currentUsername : null;
     }
 
-    public  async Task<bool> LoginAsync(string username, string password)
+    public async Task<bool> LoginAsync(string username, string password)
     {
         var request = new LoginRequest
         {
@@ -40,11 +41,13 @@ public class WinFormsAuthService : IAuthService
         var response = await authClient.LoginAsync(request);
         if (response != null)
         {
+            
             _currentToken = response.Token;
             _currentUsername = response.Username;
             _tokenExpiration = response.Expires;
             _currentPermissions = response.Permisos; 
             AuthenticationStateChanged?.Invoke(true);
+            _currentPersona = await PersonaApiClient.GetPersonaActualAsync();
             return true;
         }
         return false;
@@ -55,6 +58,8 @@ public class WinFormsAuthService : IAuthService
         _currentToken = null;
         _currentUsername = null;
         _tokenExpiration = DateTime.MinValue;
+        _currentPermissions = [];
+        _currentPersona = null;
         AuthenticationStateChanged?.Invoke(false);
     }
 
@@ -75,4 +80,9 @@ public class WinFormsAuthService : IAuthService
         return _currentPermissions.AsReadOnly();
     }
 
+    public async Task<PersonaDto?> GetPersonaActual()
+    {
+        var isAuthenticated = await IsAuthenticatedAsync();
+        return isAuthenticated ? _currentPersona : null;
+    }
 }

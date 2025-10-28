@@ -14,8 +14,7 @@ public class InscripcionApiClient : ApiClient
             var response = await client.GetAsync("api/Inscripcion");
             if (!response.IsSuccessStatusCode)
             {
-                var error = await response.Content.ReadAsStringAsync();
-                throw new Exception($"status: {response.StatusCode}, error: {error}");
+                await ErrorResponse.SendError(response);
             }
 
             var json = await response.Content.ReadAsStreamAsync();
@@ -42,8 +41,7 @@ public class InscripcionApiClient : ApiClient
             var response = await client.GetAsync($"api/Inscripcion/{id}");
             if (!response.IsSuccessStatusCode)
             {
-                var error = await response.Content.ReadAsStringAsync();
-                throw new Exception($"status: {response.StatusCode}, error: {error}");
+                await ErrorResponse.SendError(response);
             }
 
             var json = await response.Content.ReadAsStreamAsync();
@@ -70,8 +68,7 @@ public class InscripcionApiClient : ApiClient
             var response = await client.PostAsJsonAsync("api/Inscripcion", inscripcionDto);
             if (!response.IsSuccessStatusCode)
             {
-                var error = await response.Content.ReadAsStringAsync();
-                throw new Exception($"status: {response.StatusCode}, error: {error}");
+                await ErrorResponse.SendError(response);
             }
         }
         catch (HttpRequestException e)
@@ -92,8 +89,7 @@ public class InscripcionApiClient : ApiClient
             var response = await client.PutAsJsonAsync($"api/Inscripcion/{inscripcionDto.Id}", inscripcionDto);
             if (!response.IsSuccessStatusCode)
             {
-                var error = await response.Content.ReadAsStringAsync();
-                throw new Exception($"status: {response.StatusCode}, error: {error}");
+                await ErrorResponse.SendError(response);
             }
         }
         catch (HttpRequestException e)
@@ -114,8 +110,7 @@ public class InscripcionApiClient : ApiClient
             var response = await client.DeleteAsync($"api/Inscripcion/{id}");
             if (!response.IsSuccessStatusCode)
             {
-                var error = await response.Content.ReadAsStringAsync();
-                throw new Exception($"status: {response.StatusCode}, error: {error}");
+                await ErrorResponse.SendError(response);
             }
         }
         catch (HttpRequestException e)

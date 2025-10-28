@@ -1,7 +1,10 @@
+using Academia.ApiClient;
 using Academia.Desktop.Views.Alumnos;
+using Academia.Desktop.Views.Comisiones;
 using Academia.Desktop.Views.Especialidades;
 using Academia.Desktop.Views.Materias;
 using Academia.Desktop.Views.Planes;
+using Academia.Desktop.Views.Profesores;
 using Academia.Models;
 namespace Academia.Desktop.Views;
 
@@ -12,9 +15,11 @@ public partial class MainForm : Form
         InitializeComponent();
     }
 
-    private void salirToolStripMenuItem_Click(object sender, EventArgs e)
+    private async void salirToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        this.Close();
+        var authService = AuthServiceProvider.Instance;
+        await authService.LogoutAsync();
+        Application.Restart();
     }
 
     private void IrEspecialidades_Click(object sender, EventArgs e)
@@ -81,7 +86,7 @@ public partial class MainForm : Form
     {
         foreach (Form form in this.MdiChildren)
         {
-            if(form is AlumnosForm)
+            if (form is AlumnosForm)
             {
                 form.BringToFront();
                 return;
@@ -92,6 +97,43 @@ public partial class MainForm : Form
             MdiParent = this,
             Dock = DockStyle.Fill,
         };
-        ;alumnosForm.Show();
+        alumnosForm.Show();
+    }
+
+    private void profesoresToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        foreach (Form form in this.MdiChildren)
+        {
+            if (form is ProfesoresForm)
+            {
+                form.BringToFront();
+                return;
+            }
+        }
+        var profesoresForm = new ProfesoresForm
+        {
+            MdiParent = this,
+            Dock = DockStyle.Fill,
+        };
+        profesoresForm.Show();
+    }
+
+    private void comisionesToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+
+        foreach (Form form in this.MdiChildren)
+        {
+            if (form is ComisionesForm)
+            {
+                form.BringToFront();
+                return;
+            }
+        }
+        var comisionesForm = new ComisionesForm
+        {
+            MdiParent = this,
+            Dock = DockStyle.Fill,
+        };
+        comisionesForm.Show();
     }
 }

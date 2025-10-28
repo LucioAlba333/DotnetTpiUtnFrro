@@ -22,6 +22,7 @@ static class Program
     static async Task MainAsync()
     {
         var authService = new WinFormsAuthService();
+        
         AuthServiceProvider.Register(authService);
         while (true)
         {

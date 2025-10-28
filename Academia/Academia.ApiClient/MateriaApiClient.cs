@@ -15,8 +15,7 @@ public class MateriaApiClient : ApiClient
             var response = await client.GetAsync("api/Materia");
             if (!response.IsSuccessStatusCode)
             {
-                var error = await response.Content.ReadAsStringAsync();
-                throw new Exception($"status: {response.StatusCode}, error: {error}");
+                await ErrorResponse.SendError(response);
             }
 
             var json = await response.Content.ReadAsStreamAsync();
@@ -42,8 +41,7 @@ public class MateriaApiClient : ApiClient
             var response = await client.GetAsync($"api/Materia/{id}");
             if (!response.IsSuccessStatusCode)
             {
-                var error = await response.Content.ReadAsStringAsync();
-                throw new Exception($"status: {response.StatusCode}, error: {error}");
+                await ErrorResponse.SendError(response);
             }
 
             var json = await response.Content.ReadAsStreamAsync();
@@ -71,8 +69,7 @@ public class MateriaApiClient : ApiClient
             var response = await client.PostAsJsonAsync("api/Materia", materiaDto);
             if (!response.IsSuccessStatusCode)
             {
-                var error = await response.Content.ReadAsStringAsync();
-                throw new Exception($"status: {response.StatusCode}, error: {error}");
+                await ErrorResponse.SendError(response);
             }
         }
         catch (HttpRequestException e)
@@ -93,8 +90,7 @@ public class MateriaApiClient : ApiClient
             var response = await client.PutAsJsonAsync("api/Materia/" + materiaDto.Id, materiaDto);
             if (!response.IsSuccessStatusCode)
             {
-                var error = await response.Content.ReadAsStringAsync();
-                throw new Exception($"status: {response.StatusCode}, error: {error}");
+                await ErrorResponse.SendError(response);
             }
         }
         catch (HttpRequestException e)
@@ -115,8 +111,7 @@ public class MateriaApiClient : ApiClient
             var response = await client.DeleteAsync($"api/Materia/{id}");
             if (!response.IsSuccessStatusCode)
             {
-                var error = await response.Content.ReadAsStringAsync();
-                throw new Exception($"status: {response.StatusCode}, error: {error}");
+                await ErrorResponse.SendError(response);
             }
         }
         catch (HttpRequestException e)

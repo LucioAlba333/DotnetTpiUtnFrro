@@ -128,6 +128,27 @@ public class UsuarioService
            throw new ArgumentException("error al actualizar usuario", e);
         }
     }
+    public async Task<PersonaDto?> GetPersonaByUsername(string username)
+    {
+        var usuario = await _usuarioRepository.GetByUsername(username);
+        if (usuario == null)
+            return null;
+        var persona = usuario.Persona;
+        var dto = new PersonaDto
+        {
+            Id = persona.Id,
+            Nombre = persona.Nombre,
+            Apellido = persona.Apellido,
+            Email = persona.Email,
+            Direccion = persona.Direccion,
+            Telefono = persona.Telefono,
+            FechaNacimiento = persona.FechaNacimiento,
+            Legajo = persona.Legajo,
+            TipoPersona = persona.TipoPersona.ToString()
+        };
+        return dto;
+    }
+
     public async Task SeedAdminUser()
     {
         

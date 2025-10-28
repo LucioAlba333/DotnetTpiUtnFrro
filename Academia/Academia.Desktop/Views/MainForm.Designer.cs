@@ -38,14 +38,16 @@ partial class MainForm
         IrEspecialidades = new ToolStripMenuItem();
         espeToolStripMenuItem = new ToolStripMenuItem();
         materiasToolStripMenuItem = new ToolStripMenuItem();
-        toolStripMenuItem1 = new ToolStripMenuItem();
         alumnosToolStripMenuItem = new ToolStripMenuItem();
+        profesoresToolStripMenuItem = new ToolStripMenuItem();
+        toolStripMenuItem1 = new ToolStripMenuItem();
+        comisionesToolStripMenuItem = new ToolStripMenuItem();
         menuStripMain.SuspendLayout();
         SuspendLayout();
         // 
         // menuStripMain
         // 
-        menuStripMain.Items.AddRange(new ToolStripItem[] { inicioToolStripMenuItem, organizacionAcademicaToolStripMenuItem, alumnosToolStripMenuItem });
+        menuStripMain.Items.AddRange(new ToolStripItem[] { inicioToolStripMenuItem, organizacionAcademicaToolStripMenuItem, alumnosToolStripMenuItem, profesoresToolStripMenuItem });
         menuStripMain.Location = new Point(0, 0);
         menuStripMain.Name = "menuStripMain";
         menuStripMain.Size = new Size(800, 24);
@@ -68,7 +70,7 @@ partial class MainForm
         // 
         // organizacionAcademicaToolStripMenuItem
         // 
-        organizacionAcademicaToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { IrEspecialidades, espeToolStripMenuItem, materiasToolStripMenuItem });
+        organizacionAcademicaToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { IrEspecialidades, espeToolStripMenuItem, materiasToolStripMenuItem, comisionesToolStripMenuItem });
         organizacionAcademicaToolStripMenuItem.Name = "organizacionAcademicaToolStripMenuItem";
         organizacionAcademicaToolStripMenuItem.Size = new Size(151, 20);
         organizacionAcademicaToolStripMenuItem.Text = "Organizacion Academica";
@@ -76,28 +78,23 @@ partial class MainForm
         // IrEspecialidades
         // 
         IrEspecialidades.Name = "IrEspecialidades";
-        IrEspecialidades.Size = new Size(150, 22);
+        IrEspecialidades.Size = new Size(180, 22);
         IrEspecialidades.Text = "Especialidades";
         IrEspecialidades.Click += IrEspecialidades_Click;
         // 
         // espeToolStripMenuItem
         // 
         espeToolStripMenuItem.Name = "espeToolStripMenuItem";
-        espeToolStripMenuItem.Size = new Size(150, 22);
+        espeToolStripMenuItem.Size = new Size(180, 22);
         espeToolStripMenuItem.Text = "Planes";
         espeToolStripMenuItem.Click += espeToolStripMenuItem_Click;
         // 
         // materiasToolStripMenuItem
         // 
         materiasToolStripMenuItem.Name = "materiasToolStripMenuItem";
-        materiasToolStripMenuItem.Size = new Size(150, 22);
+        materiasToolStripMenuItem.Size = new Size(180, 22);
         materiasToolStripMenuItem.Text = "Materias";
         materiasToolStripMenuItem.Click += materiasToolStripMenuItem_Click;
-        // 
-        // toolStripMenuItem1
-        // 
-        toolStripMenuItem1.Name = "toolStripMenuItem1";
-        toolStripMenuItem1.Size = new Size(32, 19);
         // 
         // alumnosToolStripMenuItem
         // 
@@ -105,6 +102,25 @@ partial class MainForm
         alumnosToolStripMenuItem.Size = new Size(67, 20);
         alumnosToolStripMenuItem.Text = "Alumnos";
         alumnosToolStripMenuItem.Click += alumnosToolStripMenuItem_Click;
+        // 
+        // profesoresToolStripMenuItem
+        // 
+        profesoresToolStripMenuItem.Name = "profesoresToolStripMenuItem";
+        profesoresToolStripMenuItem.Size = new Size(74, 20);
+        profesoresToolStripMenuItem.Text = "Profesores";
+        profesoresToolStripMenuItem.Click += profesoresToolStripMenuItem_Click;
+        // 
+        // toolStripMenuItem1
+        // 
+        toolStripMenuItem1.Name = "toolStripMenuItem1";
+        toolStripMenuItem1.Size = new Size(32, 19);
+        // 
+        // comisionesToolStripMenuItem
+        // 
+        comisionesToolStripMenuItem.Name = "comisionesToolStripMenuItem";
+        comisionesToolStripMenuItem.Size = new Size(180, 22);
+        comisionesToolStripMenuItem.Text = "Comisiones";
+        comisionesToolStripMenuItem.Click += comisionesToolStripMenuItem_Click;
         // 
         // MainForm
         // 
@@ -134,4 +150,6 @@ partial class MainForm
     private ToolStripMenuItem espeToolStripMenuItem;
     private ToolStripMenuItem materiasToolStripMenuItem;
     private ToolStripMenuItem alumnosToolStripMenuItem;
+    private ToolStripMenuItem profesoresToolStripMenuItem;
+    private ToolStripMenuItem comisionesToolStripMenuItem;
 }

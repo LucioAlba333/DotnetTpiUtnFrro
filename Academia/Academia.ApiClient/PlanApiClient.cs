@@ -15,6 +15,7 @@ public class PlanApiClient : ApiClient
             if (!response.IsSuccessStatusCode)
             {
                 await ErrorResponse.SendError(response);
+
             }
 
             var json = await response.Content.ReadAsStreamAsync();
@@ -46,6 +47,7 @@ public class PlanApiClient : ApiClient
             if (!response.IsSuccessStatusCode)
             { 
                 await ErrorResponse.SendError(response);
+                return null;
             }
 
             var json = await response.Content.ReadAsStreamAsync();

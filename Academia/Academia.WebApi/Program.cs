@@ -1,4 +1,5 @@
 using System.Text;
+using System.Text.Json;
 using Academia.Data;
 using Academia.Dtos;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -6,6 +7,7 @@ using Microsoft.IdentityModel.Tokens;
 using Academia.Services.Interfaces;
 using Academia.Services;
 using Academia.Validaciones;
+
 using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
@@ -104,5 +106,8 @@ using (var scope = app.Services.CreateScope())
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
+
 app.MapControllers();
+
+
 app.Run();

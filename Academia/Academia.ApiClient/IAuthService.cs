@@ -1,3 +1,5 @@
+using Academia.Dtos;
+
 namespace Academia.ApiClient;
 
 public interface IAuthService
@@ -9,4 +11,7 @@ public interface IAuthService
     Task<bool> LoginAsync(string username, string password);
     Task LogoutAsync();
     Task CheckTokenExpirationAsync();
+    bool HasPermission(string permission);
+    IEnumerable<string> GetPermissions();
+    Task<PersonaDto?> GetPersonaActual();
 }

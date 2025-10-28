@@ -1,3 +1,4 @@
+using System.Net;
 using System.Text.Json;
 
 namespace Academia.Dtos;
@@ -26,6 +27,11 @@ public class ErrorResponse
             message = errorResponse?.FirstOrDefault()?.ErrorMessage
                       ?? "Error desconocido. por favor intente denuevo";
         }
+        else if (string.IsNullOrEmpty(error) && response.StatusCode == HttpStatusCode.Forbidden)
+        {
+            message = "Acceso denegado: El usuario no tiene los permisos suficientes";
+        }
+        
         else
         {
             var errorResponse =JsonSerializer.Deserialize<SimpleError>(error,
@@ -34,6 +40,8 @@ public class ErrorResponse
             message = errorResponse?.Error ?? "Error desconocido. por favor intente denuevo";
             
         }
+
+        
 
         
         throw new Exception(message);

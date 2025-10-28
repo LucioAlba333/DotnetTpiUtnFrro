@@ -1,8 +1,8 @@
 using System.ComponentModel;
 
-namespace Academia.Desktop.Views.Alumnos;
+namespace Academia.Desktop.Views.Profesores;
 
-partial class AlumnosForm
+partial class ProfesoresForm
 {
         /// <summary>
         /// Required designer variable.
@@ -30,10 +30,10 @@ partial class AlumnosForm
     /// </summary>
     private void InitializeComponent()
     {
-        ComponentResourceManager resources = new ComponentResourceManager(typeof(AlumnosForm));
+        ComponentResourceManager resources = new ComponentResourceManager(typeof(ProfesoresForm));
         toolStripContainerMaterias = new ToolStripContainer();
         tableLayoutPanelMaterias = new TableLayoutPanel();
-        dataGridViewAlumnos = new DataGridView();
+        dataGridViewProfesores = new DataGridView();
         buttonActualizar = new Button();
         buttonVolver = new Button();
         toolStripMaterias = new ToolStrip();
@@ -45,7 +45,7 @@ partial class AlumnosForm
         toolStripContainerMaterias.TopToolStripPanel.SuspendLayout();
         toolStripContainerMaterias.SuspendLayout();
         tableLayoutPanelMaterias.SuspendLayout();
-        ((ISupportInitialize)dataGridViewAlumnos).BeginInit();
+        ((ISupportInitialize)dataGridViewProfesores).BeginInit();
         toolStripMaterias.SuspendLayout();
         SuspendLayout();
         // 
@@ -72,7 +72,7 @@ partial class AlumnosForm
         tableLayoutPanelMaterias.ColumnCount = 2;
         tableLayoutPanelMaterias.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
         tableLayoutPanelMaterias.ColumnStyles.Add(new ColumnStyle());
-        tableLayoutPanelMaterias.Controls.Add(dataGridViewAlumnos, 0, 0);
+        tableLayoutPanelMaterias.Controls.Add(dataGridViewProfesores, 0, 0);
         tableLayoutPanelMaterias.Controls.Add(buttonActualizar, 0, 1);
         tableLayoutPanelMaterias.Controls.Add(buttonVolver, 1, 1);
         tableLayoutPanelMaterias.Dock = DockStyle.Fill;
@@ -84,21 +84,21 @@ partial class AlumnosForm
         tableLayoutPanelMaterias.Size = new Size(800, 425);
         tableLayoutPanelMaterias.TabIndex = 0;
         // 
-        // dataGridViewAlumnos
+        // dataGridViewProfesores
         // 
-        dataGridViewAlumnos.AllowUserToAddRows = false;
-        dataGridViewAlumnos.AllowUserToDeleteRows = false;
-        dataGridViewAlumnos.AllowUserToResizeColumns = false;
-        dataGridViewAlumnos.AllowUserToResizeRows = false;
-        dataGridViewAlumnos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-        dataGridViewAlumnos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-        tableLayoutPanelMaterias.SetColumnSpan(dataGridViewAlumnos, 2);
-        dataGridViewAlumnos.Dock = DockStyle.Fill;
-        dataGridViewAlumnos.Location = new Point(3, 3);
-        dataGridViewAlumnos.Name = "dataGridViewAlumnos";
-        dataGridViewAlumnos.ReadOnly = true;
-        dataGridViewAlumnos.Size = new Size(794, 390);
-        dataGridViewAlumnos.TabIndex = 0;
+        dataGridViewProfesores.AllowUserToAddRows = false;
+        dataGridViewProfesores.AllowUserToDeleteRows = false;
+        dataGridViewProfesores.AllowUserToResizeColumns = false;
+        dataGridViewProfesores.AllowUserToResizeRows = false;
+        dataGridViewProfesores.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+        dataGridViewProfesores.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+        tableLayoutPanelMaterias.SetColumnSpan(dataGridViewProfesores, 2);
+        dataGridViewProfesores.Dock = DockStyle.Fill;
+        dataGridViewProfesores.Location = new Point(3, 3);
+        dataGridViewProfesores.Name = "dataGridViewProfesores";
+        dataGridViewProfesores.ReadOnly = true;
+        dataGridViewProfesores.Size = new Size(794, 390);
+        dataGridViewProfesores.TabIndex = 0;
         // 
         // buttonActualizar
         // 
@@ -179,7 +179,7 @@ partial class AlumnosForm
         ClientSize = new Size(800, 450);
         Controls.Add(toolStripContainerMaterias);
         FormBorderStyle = FormBorderStyle.None;
-        Name = "AlumnosForm";
+        Name = "ProfesoresForm";
         Text = "Form1";
         Load += MateriasForm_Load;
         toolStripContainerMaterias.ContentPanel.ResumeLayout(false);
@@ -188,7 +188,7 @@ partial class AlumnosForm
         toolStripContainerMaterias.ResumeLayout(false);
         toolStripContainerMaterias.PerformLayout();
         tableLayoutPanelMaterias.ResumeLayout(false);
-        ((ISupportInitialize)dataGridViewAlumnos).EndInit();
+        ((ISupportInitialize)dataGridViewProfesores).EndInit();
         toolStripMaterias.ResumeLayout(false);
         toolStripMaterias.PerformLayout();
         ResumeLayout(false);
@@ -202,7 +202,7 @@ partial class AlumnosForm
         private ToolStripButton toolStripButtonEditar;
         private ToolStripButton toolStripButtonEliminar;
         private TableLayoutPanel tableLayoutPanelMaterias;
-        private DataGridView dataGridViewAlumnos;
+        private DataGridView dataGridViewProfesores;
         private Button buttonActualizar;
         private Button buttonVolver;
     private ToolStripButton toolStripButtonGenerarUsuario;
