@@ -1,11 +1,11 @@
 using Academia.ApiClient;
 using Academia.Desktop.Views.Alumnos;
 using Academia.Desktop.Views.Comisiones;
+using Academia.Desktop.Views.Cursos;
 using Academia.Desktop.Views.Especialidades;
 using Academia.Desktop.Views.Materias;
 using Academia.Desktop.Views.Planes;
 using Academia.Desktop.Views.Profesores;
-using Academia.Models;
 namespace Academia.Desktop.Views;
 
 public partial class MainForm : Form
@@ -17,27 +17,21 @@ public partial class MainForm : Form
 
     private async void salirToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        var authService = AuthServiceProvider.Instance;
-        await authService.LogoutAsync();
-        Application.Restart();
+        try
+        {
+            var authService = AuthServiceProvider.Instance;
+            await authService.LogoutAsync();
+            Application.Restart();
+        }
+        catch (Exception exception)
+        {
+            MessageBox.Show($"Error al cerrar sesión: {exception.Message}");
+        }
     }
 
-    private void IrEspecialidades_Click(object sender, EventArgs e)
+    private void especialidadesToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        foreach (Form form in this.MdiChildren)
-        {
-            if (form is EspecialidadesForm)
-            {
-                form.BringToFront();
-                return;
-            }
-        }
-        var especialidadesForm = new EspecialidadesForm
-        {
-            MdiParent = this,
-            Dock = DockStyle.Fill,
-        };
-        especialidadesForm.Show();
+        BringToFront<EspecialidadesForm>();
 
     }
 
@@ -46,94 +40,50 @@ public partial class MainForm : Form
 
     }
 
-    private void espeToolStripMenuItem_Click(object sender, EventArgs e)
+    private void planesToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        foreach (Form form in this.MdiChildren)
-        {
-            if (form is PlanesForm)
-            {
-                form.BringToFront();
-                return;
-            }
-        }
-        var planesForm = new PlanesForm
-        {
-            MdiParent = this,
-            Dock = DockStyle.Fill,
-        };
-        planesForm.Show();
+        BringToFront<PlanesForm>();
     }
 
     private void materiasToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        foreach (Form form in this.MdiChildren)
-        {
-            if (form is MateriasForm)
-            {
-                form.BringToFront();
-                return;
-            }
-        }
-        var materiasForm = new MateriasForm
-        {
-            MdiParent = this,
-            Dock = DockStyle.Fill,
-        };
-        materiasForm.Show();
+        BringToFront<MateriasForm>();
     }
 
     private void alumnosToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        foreach (Form form in this.MdiChildren)
-        {
-            if (form is AlumnosForm)
-            {
-                form.BringToFront();
-                return;
-            }
-        }
-        var alumnosForm = new AlumnosForm
-        {
-            MdiParent = this,
-            Dock = DockStyle.Fill,
-        };
-        alumnosForm.Show();
+        BringToFront<AlumnosForm>();
     }
 
     private void profesoresToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        foreach (Form form in this.MdiChildren)
-        {
-            if (form is ProfesoresForm)
-            {
-                form.BringToFront();
-                return;
-            }
-        }
-        var profesoresForm = new ProfesoresForm
-        {
-            MdiParent = this,
-            Dock = DockStyle.Fill,
-        };
-        profesoresForm.Show();
+        BringToFront<ProfesoresForm>();
     }
 
     private void comisionesToolStripMenuItem_Click(object sender, EventArgs e)
     {
+        BringToFront<ComisionesForm>();
+    }
 
-        foreach (Form form in this.MdiChildren)
+    private void cursosToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        BringToFront<CursosForm>();
+    }
+
+    private void BringToFront<T>() where T : Form, new()
+    {
+        foreach (var form in this.MdiChildren)
         {
-            if (form is ComisionesForm)
-            {
-                form.BringToFront();
-                return;
-            }
+            if (form is not T) continue;
+            form.BringToFront();
+            return;
         }
-        var comisionesForm = new ComisionesForm
+
+        var nuevoForm = new T
         {
             MdiParent = this,
             Dock = DockStyle.Fill,
         };
-        comisionesForm.Show();
+        nuevoForm.Show();
     }
 }

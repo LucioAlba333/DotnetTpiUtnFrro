@@ -68,6 +68,18 @@
       <Compile Update="Views\Comisiones\ComisionesForm.cs">
         <SubType>Form</SubType>
       </Compile>
+      <Compile Update="Views\Cursos\CursosForm.cs">
+        <SubType>Form</SubType>
+      </Compile>
+      <Compile Update="Views\Cursos\Modals\EliminarModal.cs">
+        <SubType>Form</SubType>
+      </Compile>
+      <Compile Update="Views\Cursos\Modals\CrearModal.cs">
+        <SubType>Form</SubType>
+      </Compile>
+      <Compile Update="Views\Cursos\Modals\EditarModal.cs">
+        <SubType>Form</SubType>
+      </Compile>
     </ItemGroup>
 
     <ItemGroup>

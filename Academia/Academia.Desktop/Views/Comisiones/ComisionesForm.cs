@@ -18,26 +18,26 @@ namespace Academia.Desktop.Views.Comisiones
         public ComisionesForm()
         {
             InitializeComponent();
-            this.dataGridViewPlanes.AutoGenerateColumns = false;
-            this.dataGridViewPlanes.Columns.Add(new DataGridViewTextBoxColumn
+            this.dataGridViewComisiones.AutoGenerateColumns = false;
+            this.dataGridViewComisiones.Columns.Add(new DataGridViewTextBoxColumn
             {
                 DataPropertyName = "ID",
                 HeaderText = "ID",
                 Name = "ID"
             });
-            this.dataGridViewPlanes.Columns.Add(new DataGridViewTextBoxColumn
+            this.dataGridViewComisiones.Columns.Add(new DataGridViewTextBoxColumn
             {
                 DataPropertyName = "Descripcion",
                 HeaderText = "Descripcion",
                 Name = "Descripcion"
             });
-            this.dataGridViewPlanes.Columns.Add(new DataGridViewTextBoxColumn
+            this.dataGridViewComisiones.Columns.Add(new DataGridViewTextBoxColumn
             {
                 DataPropertyName = "AnioEspecialidad",
                 HeaderText = "Nivel",
                 Name = "Nivel"
             });
-            this.dataGridViewPlanes.Columns.Add(new DataGridViewTextBoxColumn
+            this.dataGridViewComisiones.Columns.Add(new DataGridViewTextBoxColumn
             {
                 DataPropertyName = "PlanDescripcion",
                 HeaderText = "Plan",
@@ -53,8 +53,8 @@ namespace Academia.Desktop.Views.Comisiones
             try
             {
                 List<ComisionDto> comisiones = (List<ComisionDto>)await ComisionApiClient.GetAllAsync();
-                this.dataGridViewPlanes.DataSource = null;
-                this.dataGridViewPlanes.DataSource = comisiones;
+                this.dataGridViewComisiones.DataSource = null;
+                this.dataGridViewComisiones.DataSource = comisiones;
                 EstadoBotones(comisiones);
             }
             catch (Exception ex)

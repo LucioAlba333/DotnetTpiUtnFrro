@@ -50,7 +50,7 @@ namespace Academia.Desktop.Views.Alumnos
                 Name = "Plan"
             });
         }
-        private async void MateriasForm_Load(object sender, EventArgs e)
+        private async void AlumnosForm_Load(object sender, EventArgs e)
         {
             await CargaDatos();
 

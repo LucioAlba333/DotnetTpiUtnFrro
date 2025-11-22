@@ -30,20 +30,20 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ComisionesForm));
             toolStripContainer1 = new ToolStripContainer();
-            tableLayoutPanelPlanes = new TableLayoutPanel();
-            dataGridViewPlanes = new DataGridView();
+            tableLayoutPanelComisiones = new TableLayoutPanel();
+            dataGridViewComisiones = new DataGridView();
             buttonActualizar = new Button();
             buttonVolver = new Button();
-            toolStripPlanes = new ToolStrip();
+            toolStripComisiones = new ToolStrip();
             toolStripButtonNuevo = new ToolStripButton();
             toolStripButtonEditar = new ToolStripButton();
             toolStripButtonEliminar = new ToolStripButton();
             toolStripContainer1.ContentPanel.SuspendLayout();
             toolStripContainer1.TopToolStripPanel.SuspendLayout();
             toolStripContainer1.SuspendLayout();
-            tableLayoutPanelPlanes.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewPlanes).BeginInit();
-            toolStripPlanes.SuspendLayout();
+            tableLayoutPanelComisiones.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewComisiones).BeginInit();
+            toolStripComisiones.SuspendLayout();
             SuspendLayout();
             // 
             // toolStripContainer1
@@ -51,7 +51,7 @@
             // 
             // toolStripContainer1.ContentPanel
             // 
-            toolStripContainer1.ContentPanel.Controls.Add(tableLayoutPanelPlanes);
+            toolStripContainer1.ContentPanel.Controls.Add(tableLayoutPanelComisiones);
             toolStripContainer1.ContentPanel.Size = new Size(800, 425);
             toolStripContainer1.Dock = DockStyle.Fill;
             toolStripContainer1.Location = new Point(0, 0);
@@ -62,40 +62,40 @@
             // 
             // toolStripContainer1.TopToolStripPanel
             // 
-            toolStripContainer1.TopToolStripPanel.Controls.Add(toolStripPlanes);
+            toolStripContainer1.TopToolStripPanel.Controls.Add(toolStripComisiones);
             // 
-            // tableLayoutPanelPlanes
+            // tableLayoutPanelComisiones
             // 
-            tableLayoutPanelPlanes.ColumnCount = 2;
-            tableLayoutPanelPlanes.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanelPlanes.ColumnStyles.Add(new ColumnStyle());
-            tableLayoutPanelPlanes.Controls.Add(dataGridViewPlanes, 0, 0);
-            tableLayoutPanelPlanes.Controls.Add(buttonActualizar, 0, 1);
-            tableLayoutPanelPlanes.Controls.Add(buttonVolver, 1, 1);
-            tableLayoutPanelPlanes.Dock = DockStyle.Fill;
-            tableLayoutPanelPlanes.Location = new Point(0, 0);
-            tableLayoutPanelPlanes.Name = "tableLayoutPanelPlanes";
-            tableLayoutPanelPlanes.RowCount = 2;
-            tableLayoutPanelPlanes.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanelPlanes.RowStyles.Add(new RowStyle());
-            tableLayoutPanelPlanes.Size = new Size(800, 425);
-            tableLayoutPanelPlanes.TabIndex = 0;
+            tableLayoutPanelComisiones.ColumnCount = 2;
+            tableLayoutPanelComisiones.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanelComisiones.ColumnStyles.Add(new ColumnStyle());
+            tableLayoutPanelComisiones.Controls.Add(dataGridViewComisiones, 0, 0);
+            tableLayoutPanelComisiones.Controls.Add(buttonActualizar, 0, 1);
+            tableLayoutPanelComisiones.Controls.Add(buttonVolver, 1, 1);
+            tableLayoutPanelComisiones.Dock = DockStyle.Fill;
+            tableLayoutPanelComisiones.Location = new Point(0, 0);
+            tableLayoutPanelComisiones.Name = "tableLayoutPanelComisiones";
+            tableLayoutPanelComisiones.RowCount = 2;
+            tableLayoutPanelComisiones.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanelComisiones.RowStyles.Add(new RowStyle());
+            tableLayoutPanelComisiones.Size = new Size(800, 425);
+            tableLayoutPanelComisiones.TabIndex = 0;
             // 
-            // dataGridViewPlanes
+            // dataGridViewComisiones
             // 
-            dataGridViewPlanes.AllowUserToAddRows = false;
-            dataGridViewPlanes.AllowUserToDeleteRows = false;
-            dataGridViewPlanes.AllowUserToResizeColumns = false;
-            dataGridViewPlanes.AllowUserToResizeRows = false;
-            dataGridViewPlanes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewPlanes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            tableLayoutPanelPlanes.SetColumnSpan(dataGridViewPlanes, 2);
-            dataGridViewPlanes.Dock = DockStyle.Fill;
-            dataGridViewPlanes.Location = new Point(3, 3);
-            dataGridViewPlanes.Name = "dataGridViewPlanes";
-            dataGridViewPlanes.ReadOnly = true;
-            dataGridViewPlanes.Size = new Size(794, 390);
-            dataGridViewPlanes.TabIndex = 0;
+            dataGridViewComisiones.AllowUserToAddRows = false;
+            dataGridViewComisiones.AllowUserToDeleteRows = false;
+            dataGridViewComisiones.AllowUserToResizeColumns = false;
+            dataGridViewComisiones.AllowUserToResizeRows = false;
+            dataGridViewComisiones.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewComisiones.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            tableLayoutPanelComisiones.SetColumnSpan(dataGridViewComisiones, 2);
+            dataGridViewComisiones.Dock = DockStyle.Fill;
+            dataGridViewComisiones.Location = new Point(3, 3);
+            dataGridViewComisiones.Name = "dataGridViewComisiones";
+            dataGridViewComisiones.ReadOnly = true;
+            dataGridViewComisiones.Size = new Size(794, 390);
+            dataGridViewComisiones.TabIndex = 0;
             // 
             // buttonActualizar
             // 
@@ -118,16 +118,16 @@
             buttonVolver.UseVisualStyleBackColor = true;
             buttonVolver.Click += buttonVolver_Click;
             // 
-            // toolStripPlanes
+            // toolStripComisiones
             // 
-            toolStripPlanes.Dock = DockStyle.None;
-            toolStripPlanes.GripStyle = ToolStripGripStyle.Hidden;
-            toolStripPlanes.Items.AddRange(new ToolStripItem[] { toolStripButtonNuevo, toolStripButtonEditar, toolStripButtonEliminar });
-            toolStripPlanes.Location = new Point(3, 0);
-            toolStripPlanes.Name = "toolStripPlanes";
-            toolStripPlanes.Size = new Size(72, 25);
-            toolStripPlanes.TabIndex = 0;
-            toolStripPlanes.Text = "Crear/Editar/Eliminar";
+            toolStripComisiones.Dock = DockStyle.None;
+            toolStripComisiones.GripStyle = ToolStripGripStyle.Hidden;
+            toolStripComisiones.Items.AddRange(new ToolStripItem[] { toolStripButtonNuevo, toolStripButtonEditar, toolStripButtonEliminar });
+            toolStripComisiones.Location = new Point(3, 0);
+            toolStripComisiones.Name = "toolStripComisiones";
+            toolStripComisiones.Size = new Size(72, 25);
+            toolStripComisiones.TabIndex = 0;
+            toolStripComisiones.Text = "Crear/Editar/Eliminar";
             // 
             // toolStripButtonNuevo
             // 
@@ -175,21 +175,21 @@
             toolStripContainer1.TopToolStripPanel.PerformLayout();
             toolStripContainer1.ResumeLayout(false);
             toolStripContainer1.PerformLayout();
-            tableLayoutPanelPlanes.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridViewPlanes).EndInit();
-            toolStripPlanes.ResumeLayout(false);
-            toolStripPlanes.PerformLayout();
+            tableLayoutPanelComisiones.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridViewComisiones).EndInit();
+            toolStripComisiones.ResumeLayout(false);
+            toolStripComisiones.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
 
         private ToolStripContainer toolStripContainer1;
-        private TableLayoutPanel tableLayoutPanelPlanes;
-        private System.Windows.Forms.DataGridView dataGridViewPlanes;
+        private TableLayoutPanel tableLayoutPanelComisiones;
+        private System.Windows.Forms.DataGridView dataGridViewComisiones;
         private Button buttonActualizar;
         private Button buttonVolver;
-        private ToolStrip toolStripPlanes;
+        private ToolStrip toolStripComisiones;
         private ToolStripButton toolStripButtonNuevo;
         private ToolStripButton toolStripButtonEditar;
         private ToolStripButton toolStripButtonEliminar;

@@ -43,7 +43,7 @@ namespace Academia.Desktop.Views.Profesores
                 Name = "Telefono"
             });
         }
-        private async void MateriasForm_Load(object sender, EventArgs e)
+        private async void CursosForm_Load(object sender, EventArgs e)
         {
             await CargaDatos();
 

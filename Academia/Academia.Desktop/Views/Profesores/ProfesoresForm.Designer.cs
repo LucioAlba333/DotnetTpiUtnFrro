@@ -31,8 +31,8 @@ partial class ProfesoresForm
     private void InitializeComponent()
     {
         ComponentResourceManager resources = new ComponentResourceManager(typeof(ProfesoresForm));
-        toolStripContainerMaterias = new ToolStripContainer();
-        tableLayoutPanelMaterias = new TableLayoutPanel();
+        toolStripContainerProfesores = new ToolStripContainer();
+        tableLayoutPanelProfesores = new TableLayoutPanel();
         dataGridViewProfesores = new DataGridView();
         buttonActualizar = new Button();
         buttonVolver = new Button();
@@ -41,48 +41,48 @@ partial class ProfesoresForm
         toolStripButtonEditar = new ToolStripButton();
         toolStripButtonEliminar = new ToolStripButton();
         toolStripButtonGenerarUsuario = new ToolStripButton();
-        toolStripContainerMaterias.ContentPanel.SuspendLayout();
-        toolStripContainerMaterias.TopToolStripPanel.SuspendLayout();
-        toolStripContainerMaterias.SuspendLayout();
-        tableLayoutPanelMaterias.SuspendLayout();
+        toolStripContainerProfesores.ContentPanel.SuspendLayout();
+        toolStripContainerProfesores.TopToolStripPanel.SuspendLayout();
+        toolStripContainerProfesores.SuspendLayout();
+        tableLayoutPanelProfesores.SuspendLayout();
         ((ISupportInitialize)dataGridViewProfesores).BeginInit();
         toolStripMaterias.SuspendLayout();
         SuspendLayout();
         // 
-        // toolStripContainerMaterias
+        // toolStripContainerProfesores
         // 
         // 
-        // toolStripContainerMaterias.ContentPanel
+        // toolStripContainerProfesores.ContentPanel
         // 
-        toolStripContainerMaterias.ContentPanel.Controls.Add(tableLayoutPanelMaterias);
-        toolStripContainerMaterias.ContentPanel.Size = new Size(800, 425);
-        toolStripContainerMaterias.Dock = DockStyle.Fill;
-        toolStripContainerMaterias.Location = new Point(0, 0);
-        toolStripContainerMaterias.Name = "toolStripContainerMaterias";
-        toolStripContainerMaterias.Size = new Size(800, 450);
-        toolStripContainerMaterias.TabIndex = 0;
-        toolStripContainerMaterias.Text = "toolStripContainer1";
+        toolStripContainerProfesores.ContentPanel.Controls.Add(tableLayoutPanelProfesores);
+        toolStripContainerProfesores.ContentPanel.Size = new Size(800, 425);
+        toolStripContainerProfesores.Dock = DockStyle.Fill;
+        toolStripContainerProfesores.Location = new Point(0, 0);
+        toolStripContainerProfesores.Name = "toolStripContainerProfesores";
+        toolStripContainerProfesores.Size = new Size(800, 450);
+        toolStripContainerProfesores.TabIndex = 0;
+        toolStripContainerProfesores.Text = "toolStripContainer1";
         // 
-        // toolStripContainerMaterias.TopToolStripPanel
+        // toolStripContainerProfesores.TopToolStripPanel
         // 
-        toolStripContainerMaterias.TopToolStripPanel.Controls.Add(toolStripMaterias);
+        toolStripContainerProfesores.TopToolStripPanel.Controls.Add(toolStripMaterias);
         // 
-        // tableLayoutPanelMaterias
+        // tableLayoutPanelProfesores
         // 
-        tableLayoutPanelMaterias.ColumnCount = 2;
-        tableLayoutPanelMaterias.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-        tableLayoutPanelMaterias.ColumnStyles.Add(new ColumnStyle());
-        tableLayoutPanelMaterias.Controls.Add(dataGridViewProfesores, 0, 0);
-        tableLayoutPanelMaterias.Controls.Add(buttonActualizar, 0, 1);
-        tableLayoutPanelMaterias.Controls.Add(buttonVolver, 1, 1);
-        tableLayoutPanelMaterias.Dock = DockStyle.Fill;
-        tableLayoutPanelMaterias.Location = new Point(0, 0);
-        tableLayoutPanelMaterias.Name = "tableLayoutPanelMaterias";
-        tableLayoutPanelMaterias.RowCount = 2;
-        tableLayoutPanelMaterias.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-        tableLayoutPanelMaterias.RowStyles.Add(new RowStyle());
-        tableLayoutPanelMaterias.Size = new Size(800, 425);
-        tableLayoutPanelMaterias.TabIndex = 0;
+        tableLayoutPanelProfesores.ColumnCount = 2;
+        tableLayoutPanelProfesores.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+        tableLayoutPanelProfesores.ColumnStyles.Add(new ColumnStyle());
+        tableLayoutPanelProfesores.Controls.Add(dataGridViewProfesores, 0, 0);
+        tableLayoutPanelProfesores.Controls.Add(buttonActualizar, 0, 1);
+        tableLayoutPanelProfesores.Controls.Add(buttonVolver, 1, 1);
+        tableLayoutPanelProfesores.Dock = DockStyle.Fill;
+        tableLayoutPanelProfesores.Location = new Point(0, 0);
+        tableLayoutPanelProfesores.Name = "tableLayoutPanelProfesores";
+        tableLayoutPanelProfesores.RowCount = 2;
+        tableLayoutPanelProfesores.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+        tableLayoutPanelProfesores.RowStyles.Add(new RowStyle());
+        tableLayoutPanelProfesores.Size = new Size(800, 425);
+        tableLayoutPanelProfesores.TabIndex = 0;
         // 
         // dataGridViewProfesores
         // 
@@ -92,7 +92,7 @@ partial class ProfesoresForm
         dataGridViewProfesores.AllowUserToResizeRows = false;
         dataGridViewProfesores.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         dataGridViewProfesores.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-        tableLayoutPanelMaterias.SetColumnSpan(dataGridViewProfesores, 2);
+        tableLayoutPanelProfesores.SetColumnSpan(dataGridViewProfesores, 2);
         dataGridViewProfesores.Dock = DockStyle.Fill;
         dataGridViewProfesores.Location = new Point(3, 3);
         dataGridViewProfesores.Name = "dataGridViewProfesores";
@@ -177,17 +177,17 @@ partial class ProfesoresForm
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(800, 450);
-        Controls.Add(toolStripContainerMaterias);
+        Controls.Add(toolStripContainerProfesores);
         FormBorderStyle = FormBorderStyle.None;
         Name = "ProfesoresForm";
         Text = "Form1";
-        Load += MateriasForm_Load;
-        toolStripContainerMaterias.ContentPanel.ResumeLayout(false);
-        toolStripContainerMaterias.TopToolStripPanel.ResumeLayout(false);
-        toolStripContainerMaterias.TopToolStripPanel.PerformLayout();
-        toolStripContainerMaterias.ResumeLayout(false);
-        toolStripContainerMaterias.PerformLayout();
-        tableLayoutPanelMaterias.ResumeLayout(false);
+        Load += CursosForm_Load;
+        toolStripContainerProfesores.ContentPanel.ResumeLayout(false);
+        toolStripContainerProfesores.TopToolStripPanel.ResumeLayout(false);
+        toolStripContainerProfesores.TopToolStripPanel.PerformLayout();
+        toolStripContainerProfesores.ResumeLayout(false);
+        toolStripContainerProfesores.PerformLayout();
+        tableLayoutPanelProfesores.ResumeLayout(false);
         ((ISupportInitialize)dataGridViewProfesores).EndInit();
         toolStripMaterias.ResumeLayout(false);
         toolStripMaterias.PerformLayout();
@@ -196,12 +196,12 @@ partial class ProfesoresForm
 
     #endregion
 
-    private ToolStripContainer toolStripContainerMaterias;
+    private ToolStripContainer toolStripContainerProfesores;
         private ToolStrip toolStripMaterias;
         private ToolStripButton toolStripButtonNuevo;
         private ToolStripButton toolStripButtonEditar;
         private ToolStripButton toolStripButtonEliminar;
-        private TableLayoutPanel tableLayoutPanelMaterias;
+        private TableLayoutPanel tableLayoutPanelProfesores;
         private DataGridView dataGridViewProfesores;
         private Button buttonActualizar;
         private Button buttonVolver;

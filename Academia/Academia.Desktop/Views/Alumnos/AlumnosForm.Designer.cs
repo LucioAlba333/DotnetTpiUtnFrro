@@ -31,58 +31,58 @@ partial class AlumnosForm
     private void InitializeComponent()
     {
         ComponentResourceManager resources = new ComponentResourceManager(typeof(AlumnosForm));
-        toolStripContainerMaterias = new ToolStripContainer();
-        tableLayoutPanelMaterias = new TableLayoutPanel();
+        toolStripContainerAlumnos = new ToolStripContainer();
+        tableLayoutPanelAlumnos = new TableLayoutPanel();
         dataGridViewAlumnos = new DataGridView();
         buttonActualizar = new Button();
         buttonVolver = new Button();
-        toolStripMaterias = new ToolStrip();
+        toolStripAlumnos = new ToolStrip();
         toolStripButtonNuevo = new ToolStripButton();
         toolStripButtonEditar = new ToolStripButton();
         toolStripButtonEliminar = new ToolStripButton();
         toolStripButtonGenerarUsuario = new ToolStripButton();
-        toolStripContainerMaterias.ContentPanel.SuspendLayout();
-        toolStripContainerMaterias.TopToolStripPanel.SuspendLayout();
-        toolStripContainerMaterias.SuspendLayout();
-        tableLayoutPanelMaterias.SuspendLayout();
+        toolStripContainerAlumnos.ContentPanel.SuspendLayout();
+        toolStripContainerAlumnos.TopToolStripPanel.SuspendLayout();
+        toolStripContainerAlumnos.SuspendLayout();
+        tableLayoutPanelAlumnos.SuspendLayout();
         ((ISupportInitialize)dataGridViewAlumnos).BeginInit();
-        toolStripMaterias.SuspendLayout();
+        toolStripAlumnos.SuspendLayout();
         SuspendLayout();
         // 
-        // toolStripContainerMaterias
+        // toolStripContainerAlumnos
         // 
         // 
-        // toolStripContainerMaterias.ContentPanel
+        // toolStripContainerAlumnos.ContentPanel
         // 
-        toolStripContainerMaterias.ContentPanel.Controls.Add(tableLayoutPanelMaterias);
-        toolStripContainerMaterias.ContentPanel.Size = new Size(800, 425);
-        toolStripContainerMaterias.Dock = DockStyle.Fill;
-        toolStripContainerMaterias.Location = new Point(0, 0);
-        toolStripContainerMaterias.Name = "toolStripContainerMaterias";
-        toolStripContainerMaterias.Size = new Size(800, 450);
-        toolStripContainerMaterias.TabIndex = 0;
-        toolStripContainerMaterias.Text = "toolStripContainer1";
+        toolStripContainerAlumnos.ContentPanel.Controls.Add(tableLayoutPanelAlumnos);
+        toolStripContainerAlumnos.ContentPanel.Size = new Size(800, 425);
+        toolStripContainerAlumnos.Dock = DockStyle.Fill;
+        toolStripContainerAlumnos.Location = new Point(0, 0);
+        toolStripContainerAlumnos.Name = "toolStripContainerAlumnos";
+        toolStripContainerAlumnos.Size = new Size(800, 450);
+        toolStripContainerAlumnos.TabIndex = 0;
+        toolStripContainerAlumnos.Text = "toolStripContainer1";
         // 
-        // toolStripContainerMaterias.TopToolStripPanel
+        // toolStripContainerAlumnos.TopToolStripPanel
         // 
-        toolStripContainerMaterias.TopToolStripPanel.Controls.Add(toolStripMaterias);
+        toolStripContainerAlumnos.TopToolStripPanel.Controls.Add(toolStripAlumnos);
         // 
-        // tableLayoutPanelMaterias
+        // tableLayoutPanelAlumnos
         // 
-        tableLayoutPanelMaterias.ColumnCount = 2;
-        tableLayoutPanelMaterias.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-        tableLayoutPanelMaterias.ColumnStyles.Add(new ColumnStyle());
-        tableLayoutPanelMaterias.Controls.Add(dataGridViewAlumnos, 0, 0);
-        tableLayoutPanelMaterias.Controls.Add(buttonActualizar, 0, 1);
-        tableLayoutPanelMaterias.Controls.Add(buttonVolver, 1, 1);
-        tableLayoutPanelMaterias.Dock = DockStyle.Fill;
-        tableLayoutPanelMaterias.Location = new Point(0, 0);
-        tableLayoutPanelMaterias.Name = "tableLayoutPanelMaterias";
-        tableLayoutPanelMaterias.RowCount = 2;
-        tableLayoutPanelMaterias.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-        tableLayoutPanelMaterias.RowStyles.Add(new RowStyle());
-        tableLayoutPanelMaterias.Size = new Size(800, 425);
-        tableLayoutPanelMaterias.TabIndex = 0;
+        tableLayoutPanelAlumnos.ColumnCount = 2;
+        tableLayoutPanelAlumnos.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+        tableLayoutPanelAlumnos.ColumnStyles.Add(new ColumnStyle());
+        tableLayoutPanelAlumnos.Controls.Add(dataGridViewAlumnos, 0, 0);
+        tableLayoutPanelAlumnos.Controls.Add(buttonActualizar, 0, 1);
+        tableLayoutPanelAlumnos.Controls.Add(buttonVolver, 1, 1);
+        tableLayoutPanelAlumnos.Dock = DockStyle.Fill;
+        tableLayoutPanelAlumnos.Location = new Point(0, 0);
+        tableLayoutPanelAlumnos.Name = "tableLayoutPanelAlumnos";
+        tableLayoutPanelAlumnos.RowCount = 2;
+        tableLayoutPanelAlumnos.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+        tableLayoutPanelAlumnos.RowStyles.Add(new RowStyle());
+        tableLayoutPanelAlumnos.Size = new Size(800, 425);
+        tableLayoutPanelAlumnos.TabIndex = 0;
         // 
         // dataGridViewAlumnos
         // 
@@ -92,7 +92,7 @@ partial class AlumnosForm
         dataGridViewAlumnos.AllowUserToResizeRows = false;
         dataGridViewAlumnos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         dataGridViewAlumnos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-        tableLayoutPanelMaterias.SetColumnSpan(dataGridViewAlumnos, 2);
+        tableLayoutPanelAlumnos.SetColumnSpan(dataGridViewAlumnos, 2);
         dataGridViewAlumnos.Dock = DockStyle.Fill;
         dataGridViewAlumnos.Location = new Point(3, 3);
         dataGridViewAlumnos.Name = "dataGridViewAlumnos";
@@ -122,15 +122,15 @@ partial class AlumnosForm
         buttonVolver.UseVisualStyleBackColor = true;
         buttonVolver.Click += buttonVolver_Click;
         // 
-        // toolStripMaterias
+        // toolStripAlumnos
         // 
-        toolStripMaterias.Dock = DockStyle.None;
-        toolStripMaterias.GripStyle = ToolStripGripStyle.Hidden;
-        toolStripMaterias.Items.AddRange(new ToolStripItem[] { toolStripButtonNuevo, toolStripButtonEditar, toolStripButtonEliminar, toolStripButtonGenerarUsuario });
-        toolStripMaterias.Location = new Point(3, 0);
-        toolStripMaterias.Name = "toolStripMaterias";
-        toolStripMaterias.Size = new Size(126, 25);
-        toolStripMaterias.TabIndex = 0;
+        toolStripAlumnos.Dock = DockStyle.None;
+        toolStripAlumnos.GripStyle = ToolStripGripStyle.Hidden;
+        toolStripAlumnos.Items.AddRange(new ToolStripItem[] { toolStripButtonNuevo, toolStripButtonEditar, toolStripButtonEliminar, toolStripButtonGenerarUsuario });
+        toolStripAlumnos.Location = new Point(3, 0);
+        toolStripAlumnos.Name = "toolStripAlumnos";
+        toolStripAlumnos.Size = new Size(126, 25);
+        toolStripAlumnos.TabIndex = 0;
         // 
         // toolStripButtonNuevo
         // 
@@ -177,31 +177,31 @@ partial class AlumnosForm
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(800, 450);
-        Controls.Add(toolStripContainerMaterias);
+        Controls.Add(toolStripContainerAlumnos);
         FormBorderStyle = FormBorderStyle.None;
         Name = "AlumnosForm";
         Text = "Form1";
-        Load += MateriasForm_Load;
-        toolStripContainerMaterias.ContentPanel.ResumeLayout(false);
-        toolStripContainerMaterias.TopToolStripPanel.ResumeLayout(false);
-        toolStripContainerMaterias.TopToolStripPanel.PerformLayout();
-        toolStripContainerMaterias.ResumeLayout(false);
-        toolStripContainerMaterias.PerformLayout();
-        tableLayoutPanelMaterias.ResumeLayout(false);
+        Load += AlumnosForm_Load;
+        toolStripContainerAlumnos.ContentPanel.ResumeLayout(false);
+        toolStripContainerAlumnos.TopToolStripPanel.ResumeLayout(false);
+        toolStripContainerAlumnos.TopToolStripPanel.PerformLayout();
+        toolStripContainerAlumnos.ResumeLayout(false);
+        toolStripContainerAlumnos.PerformLayout();
+        tableLayoutPanelAlumnos.ResumeLayout(false);
         ((ISupportInitialize)dataGridViewAlumnos).EndInit();
-        toolStripMaterias.ResumeLayout(false);
-        toolStripMaterias.PerformLayout();
+        toolStripAlumnos.ResumeLayout(false);
+        toolStripAlumnos.PerformLayout();
         ResumeLayout(false);
     }
 
     #endregion
 
-    private ToolStripContainer toolStripContainerMaterias;
-        private ToolStrip toolStripMaterias;
+    private ToolStripContainer toolStripContainerAlumnos;
+        private ToolStrip toolStripAlumnos;
         private ToolStripButton toolStripButtonNuevo;
         private ToolStripButton toolStripButtonEditar;
         private ToolStripButton toolStripButtonEliminar;
-        private TableLayoutPanel tableLayoutPanelMaterias;
+        private TableLayoutPanel tableLayoutPanelAlumnos;
         private DataGridView dataGridViewAlumnos;
         private Button buttonActualizar;
         private Button buttonVolver;
