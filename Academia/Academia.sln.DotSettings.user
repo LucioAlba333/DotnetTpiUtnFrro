@@ -7,5 +7,7 @@
 	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=Academia_002EDesktop_002FViews_002FAlumnos_002FModals_002FEditarModal/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=Academia_002EDesktop_002FViews_002FAlumnos_002FModals_002FEliminarModal/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=Academia_002EDesktop_002FViews_002FAlumnos_002FModals_002FGenerarUsuarioModal/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=Academia_002EDesktop_002FViews_002FCursos_002FModals_002FCrearModal/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=Academia_002EDesktop_002FViews_002FCursos_002FModals_002FEditarModal/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=Academia_002EDesktop_002FViews_002FMaterias_002FMateriasForm/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/ResxEditorPersonal/Initialized/@EntryValue">True</s:Boolean></wpf:ResourceDictionary>

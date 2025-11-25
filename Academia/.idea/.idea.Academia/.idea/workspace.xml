@@ -11,45 +11,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="82aae92a-8a05-4a9f-bb31-f5721af6c3e6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Academia.Desktop/Views/Cursos/CursosForm.Designer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Academia.Desktop/Views/Cursos/CursosForm.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Academia.Desktop/Views/Cursos/Modals/CrearModal.Designer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Academia.Desktop/Views/Cursos/Modals/CrearModal.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Academia.Desktop/Views/Cursos/Modals/EditarModal.Designer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Academia.Desktop/Views/Cursos/Modals/EditarModal.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Academia.Desktop/Views/Cursos/Modals/EliminarModal.Designer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Academia.Desktop/Views/Cursos/Modals/EliminarModal.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Academia/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Academia/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Academia/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Academia/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Academia/.idea/dataSources/6c6f061b-347a-433a-9d6b-497f1b6988ce.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Academia/.idea/dataSources/6c6f061b-347a-433a-9d6b-497f1b6988ce/storage_v2/_src_/database/Academia.JSFsgA.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Academia/.idea/dataSources/6c6f061b-347a-433a-9d6b-497f1b6988ce/storage_v2/_src_/database/Academia.JSFsgA/schema/INFORMATION_SCHEMA.NBgcMw.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Academia/.idea/dataSources/6c6f061b-347a-433a-9d6b-497f1b6988ce/storage_v2/_src_/database/Academia.JSFsgA/schema/sys.zb4BAA.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Academia/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Academia/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Academia/.idea/shelf/Uncommitted_changes_before_Checkout_at_20_08_2025_10_42_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Academia/.idea/shelf/Uncommitted_changes_before_Checkout_at_20_08_2025_10_42_[Changes]1/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Academia/.idea/shelf/Uncommitted_changes_before_Checkout_at_20_08_2025_10_42__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Academia/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Academia/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/indexLayout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/projectSettingsUpdater.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Academia.Desktop/Academia.Desktop.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Academia.Desktop/Academia.Desktop.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Academia.Desktop/Views/Alumnos/AlumnosForm.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Academia.Desktop/Views/Alumnos/AlumnosForm.Designer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Academia.Desktop/Views/Alumnos/AlumnosForm.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Academia.Desktop/Views/Alumnos/AlumnosForm.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Academia.Desktop/Views/Alumnos/AlumnosForm.resx" beforeDir="false" afterPath="$PROJECT_DIR$/Academia.Desktop/Views/Alumnos/AlumnosForm.resx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Academia.Desktop/Views/Comisiones/ComisionesForm.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Academia.Desktop/Views/Comisiones/ComisionesForm.Designer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Academia.Desktop/Views/Comisiones/ComisionesForm.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Academia.Desktop/Views/Comisiones/ComisionesForm.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Academia.Desktop/Views/Comisiones/ComisionesForm.resx" beforeDir="false" afterPath="$PROJECT_DIR$/Academia.Desktop/Views/Comisiones/ComisionesForm.resx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Academia.Desktop/Views/MainForm.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Academia.Desktop/Views/MainForm.Designer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Academia.Desktop/Views/MainForm.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Academia.Desktop/Views/MainForm.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Academia.Desktop/Views/Profesores/ProfesoresForm.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Academia.Desktop/Views/Profesores/ProfesoresForm.Designer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Academia.Desktop/Views/Profesores/ProfesoresForm.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Academia.Desktop/Views/Profesores/ProfesoresForm.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Academia.Desktop/Views/Cursos/Modals/CrearModal.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Academia.Desktop/Views/Cursos/Modals/CrearModal.Designer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Academia.Desktop/Views/Cursos/Modals/CrearModal.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Academia.Desktop/Views/Cursos/Modals/CrearModal.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Academia.Desktop/Views/Cursos/Modals/EditarModal.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Academia.Desktop/Views/Cursos/Modals/EditarModal.Designer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Academia.Desktop/Views/Cursos/Modals/EditarModal.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Academia.Desktop/Views/Cursos/Modals/EditarModal.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Academia.Desktop/Views/Profesores/Modals/EditarModal.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Academia.Desktop/Views/Profesores/Modals/EditarModal.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Academia.Dtos/CursoDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Academia.Dtos/CursoDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Academia.Validaciones/CursoDtoValidator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Academia.Validaciones/CursoDtoValidator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Academia.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/Academia.sln.DotSettings.user" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DpaMonitoringSettings">
+    <option name="firstShow" value="false" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -76,6 +54,7 @@
     <setting file="file://$PROJECT_DIR$/Academia.Desktop/Views/Cursos/Modals/EliminarModal.Designer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Academia.Desktop/Views/Cursos/Modals/EliminarModal.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 4
@@ -85,22 +64,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;entrega__final/feature/cursos__form&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Launch Settings Profile.Academia.WebApi: https.executor": "Run",
+    ".NET Project.Academia.Desktop.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "entrega__final/feature/cursos__form",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET Project.Academia.Desktop">
     <configuration name="Academia.Desktop" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -183,16 +164,30 @@
       <updated>1763701918903</updated>
       <workItem from="1763701921290" duration="5315000" />
       <workItem from="1763779893036" duration="20000" />
-      <workItem from="1763789788520" duration="3686000" />
+      <workItem from="1763789788520" duration="4479000" />
+      <workItem from="1763843439897" duration="7772000" />
+      <workItem from="1764039397760" duration="7733000" />
     </task>
+    <task id="LOCAL-00001" summary="CursosForm.cs">
+      <option name="closed" value="true" />
+      <created>1763797467506</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1763797467506</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="CursosForm.cs" />
+    <option name="LAST_COMMIT_MESSAGE" value="CursosForm.cs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

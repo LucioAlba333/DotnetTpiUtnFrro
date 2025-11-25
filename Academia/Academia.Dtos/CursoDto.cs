@@ -11,4 +11,5 @@ public class CursoDto
 
     public int AnioCalendario { get; set; }
     public int Cupo { get; set; }
+    public string Detalle => $"{AnioCalendario} - {MateriaDescripcion} - {ComisionDescripcion}";
 }

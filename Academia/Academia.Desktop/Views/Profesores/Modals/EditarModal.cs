@@ -32,23 +32,17 @@ public partial class EditarModal : Form
     {
         try
         {
-            if (this.comboBox2.SelectedItem is PersonaDto profesor)
-            {
-                profesor.Nombre = textBoxNombre.Text;
-                profesor.Apellido = textBoxApellido.Text;
-                profesor.Direccion = textBoxDireccion.Text;
-                profesor.Telefono = textBoxTelefono.Text;
-                profesor.Email = textBoxEmail.Text;
-                profesor.FechaNacimiento = dateTimePickerNacimiento.Value.Date;
-                await PersonaApiClient.UpdateAsync(profesor);
+            if (this.comboBox2.SelectedItem is not PersonaDto profesor) return;
+            profesor.Nombre = textBoxNombre.Text;
+            profesor.Apellido = textBoxApellido.Text;
+            profesor.Direccion = textBoxDireccion.Text;
+            profesor.Telefono = textBoxTelefono.Text;
+            profesor.Email = textBoxEmail.Text;
+            profesor.FechaNacimiento = dateTimePickerNacimiento.Value.Date;
+            await PersonaApiClient.UpdateAsync(profesor);
 
-                this.DialogResult = DialogResult.OK;
-                this.Close();
-            }
-            else
-            {
-                throw new Exception("No se seleccionó un plan válido.");
-            }
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
         catch (Exception ex)
         {
@@ -69,15 +63,12 @@ public partial class EditarModal : Form
     private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
     {
         if (this._estaCargando) return;
-        if(this.comboBox2.SelectedItem is PersonaDto)
-        {
-            PersonaDto persona = (PersonaDto)comboBox2.SelectedItem;
-            this.textBoxNombre.Text = persona.Nombre;
-            this.textBoxApellido.Text = persona.Apellido;
-            this.textBoxDireccion.Text = persona.Direccion;
-            this.textBoxEmail.Text = persona.Email;
-            this.textBoxTelefono.Text = persona.Telefono;
-            this.dateTimePickerNacimiento.Value = persona.FechaNacimiento;
-        }
+        if (this.comboBox2.SelectedItem is not PersonaDto persona) return;
+        this.textBoxNombre.Text = persona.Nombre;
+        this.textBoxApellido.Text = persona.Apellido;
+        this.textBoxDireccion.Text = persona.Direccion;
+        this.textBoxEmail.Text = persona.Email;
+        this.textBoxTelefono.Text = persona.Telefono;
+        this.dateTimePickerNacimiento.Value = persona.FechaNacimiento;
     }
 }
